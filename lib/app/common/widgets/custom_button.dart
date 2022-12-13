@@ -34,7 +34,9 @@ class CustomButton extends StatelessWidget {
         text,
         style:  TextStyle(
           color: textColor,
-          fontSize: 15
+          fontSize: 15,
+          fontFamily: 'Poppins',
+          fontWeight: FontWeight.bold,
         ),
       ),
       
