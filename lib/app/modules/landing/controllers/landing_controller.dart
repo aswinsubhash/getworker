@@ -1,20 +1,13 @@
 import 'package:get/get.dart';
+import 'package:getwork/app/modules/login/views/login_view.dart';
+import 'package:getwork/app/modules/sign_up/views/sign_up_view.dart';
 
 class LandingController extends GetxController {
-  //TODO: Implement LandingController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void onLoginClick() {
+    Get.to(() => LoginView());
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void onSignUpClick() {
+    Get.to(() => SignUpView());
   }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

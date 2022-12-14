@@ -1,20 +1,14 @@
 import 'package:get/get.dart';
+import 'package:getwork/app/modules/home/views/home_view.dart';
+import 'package:getwork/app/modules/sign_up/views/sign_up_view.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
+void onLoginClick(){
+   Get.off(()=>HomeView());
+}
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+void onLoginWithGoogleClick(){
+ 
+}
 }
