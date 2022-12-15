@@ -7,13 +7,16 @@ class TextFieldWidget extends StatelessWidget {
   final double height;
   final double width;
   final String hintText;
-  // final TextEditingController controller;
+  final TextEditingController controller;
+  final String validationMessage;
 
   const TextFieldWidget({
     Key? key,
     required this.height,
     required this.width,
     required this.hintText,
+    required this.controller,
+    required this.validationMessage,
   }) : super(key: key);
 
   @override
@@ -22,6 +25,13 @@ class TextFieldWidget extends StatelessWidget {
       height: height,
       width: width,
       child: TextFormField(
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return validationMessage;
+          }
+          return null;
+        },
+        controller: controller,
         cursorColor: greenColor,
         style: TextStyle(
           fontSize: 15,

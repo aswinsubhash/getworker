@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/common/widgets/custom_button.dart';
 import 'package:getwork/app/common/widgets/text_field_widget.dart';
+import 'package:getwork/app/modules/sign_up/model/signup_model.dart';
 import 'package:getwork/app/modules/sign_up/views/widget/password_textfield_signup.dart';
 import 'package:getwork/app/utils/colors.dart';
 import '../controllers/sign_up_controller.dart';
@@ -41,32 +42,43 @@ class SignUpView extends GetView<SignUpController> {
                   ),
                 ),
                 Form(
+                  key: signUpController.formKey,
                   child: Column(
                     children: [
                       commonSizedBox(20),
                       TextFieldWidget(
-                        height: 50,
+                        height: 75,
                         width: size.width * 0.9,
                         hintText: 'Username',
+                        controller: signUpController.nameController,
+                        validationMessage: 'Please enter username',
                       ),
-                      commonSizedBox(20),
+                      // commonSizedBox(20),
                       TextFieldWidget(
-                        height: 50,
+                        height: 75,
                         width: size.width * 0.9,
                         hintText: 'Email',
+                        controller: signUpController.emailController,
+                        validationMessage: 'Please enter email',
                       ),
-                      commonSizedBox(20),
+                      // commonSizedBox(20),
                       PasswordTextField(
                         hintText: 'Password',
+                        controller: signUpController.passwordController,
+                        validationMessage: 'This field is required',
                       ),
-                      commonSizedBox(20),
-                      PasswordTextField(hintText: 'Confirm Password'),
-                      commonSizedBox(20),
+                      //commonSizedBox(20),
+                      PasswordTextField(
+                        hintText: 'Confirm Password',
+                        controller: signUpController.confirmPasswordController,
+                        validationMessage: 'This field is required',
+                      ),
+                      commonSizedBox(5),
                       SizedBox(
                         width: size.width * 0.9,
                         child: CustomButton(
                           text: 'Sign Up',
-                          onPressed: () {},
+                          onPressed: signUpController.createAccountClick,
                           textColor: whiteColor,
                           buttonColor: greenColor,
                           radius: 30,
@@ -77,7 +89,7 @@ class SignUpView extends GetView<SignUpController> {
                         children: [
                           Text('Already have an account?'),
                           TextButton(
-                            onPressed: signUpController.loginClick,
+                            onPressed: () {},
                             child: Text(
                               'Login',
                               style: TextStyle(color: signUpColor),

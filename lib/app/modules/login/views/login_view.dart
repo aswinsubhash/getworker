@@ -4,6 +4,7 @@ import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/common/widgets/custom_button.dart';
 import 'package:getwork/app/common/widgets/text_field_widget.dart';
 import 'package:getwork/app/modules/login/views/widgets/password_textfield.dart';
+import 'package:getwork/app/modules/sign_up/model/signup_model.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 import '../controllers/login_controller.dart';
@@ -40,37 +41,40 @@ class LoginView extends GetView<LoginController> {
                       fontFamily: 'Poppins'),
                 ),
                 Form(
+                  key: loginController.formKey,
                   child: Column(
                     children: [
                       commonSizedBox(20),
                       TextFieldWidget(
-                        height: 50,
+                        height: 75,
                         width: size.width * 0.9,
                         hintText: 'Enter your email',
+                        controller: loginController.emailController,
+                        validationMessage: 'Please enter email',
                       ),
-                      commonSizedBox(20),
                       PasswordLoginTextField(
                         hintText: 'Enter your password',
+                        validationMessage: 'Please enter password',
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              'Forgot Password?',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: signUpColor,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 17),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            InkWell(
+                              onTap: () {},
+                              child: Text(
+                                'Forgot Password?',
+                                style: TextStyle(color: signUpColor),
                               ),
-                            ),
-                          ),
-                          commonWidthBox(12)
-                        ],
-                      ),
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
+                commonSizedBox(15),
                 SizedBox(
                   width: size.width * 0.9,
                   child: CustomButton(

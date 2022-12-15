@@ -1,12 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:getwork/app/modules/login/controllers/login_controller.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 class PasswordLoginTextField extends GetView<LoginController> {
   final String hintText;
+  final String validationMessage;
   PasswordLoginTextField({
     required this.hintText,
+    required this.validationMessage,
   });
   @override
   Widget build(BuildContext context) {
@@ -16,11 +20,17 @@ class PasswordLoginTextField extends GetView<LoginController> {
       children: [
         Obx(
           () => SizedBox(
-            height: 50,
+            height: 70,
             width: size.width * 0.9,
             child: TextFormField(
               cursorColor: greenColor,
               obscureText: loginController.isPasswordHidden.value,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return validationMessage;
+                }
+                return null;
+              },
               style: TextStyle(
                 fontSize: 15,
               ),
