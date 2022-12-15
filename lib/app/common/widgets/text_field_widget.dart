@@ -8,13 +8,12 @@ class TextFieldWidget extends StatelessWidget {
   final double width;
   final String hintText;
   // final TextEditingController controller;
-  final bool obscureCondition;
+
   const TextFieldWidget({
     Key? key,
     required this.height,
     required this.width,
     required this.hintText,
-    required this.obscureCondition,
   }) : super(key: key);
 
   @override
@@ -24,7 +23,6 @@ class TextFieldWidget extends StatelessWidget {
       width: width,
       child: TextFormField(
         cursorColor: greenColor,
-        obscureText: obscureCondition,
         style: TextStyle(
           fontSize: 15,
         ),
@@ -35,9 +33,7 @@ class TextFieldWidget extends StatelessWidget {
               color: greenColor,
             ),
           ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5)
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
           contentPadding: EdgeInsets.all(8.0),
         ),
       ),

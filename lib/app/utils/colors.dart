@@ -7,3 +7,4 @@ const whiteColor = Colors.white;
 const textFieldColor = Color.fromARGB(255, 115, 115, 115);
 const dividerColor = Colors.black26;
 const googleButtonColor = Color(0xFF4285F4);
+const greyColor = Colors.grey;

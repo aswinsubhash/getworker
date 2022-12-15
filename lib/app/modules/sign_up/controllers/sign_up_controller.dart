@@ -1,20 +1,10 @@
 import 'package:get/get.dart';
+import 'package:getwork/app/modules/login/views/login_view.dart';
 
 class SignUpController extends GetxController {
-  //TODO: Implement SignUpController
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  var isPasswordHidden = true.obs;
+  void loginClick(){
+    Get.to(()=>LoginView());
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

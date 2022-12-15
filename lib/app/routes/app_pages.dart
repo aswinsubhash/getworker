@@ -6,6 +6,8 @@ import 'package:getwork/app/modules/landing/bindings/landing_binding.dart';
 import 'package:getwork/app/modules/landing/views/landing_view.dart';
 import 'package:getwork/app/modules/login/bindings/login_binding.dart';
 import 'package:getwork/app/modules/login/views/login_view.dart';
+import 'package:getwork/app/modules/profile/bindings/profile_binding.dart';
+import 'package:getwork/app/modules/profile/views/profile_view.dart';
 import 'package:getwork/app/modules/sign_up/bindings/sign_up_binding.dart';
 import 'package:getwork/app/modules/sign_up/views/sign_up_view.dart';
 import 'package:getwork/app/modules/splash/bindings/splash_binding.dart';
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.LANDING,
       page: () => LandingView(),
       binding: LandingBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => ProfileView(),
+      binding: ProfileBinding(),
     ),
   ];
 }
