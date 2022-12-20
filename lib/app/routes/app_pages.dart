@@ -2,16 +2,16 @@ import 'package:get/get.dart';
 
 import 'package:getwork/app/modules/home/bindings/home_binding.dart';
 import 'package:getwork/app/modules/home/views/home_view.dart';
-import 'package:getwork/app/modules/landing/bindings/landing_binding.dart';
-import 'package:getwork/app/modules/landing/views/landing_view.dart';
-import 'package:getwork/app/modules/login/bindings/login_binding.dart';
-import 'package:getwork/app/modules/login/views/login_view.dart';
-import 'package:getwork/app/modules/otp/bindings/otp_binding.dart';
-import 'package:getwork/app/modules/otp/views/otp_view.dart';
+import 'package:getwork/app/modules/auth/login/bindings/login_binding.dart';
+import 'package:getwork/app/modules/auth/login/views/login_view.dart';
+import 'package:getwork/app/modules/auth/otp/bindings/otp_binding.dart';
+import 'package:getwork/app/modules/auth/otp/views/otp_view.dart';
 import 'package:getwork/app/modules/profile/bindings/profile_binding.dart';
 import 'package:getwork/app/modules/profile/views/profile_view.dart';
-import 'package:getwork/app/modules/sign_up/bindings/sign_up_binding.dart';
-import 'package:getwork/app/modules/sign_up/views/sign_up_view.dart';
+import 'package:getwork/app/modules/auth/reset_password/bindings/reset_password_binding.dart';
+import 'package:getwork/app/modules/auth/reset_password/views/reset_password_view.dart';
+import 'package:getwork/app/modules/auth/sign_up/bindings/sign_up_binding.dart';
+import 'package:getwork/app/modules/auth/sign_up/views/sign_up_view.dart';
 import 'package:getwork/app/modules/splash/bindings/splash_binding.dart';
 import 'package:getwork/app/modules/splash/views/splash_view.dart';
 
@@ -46,11 +46,6 @@ class AppPages {
       binding: SplashBinding(),
     ),
     GetPage(
-      name: _Paths.LANDING,
-      page: () => LandingView(),
-      binding: LandingBinding(),
-    ),
-    GetPage(
       name: _Paths.PROFILE,
       page: () => ProfileView(),
       binding: ProfileBinding(),
@@ -59,6 +54,11 @@ class AppPages {
       name: _Paths.OTP,
       page: () => OtpView(),
       binding: OtpBinding(),
+    ),
+    GetPage(
+      name: _Paths.RESET_PASSWORD,
+      page: () => ResetPasswordView(),
+      binding: ResetPasswordBinding(),
     ),
   ];
 }

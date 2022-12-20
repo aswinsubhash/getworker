@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getwork/app/common/widgets/common_rich_text.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/common/widgets/custom_button.dart';
 import 'package:getwork/app/common/widgets/text_field_widget.dart';
-import 'package:getwork/app/modules/sign_up/model/signup_model.dart';
-import 'package:getwork/app/modules/sign_up/views/widget/password_textfield_signup.dart';
+import 'package:getwork/app/modules/auth/sign_up/views/widget/password_textfield_signup.dart';
 import 'package:getwork/app/utils/colors.dart';
 import '../controllers/sign_up_controller.dart';
 
@@ -14,15 +14,21 @@ class SignUpView extends GetView<SignUpController> {
     final signUpController = Get.put(SignUpController());
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: whiteColor,
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        color: whiteColor,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/login.png"),
+            opacity: 0.1,
+            fit: BoxFit.contain,
+          ),
+        ),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               children: [
-                commonSizedBox(size.height * 0.1),
                 Text(
                   'GETWORKER',
                   style: TextStyle(
@@ -53,54 +59,46 @@ class SignUpView extends GetView<SignUpController> {
                         controller: signUpController.nameController,
                         validationMessage: 'Please enter username',
                       ),
-                      // commonSizedBox(20),
                       TextFieldWidget(
                         height: 75,
                         width: size.width * 0.9,
                         hintText: 'Email',
                         controller: signUpController.emailController,
                         validationMessage: 'Please enter email',
+                        checkValidationMessage: 'Please enter a valid email',
                       ),
-                      // commonSizedBox(20),
                       PasswordTextField(
                         hintText: 'Password',
                         controller: signUpController.passwordController,
                         validationMessage: 'This field is required',
+                        minPassText: 'Password must be atleast 6 characters',
+                        type: 'Password',
                       ),
-                      //commonSizedBox(20),
                       PasswordTextField(
                         hintText: 'Confirm Password',
                         controller: signUpController.confirmPasswordController,
-                        validationMessage: 'This field is required',
+                        validationMessage: 'Please Re-Enter Password',
+                        controllerText: signUpController.confirmPasswordController.text,
+                        type: 'ConfirmPassword',
                       ),
                       commonSizedBox(5),
                       SizedBox(
                         width: size.width * 0.9,
                         child: CustomButton(
-                          text: 'Sign Up',
+                          text: 'Create account',
                           onPressed: signUpController.createAccountClick,
                           textColor: whiteColor,
                           buttonColor: greenColor,
                           radius: 30,
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Already have an account?'),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              'Login',
-                              style: TextStyle(color: signUpColor),
-                            ),
-                            style: TextButton.styleFrom(
-                              minimumSize: Size.zero,
-                              padding: EdgeInsets.zero,
-                            ),
-                          )
-                        ],
-                      )
+                      commonSizedBox(20),
+                      RichTextWidget(
+                        text: 'Already have an account?',
+                        clickText: ' Login',
+                        onPressed: signUpController.loginClick,
+                        clickTextColor: signUpColor,
+                      ),
                     ],
                   ),
                 ),

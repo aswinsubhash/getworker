@@ -13,6 +13,7 @@ abstract class Routes {
   static const LANDING = _Paths.LANDING;
   static const PROFILE = _Paths.PROFILE;
   static const OTP = _Paths.OTP;
+  static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const LANDING = '/landing';
   static const PROFILE = '/profile';
   static const OTP = '/otp';
+  static const RESET_PASSWORD = '/reset-password';
 }

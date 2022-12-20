@@ -1,16 +1,18 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:getwork/app/modules/login/controllers/login_controller.dart';
+import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:getwork/app/utils/colors.dart';
 
-class PasswordLoginTextField extends GetView<LoginController> {
+class PasswordLoginTextField extends GetView {
   final String hintText;
   final String validationMessage;
+   @override
+  final TextEditingController controller;
   PasswordLoginTextField({
     required this.hintText,
     required this.validationMessage,
+    required this.controller,
   });
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class PasswordLoginTextField extends GetView<LoginController> {
             height: 70,
             width: size.width * 0.9,
             child: TextFormField(
+              controller: controller,
               cursorColor: greenColor,
               obscureText: loginController.isPasswordHidden.value,
               validator: (value) {

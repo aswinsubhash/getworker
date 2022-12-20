@@ -2,19 +2,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:getwork/app/modules/sign_up/controllers/sign_up_controller.dart';
+import 'package:getwork/app/modules/auth/sign_up/controllers/sign_up_controller.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 class PasswordTextField extends GetView {
   final String hintText;
   final String validationMessage;
+  final String? controllerText;
+  final String? minPassText;
+  final String type;
   @override
   final TextEditingController controller;
-  PasswordTextField({
-    required this.hintText,
-    required this.validationMessage,
-    required this.controller,
-  });
+  PasswordTextField(
+      {required this.hintText,
+      required this.validationMessage,
+      this.controllerText,
+      this.minPassText,
+      required this.controller,
+      required this.type});
+
   @override
   Widget build(BuildContext context) {
     final signUpController = Get.put(SignUpController());
@@ -32,9 +38,16 @@ class PasswordTextField extends GetView {
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return validationMessage;
+                } else {
+                  if (value.length < 6) {
+                    return minPassText;
+                  }
                 }
                 return null;
               },
+              onChanged: (value) => type == 'Password'
+                  ? signUpController.password.value = value
+                  : (value) => signUpController.confirmPassword.value,
               style: TextStyle(
                 fontSize: 15,
               ),

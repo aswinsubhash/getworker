@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/otp_controller.dart';
+import '../controllers/reset_password_controller.dart';
 
-class OtpView extends GetView<OtpController> {
+class ResetPasswordView extends GetView<ResetPasswordController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('OtpView'),
+        title: Text('ResetPasswordView'),
         centerTitle: true,
       ),
       body: Center(
         child: Text(
-          'OtpView is working',
+          'ResetPasswordView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import 'package:getwork/app/utils/colors.dart';
@@ -9,15 +8,19 @@ class TextFieldWidget extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
   final String validationMessage;
+  final String? checkValidationMessage;
 
-  const TextFieldWidget({
+  TextFieldWidget({
     Key? key,
     required this.height,
     required this.width,
     required this.hintText,
     required this.controller,
     required this.validationMessage,
+    this.checkValidationMessage
   }) : super(key: key);
+
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +31,11 @@ class TextFieldWidget extends StatelessWidget {
         validator: (value) {
           if (value == null || value.isEmpty) {
             return validationMessage;
+          } else {
+            if (!RegExp(r'.+@.+\.com$').hasMatch(value)) {
+              
+              return checkValidationMessage;
+            } 
           }
           return null;
         },

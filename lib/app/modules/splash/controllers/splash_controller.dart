@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:getwork/app/modules/landing/views/landing_view.dart';
+import 'package:getwork/app/modules/auth/login/views/login_view.dart';
 
 class SplashController extends GetxController {
  
@@ -13,7 +13,7 @@ class SplashController extends GetxController {
 
   void goToLandingScreen() async{
     await Future.delayed(const Duration(seconds: 3));
-    Get.off(()=> LandingView());
+    Get.off(()=> LoginView());
   }
 
   void checkUserLoggedIn(){
