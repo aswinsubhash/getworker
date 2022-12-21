@@ -21,24 +21,9 @@ class SignUpController extends GetxController {
       TextEditingController();
   dynamic statusCode;
 
-  void validatePasswordd() {
-    if (passwordController.text != confirmPasswordController.text) {
-      print('wrong password');
-      Get.snackbar('Error', 'Password do not match');
-    }
-  }
-
-  String validatePassword(String value) {
-    if (value != password.value) {
-      return 'Password no match';
-    }
-    return '';
-  }
-
   void createAccountClick() {
     if (formKey.currentState!.validate()) {
       if (passwordController.text != confirmPasswordController.text) {
-       // Get.snackbar('Error', 'Password do not match');
         Get.showSnackbar(
           GetSnackBar(
             message: "Password do not match",

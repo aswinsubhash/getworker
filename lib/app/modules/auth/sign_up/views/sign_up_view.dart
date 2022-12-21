@@ -72,14 +72,11 @@ class SignUpView extends GetView<SignUpController> {
                         controller: signUpController.passwordController,
                         validationMessage: 'This field is required',
                         minPassText: 'Password must be atleast 6 characters',
-                        type: 'Password',
                       ),
                       PasswordTextField(
                         hintText: 'Confirm Password',
                         controller: signUpController.confirmPasswordController,
                         validationMessage: 'Please Re-Enter Password',
-                        controllerText: signUpController.confirmPasswordController.text,
-                        type: 'ConfirmPassword',
                       ),
                       commonSizedBox(5),
                       SizedBox(

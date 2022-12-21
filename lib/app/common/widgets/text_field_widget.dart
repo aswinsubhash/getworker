@@ -10,17 +10,15 @@ class TextFieldWidget extends StatelessWidget {
   final String validationMessage;
   final String? checkValidationMessage;
 
-  TextFieldWidget({
-    Key? key,
-    required this.height,
-    required this.width,
-    required this.hintText,
-    required this.controller,
-    required this.validationMessage,
-    this.checkValidationMessage
-  }) : super(key: key);
-
- 
+  TextFieldWidget(
+      {Key? key,
+      required this.height,
+      required this.width,
+      required this.hintText,
+      required this.controller,
+      required this.validationMessage,
+      this.checkValidationMessage})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +30,11 @@ class TextFieldWidget extends StatelessWidget {
           if (value == null || value.isEmpty) {
             return validationMessage;
           } else {
-            if (!RegExp(r'.+@.+\.com$').hasMatch(value)) {
-              
-              return checkValidationMessage;
-            } 
+            if (checkValidationMessage != null) {
+              if (!RegExp(r'.+@.+\.com$').hasMatch(value)) {
+                return checkValidationMessage;
+              }
+            }
           }
           return null;
         },

@@ -8,18 +8,17 @@ import 'package:getwork/app/utils/colors.dart';
 class PasswordTextField extends GetView {
   final String hintText;
   final String validationMessage;
-  final String? controllerText;
+
   final String? minPassText;
-  final String type;
+
   @override
   final TextEditingController controller;
-  PasswordTextField(
-      {required this.hintText,
-      required this.validationMessage,
-      this.controllerText,
-      this.minPassText,
-      required this.controller,
-      required this.type});
+  PasswordTextField({
+    required this.hintText,
+    required this.validationMessage,
+    this.minPassText,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +44,6 @@ class PasswordTextField extends GetView {
                 }
                 return null;
               },
-              onChanged: (value) => type == 'Password'
-                  ? signUpController.password.value = value
-                  : (value) => signUpController.confirmPassword.value,
               style: TextStyle(
                 fontSize: 15,
               ),
