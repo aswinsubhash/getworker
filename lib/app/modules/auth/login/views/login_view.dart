@@ -8,6 +8,7 @@ import 'package:getwork/app/common/widgets/text_field_widget.dart';
 import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:getwork/app/modules/auth/login/views/widgets/password_textfield.dart';
 import 'package:getwork/app/utils/colors.dart';
+import 'package:getwork/app/utils/text_style.dart';
 
 class LoginView extends GetView {
   @override
@@ -19,33 +20,19 @@ class LoginView extends GetView {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/images/login.png"),
-              opacity: 0.1,
-              fit: BoxFit.contain),
-        ),
+        decoration: backgroundImage,
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Text(
                   'GETWORKER',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 30,
-                    color: greenColor,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: logoNameStyle,
                 ),
                 commonSizedBox(10),
                 Text(
                   'Log In to Getworker',
-                  style: TextStyle(
-                    fontSize: 18.5,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'Poppins',
-                  ),
+                  style: subTextStyle,
                 ),
                 Form(
                   key: loginController.formKeyLogin,
@@ -59,7 +46,6 @@ class LoginView extends GetView {
                         controller: loginController.emailController,
                         validationMessage: 'Please enter email',
                         checkValidationMessage: 'Please enter a valid email',
-                        
                       ),
                       PasswordLoginTextField(
                         hintText: 'Enter your password',

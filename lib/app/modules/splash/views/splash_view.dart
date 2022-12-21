@@ -5,7 +5,7 @@ import 'package:getwork/app/utils/colors.dart';
 
 import '../controllers/splash_controller.dart';
 
-class SplashView extends GetView<SplashController> {
+class SplashView extends GetView {
   @override
   Widget build(BuildContext context) {
     final splashController = Get.put(SplashController());

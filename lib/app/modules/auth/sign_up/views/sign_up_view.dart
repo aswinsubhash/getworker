@@ -6,46 +6,33 @@ import 'package:getwork/app/common/widgets/custom_button.dart';
 import 'package:getwork/app/common/widgets/text_field_widget.dart';
 import 'package:getwork/app/modules/auth/sign_up/views/widget/password_textfield_signup.dart';
 import 'package:getwork/app/utils/colors.dart';
+import 'package:getwork/app/utils/text_style.dart';
 import '../controllers/sign_up_controller.dart';
 
-class SignUpView extends GetView<SignUpController> {
+class SignUpView extends GetView {
   @override
   Widget build(BuildContext context) {
     final signUpController = Get.put(SignUpController());
+  
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: whiteColor,
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/login.png"),
-            opacity: 0.1,
-            fit: BoxFit.contain,
-          ),
-        ),
+        decoration: backgroundImage,
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Text(
                   'GETWORKER',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 30,
-                    color: Color.fromRGBO(60, 207, 78, 1.0),
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: logoNameStyle,
                 ),
                 commonSizedBox(10),
                 Text(
                   'Sign up to find work you love',
-                  style: TextStyle(
-                    fontSize: 18.5,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'Poppins',
-                  ),
+                  style: subTextStyle,
                 ),
                 Form(
                   key: signUpController.formKey,

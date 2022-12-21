@@ -10,10 +10,13 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   static const SIGN_UP = _Paths.SIGN_UP;
   static const SPLASH = _Paths.SPLASH;
-  static const LANDING = _Paths.LANDING;
   static const PROFILE = _Paths.PROFILE;
   static const OTP = _Paths.OTP;
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
+  static const PROPOSALS = _Paths.PROPOSALS;
+  static const CONTRACTS = _Paths.CONTRACTS;
+  static const MESSAGES = _Paths.MESSAGES;
+  static const DASHBOARD = _Paths.DASHBOARD;
 }
 
 abstract class _Paths {
@@ -21,8 +24,11 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const SIGN_UP = '/sign-up';
   static const SPLASH = '/splash';
-  static const LANDING = '/landing';
   static const PROFILE = '/profile';
   static const OTP = '/otp';
   static const RESET_PASSWORD = '/reset-password';
+  static const PROPOSALS = '/proposals';
+  static const CONTRACTS = '/contracts';
+  static const MESSAGES = '/messages';
+  static const DASHBOARD = '/dashboard';
 }

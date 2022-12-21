@@ -4,16 +4,17 @@ import 'package:get/get.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:getwork/app/utils/text_style.dart';
 
-import '../controllers/profile_controller.dart';
 
-class ProfileView extends GetView<ProfileController> {
+import '../controllers/contracts_controller.dart';
+
+class ContractsView extends GetView<ContractsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: whiteColor,
       appBar: AppBar(
         title: Text(
-          'Profile',
+          'Contracts',
           style: appBarStyle,
         ),
         centerTitle: true,
@@ -22,7 +23,7 @@ class ProfileView extends GetView<ProfileController> {
       ),
       body: Center(
         child: Text(
-          'ProfileView is working',
+          'ContractsView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

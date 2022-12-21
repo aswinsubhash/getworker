@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:getwork/app/modules/auth/login/model/login_model.dart';
 import 'package:getwork/app/modules/auth/reset_password/views/reset_password_view.dart';
 import 'package:getwork/app/modules/auth/sign_up/views/sign_up_view.dart';
+import 'package:getwork/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,14 +20,15 @@ class LoginController extends GetxController {
         email: emailController.text,
         password: passwordController.text,
       );
+      Get.off(() => DashboardView());
     }
   }
 
-   void forgotPasswordClick(){
-  Get.to(()=>ResetPasswordView());
- }
+  void forgotPasswordClick() {
+    Get.to(() => ResetPasswordView());
+  }
 
-   void onSignUpClick() {
+  void onSignUpClick() {
     Get.off(() => SignUpView());
   }
 
