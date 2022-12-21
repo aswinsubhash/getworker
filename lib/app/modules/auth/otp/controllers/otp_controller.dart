@@ -11,11 +11,22 @@ class OtpController extends GetxController {
   dynamic statusCode;
 
   void verifyOtp() {
-    postData(
-      userId: "639c35223b858bfaf3400ec6",
-      otp: otpTextController.text,
-      userType: 'employee',
-    );
+    if (otpTextController.text.isEmpty) {
+      Get.showSnackbar(
+        GetSnackBar(
+          message: "Please enter otp",
+          backgroundColor: errorColor,
+          duration: const Duration(seconds: 3),
+          snackStyle: SnackStyle.FLOATING,
+        ),
+      );
+    } else {
+      postData(
+        userId: "639c35223b858bfaf3400ec6",
+        otp: otpTextController.text,
+        userType: 'employee',
+      );
+    }
   }
 
   Future<OtpModel?> postData({
@@ -47,9 +58,9 @@ class OtpController extends GetxController {
           ),
         );
       }
-       if (request.statusCode == 404) {
-          log('otp is wrong');
-        }
+      if (request.statusCode == 404) {
+        log('otp is wrong');
+      }
       log(request.statusCode.toString());
       log(request.body.toString());
     } catch (e) {

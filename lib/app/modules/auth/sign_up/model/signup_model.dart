@@ -1,8 +1,4 @@
-import 'dart:convert';
 
-SignupModel signupModelFromJson(String str) => SignupModel.fromJson(json.decode(str));
-
-String signupModelToJson(SignupModel data) => json.encode(data.toJson());
 
 class SignupModel {
     SignupModel({

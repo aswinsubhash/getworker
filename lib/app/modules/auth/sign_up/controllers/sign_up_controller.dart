@@ -10,9 +10,6 @@ import 'package:getwork/app/modules/auth/sign_up/model/signup_model.dart';
 class SignUpController extends GetxController {
   var isPasswordHidden = true.obs;
 
-  var password = ''.obs;
-  var confirmPassword = ''.obs;
-
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -46,6 +43,7 @@ class SignUpController extends GetxController {
   void loginClick() {
     Get.off(() => LoginView());
   }
+
 
   Future<SignupModel?> postData({
     required String name,

@@ -7,7 +7,7 @@ class TextFieldWidget extends StatelessWidget {
   final double width;
   final String hintText;
   final TextEditingController controller;
-  final String validationMessage;
+  final String? validationMessage;
   final String? checkValidationMessage;
 
   TextFieldWidget(
@@ -16,7 +16,7 @@ class TextFieldWidget extends StatelessWidget {
       required this.width,
       required this.hintText,
       required this.controller,
-      required this.validationMessage,
+      this.validationMessage,
       this.checkValidationMessage})
       : super(key: key);
 

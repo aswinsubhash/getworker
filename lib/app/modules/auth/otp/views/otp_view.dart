@@ -7,21 +7,26 @@ import 'package:getwork/app/utils/colors.dart';
 
 import '../controllers/otp_controller.dart';
 
-class OtpView extends GetView<OtpController> {
+class OtpView extends GetView {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final otpController = Get.put(OtpController());
     return Scaffold(
+      backgroundColor: whiteColor,
       body: SafeArea(
         child: Container(
           height: double.infinity,
           width: double.infinity,
-          color: whiteColor,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/login.png"),
+                opacity: 0.1,
+                fit: BoxFit.contain),
+          ),
           child: Center(
             child: SingleChildScrollView(
               child: Column(
-                //mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'Verify Email',
@@ -37,7 +42,6 @@ class OtpView extends GetView<OtpController> {
                     width: size.width * 0.9,
                     hintText: 'Enter OTP',
                     controller: otpController.otpTextController,
-                    validationMessage: 'This field is empty',
                   ),
                   SizedBox(
                     width: size.width * 0.9,
