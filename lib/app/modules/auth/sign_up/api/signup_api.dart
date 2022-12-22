@@ -1,11 +1,15 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
+import 'package:getwork/app/modules/auth/otp/views/otp_view.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:getwork/app/modules/auth/sign_up/model/signup_model.dart';
 
+//String? id;
 class SignupAPI {
+
+  
   final url = Uri.parse('http://10.0.2.2:3001/api/register');
   var hearders = {'Content-Type': 'application/json'};
 
@@ -31,6 +35,8 @@ class SignupAPI {
         SignupModel signupResponseModel =
             SignupModel.fromJson(json);
 
+            Get.to(()=>OtpView());
+
         Get.showSnackbar(
           GetSnackBar(
             message: "Otp send successfully",
@@ -40,6 +46,9 @@ class SignupAPI {
           ),
         );
         log(signupResponseModel.email!);
+        //storing id to a variable
+        // id = signupResponseModel.id;
+        // log(id!);
         return signupResponseModel;
       } else if (response.statusCode == 404) {
         Get.showSnackbar(

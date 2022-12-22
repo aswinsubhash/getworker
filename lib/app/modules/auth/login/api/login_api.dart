@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:getwork/app/modules/auth/login/model/login_model.dart';
+import 'package:getwork/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:getwork/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:http/http.dart' as http;
@@ -28,7 +29,7 @@ class LoginAPI {
         log(response.body);
 
         LoginModel loginModel = LoginModel.fromJson(json);
-
+        Get.lazyPut<DashboardController>(() => DashboardController());
         Get.offAll(() => DashboardView());
 
         Get.snackbar(
@@ -53,7 +54,7 @@ class LoginAPI {
         log(response.body);
       }
     } catch (e) {
-     log(e.toString());
+      log(e.toString());
     }
     return null;
   }

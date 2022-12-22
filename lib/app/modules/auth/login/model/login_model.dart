@@ -13,11 +13,10 @@ class LoginModel {
     this.userType,
     this.employeeData,
     this.isBlocked,
-    this.token,
+     this.token,
   });
 
-  factory LoginModel.fromJson(Map<String, dynamic> json) =>
-      LoginModel(
+  factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
         id: json["_id"] ?? '',
         name: json["name"] ?? '',
         email: json["email"] ?? '',

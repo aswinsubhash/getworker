@@ -1,30 +1,29 @@
+class OTPModel {
+  OTPModel({
+    this.id,
+    this.name,
+    this.email,
+    this.userType,
+    this.employeeData,
+    this.emailVerified,
+    this.token,
+  });
+  String? id;
+  String? name;
+  String? email;
+  String? userType;
+  String? employeeData;
+  bool? emailVerified;
+  String? token;
 
-import 'dart:convert';
-
-OtpModel otpModelFromJson(String str) => OtpModel.fromJson(json.decode(str));
-
-String otpModelToJson(OtpModel data) => json.encode(data.toJson());
-
-class OtpModel {
-    OtpModel({
-        required this.userId,
-        required this.otp,
-        required this.userType,
-    });
-
-    String userId;
-    String otp;
-    String userType;
-
-    factory OtpModel.fromJson(Map<String, dynamic> json) => OtpModel(
-        userId: json["userId"],
-        otp: json["otp"],
-        userType: json["userType"],
-    );
-
-    Map<String, dynamic> toJson() => {
-        "userId": userId,
-        "otp": otp,
-        "userType": userType,
-    };
+  factory OTPModel.fromJson(Map<String, dynamic> json) =>
+      OTPModel(
+        id: json["_id"] ?? '',
+        name: json["name"] ?? '',
+        email: json["email"] ?? '',
+        userType: json["userType"] ?? '',
+        employeeData: json["employeeData"] ?? '',
+        emailVerified: json["emailVerified"],
+        token: json["token"] ?? '',
+      );
 }
