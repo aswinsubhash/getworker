@@ -1,54 +1,44 @@
-
-
 class SignupModel {
-    SignupModel({
-        required this.name,
-        required this.email,
-        required this.password,
-        required this.userType,
-    });
+  SignupModel({
+    this.name,
+    this.email,
+    this.password,
+    this.userType,
+    this.emailVerified,
+    this.isBlocked,
+    this.reported,
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
+  });
 
-    String name;
-    String email;
-    String password;
-    String userType;
+  String? name;
+  String? email;
+  String? password;
+  String? userType;
+  bool? emailVerified;
+  bool? isBlocked;
+  int? reported;
+  String? id;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? v;
 
-    factory SignupModel.fromJson(Map<String, dynamic> json) => SignupModel(
-        name: json["name"],
-        email: json["email"],
-        password: json["password"],
-        userType: json["userType"],
-    );
+  factory SignupModel.fromJson(Map<String, dynamic> json) =>
+      SignupModel(
+        name: json["name"] ?? '',
+        email: json["email"] ?? '',
+        password: json["password"] ?? '',
+        userType: json["userType"] ?? '',
+        emailVerified: json["emailVerified"],
+        isBlocked: json["isBlocked"],
+        reported: json["reported"] ?? '',
+        id: json["_id"] ?? '',
+        createdAt: DateTime.parse(json["createdAt"]),
+        updatedAt: DateTime.parse(json["updatedAt"]),
+        v: json["__v"] ?? '',
+      );
 
-    Map<String, dynamic> toJson() => {
-        "name": name,
-        "email": email,
-        "password": password,
-        "userType": userType,
-    };
+
 }
-
-
-
-
-
-//'http://10.0.2.2:3001/api/register'
-
-// {
-//       "name": "aswin",
-//       "email": "aswins@gmail.com",
-//       "password": "aswinaswin",
-//       "userType": "employee"
-//     }
-
-
-// "email":"aswinsubhash3@gmail.com",
-//   "password":"aswinaswin"
-
-// http.Response response = await http.post(
-//     Uri.parse('http://10.0.2.2:3001/api/login'),
-//     body: {
-//   "email":"aswinsubhash3@gmail.com",
-//   "password":"aswinaswin"
-// },
-//   );

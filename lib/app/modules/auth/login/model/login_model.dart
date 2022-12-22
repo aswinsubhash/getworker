@@ -1,19 +1,29 @@
 class LoginModel {
-    LoginModel({
-        required this.email,
-        required this.password,
-    });
+  String? id;
+  String? name;
+  String? email;
+  String? userType;
+  String? employeeData;
+  bool? isBlocked;
+  String? token;
+  LoginModel({
+    this.id,
+    this.name,
+    this.email,
+    this.userType,
+    this.employeeData,
+    this.isBlocked,
+    this.token,
+  });
 
-    String email;
-    String password;
-
-    factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
-        email: json["email"],
-        password: json["password"],
-    );
-
-    Map<String, dynamic> toJson() => {
-        "email": email,
-        "password": password,
-    };
+  factory LoginModel.fromJson(Map<String, dynamic> json) =>
+      LoginModel(
+        id: json["_id"] ?? '',
+        name: json["name"] ?? '',
+        email: json["email"] ?? '',
+        userType: json["userType"] ?? '',
+        employeeData: json["employeeData"] ?? '',
+        isBlocked: json["isBlocked"],
+        token: json["token"] ?? '',
+      );
 }

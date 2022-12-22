@@ -27,7 +27,8 @@ const TextStyle resetAndOtpStyle = TextStyle(
 
 const BoxDecoration backgroundImage = BoxDecoration(
   image: DecorationImage(
-      image: AssetImage("assets/images/login.png"),
-      opacity: 0.1,
-      fit: BoxFit.contain),
+    image: AssetImage("assets/images/login.png"),
+    opacity: 0.1,
+    fit: BoxFit.contain,
+  ),
 );
