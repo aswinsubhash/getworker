@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:getwork/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:getwork/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:getwork/app/modules/auth/otp/model/otp_model.dart';
@@ -25,7 +27,8 @@ class OtpAPI {
         log(response.body);
 
         OTPModel otpModel = OTPModel.fromJson(json);
-        log('verified');
+        Get.lazyPut<DashboardController>(() => DashboardController());
+        Get.offAll(() => DashboardView());
 
         Get.snackbar(
           'Welcome to GETWORKER',
@@ -36,7 +39,6 @@ class OtpAPI {
 
         return otpModel;
       } else if (response.statusCode == 500) {
-        log('wrong otp');
         Get.showSnackbar(
           const GetSnackBar(
             message: "Invalid otp",

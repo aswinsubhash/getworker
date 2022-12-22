@@ -1,9 +1,11 @@
+import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:getwork/app/modules/auth/login/views/login_view.dart';
 import 'package:getwork/app/modules/auth/sign_up/api/signup_api.dart';
 import 'package:getwork/app/modules/auth/sign_up/model/signup_model.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 
 class SignUpController extends GetxController {
   var isPasswordHidden = true.obs;
@@ -14,6 +16,8 @@ class SignUpController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+
+  
 
   void createAccountClick() {
     if (formKey.currentState!.validate()) {
@@ -45,5 +49,6 @@ class SignUpController extends GetxController {
       passwordController.text,
     );
     id = response!.id;
+    
   }
 }

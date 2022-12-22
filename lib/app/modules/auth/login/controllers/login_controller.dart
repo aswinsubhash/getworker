@@ -5,11 +5,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/modules/auth/login/api/login_api.dart';
 import 'package:getwork/app/modules/auth/login/model/login_model.dart';
-import 'package:getwork/app/modules/auth/login/views/login_view.dart';
 import 'package:getwork/app/modules/auth/reset_password/views/reset_password_view.dart';
 import 'package:getwork/app/modules/auth/sign_up/views/sign_up_view.dart';
-import 'package:getwork/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 class LoginController extends GetxController {
   var isPasswordHidden = true.obs;
