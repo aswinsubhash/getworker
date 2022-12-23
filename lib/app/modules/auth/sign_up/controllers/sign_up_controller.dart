@@ -10,14 +10,12 @@ import 'package:http/http.dart';
 class SignUpController extends GetxController {
   var isPasswordHidden = true.obs;
 
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+ final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
-
-  
 
   void createAccountClick() {
     if (formKey.currentState!.validate()) {
@@ -48,7 +46,8 @@ class SignUpController extends GetxController {
       emailController.text,
       passwordController.text,
     );
-    id = response!.id;
-    
+    if (response != null) {
+      id = response.id;
+    }
   }
 }

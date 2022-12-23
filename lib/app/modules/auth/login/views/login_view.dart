@@ -64,7 +64,7 @@ class LoginView extends GetView {
                                   color: signUpColor,
                                 ),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = loginController.forgotPasswordClick,
+                                  ..onTap = loginController.forgotPasswordClick
                               ),
                             ),
                           ],

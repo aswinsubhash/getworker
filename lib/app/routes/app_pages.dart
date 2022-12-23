@@ -4,8 +4,8 @@ import 'package:getwork/app/modules/auth/login/bindings/login_binding.dart';
 import 'package:getwork/app/modules/auth/login/views/login_view.dart';
 import 'package:getwork/app/modules/auth/otp/bindings/otp_binding.dart';
 import 'package:getwork/app/modules/auth/otp/views/otp_view.dart';
-import 'package:getwork/app/modules/auth/reset_password/bindings/reset_password_binding.dart';
-import 'package:getwork/app/modules/auth/reset_password/views/reset_password_view.dart';
+import 'package:getwork/app/modules/auth/forgot_password/bindings/forgot_password_binding.dart';
+import 'package:getwork/app/modules/auth/forgot_password/views/forgot_password_view.dart';
 import 'package:getwork/app/modules/auth/sign_up/bindings/sign_up_binding.dart';
 import 'package:getwork/app/modules/auth/sign_up/views/sign_up_view.dart';
 import 'package:getwork/app/modules/contracts/bindings/contracts_binding.dart';
@@ -33,7 +33,7 @@ class AppPages {
   static const INITIAL = Routes.SPLASH;
 
   static final routes = [
-     GetPage(
+    GetPage(
       name: _Paths.DASHBOARD,
       page: () => DashboardView(),
       binding: DashboardBinding(),
@@ -69,9 +69,9 @@ class AppPages {
       binding: OtpBinding(),
     ),
     GetPage(
-      name: _Paths.RESET_PASSWORD,
-      page: () => ResetPasswordView(),
-      binding: ResetPasswordBinding(),
+      name: _Paths.FORGOT_PASSWORD,
+      page: () => ForgotPasswordView(),
+      binding: ForgotPasswordBinding(),
     ),
     GetPage(
       name: _Paths.PROPOSALS,
