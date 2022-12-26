@@ -4,20 +4,17 @@ import 'package:get/get.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 class FullScreenDialogLoader {
-  static void showDialog() {
+  static void showLoading() {
     Get.dialog(
-      WillPopScope(
-        child: Center(
-          child: SpinKitThreeBounce(
-            color: greenColor,
-            size: 50,
-          ),
+      Center(
+        child: SpinKitThreeBounce(
+          color: greenColor,
         ),
-        onWillPop: () => Future.value(false),
       ),
-      barrierDismissible: false,
-      barrierColor: Colors.black.withOpacity(0.3),
-      useSafeArea: true,
     );
+  }
+
+  static void hideLoading() {
+    if (Get.isDialogOpen!) Get.back();
   }
 }

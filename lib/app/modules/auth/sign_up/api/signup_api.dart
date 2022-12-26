@@ -1,20 +1,23 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
+import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:getwork/app/modules/auth/otp/views/otp_view.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:getwork/app/modules/auth/sign_up/model/signup_model.dart';
 
-//String? id;
 class SignupAPI {
-
-  
-  final url = Uri.parse('http://10.0.2.2:3001/api/register');
-  var hearders = {'Content-Type': 'application/json'};
-
+  final loginController = Get.put(LoginController());
   Future<SignupModel?> postData(
       String name, String email, String password) async {
+    // Define the URL for the POST request
+    final url = Uri.parse('http://10.0.2.2:3001/api/register');
+
+    // Define the headers for the request
+    var headers = {'Content-Type': 'application/json'};
+
+    // Create the request body as a map with "name", "email", "password", and "userType" fields
     Map<String, dynamic> requestBody = {
       "name": name,
       "email": email,
@@ -23,20 +26,26 @@ class SignupAPI {
     };
 
     try {
+      // Make the POST request
+      loginController.showLoading();
+      await Future.delayed(Duration(seconds: 2));
       http.Response response = await http.post(
         url,
-        headers: hearders,
+        headers: headers,
         body: jsonEncode(requestBody),
       );
+      loginController.hideLoading();
+      // Check the response status code
       if (response.statusCode == 200) {
+        // If the status code is 200, decode the response body as a JSON object
         final json = jsonDecode(response.body);
-        log(response.body);
 
-        SignupModel signupResponseModel =
-            SignupModel.fromJson(json);
+        // Use the JSON object to create an instance of SignupModel
+        SignupModel signupResponseModel = SignupModel.fromJson(json);
 
-            Get.to(()=>OtpView());
-
+        // Display a snackbar message indicating that an OTP has been sent successfully
+        // Navigate to a new screen
+        Get.to(() => OtpView());
         Get.showSnackbar(
           GetSnackBar(
             message: "Otp send successfully",
@@ -45,12 +54,11 @@ class SignupAPI {
             snackStyle: SnackStyle.FLOATING,
           ),
         );
-        log(signupResponseModel.email!);
-        //storing id to a variable
-        // id = signupResponseModel.id;
-        // log(id!);
+
+        // Return the SignupModel instance
         return signupResponseModel;
       } else if (response.statusCode == 404) {
+        // If the status code is 404, display a snackbar message indicating that the provided email is already in use
         Get.showSnackbar(
           GetSnackBar(
             message: "Email already in use",
@@ -59,14 +67,17 @@ class SignupAPI {
             snackStyle: SnackStyle.FLOATING,
           ),
         );
-      }else{
+      } else {
+        // If the status code is anything else, log the status code and the response body
         log(response.statusCode.toString());
         log(response.body);
       }
     } catch (e) {
+      // If there is an error while making the HTTP request, log it
       log(e.toString());
     }
 
+    // If the function reaches this point, return null
     return null;
   }
 }
