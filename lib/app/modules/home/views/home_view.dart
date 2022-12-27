@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
-import 'package:getwork/app/modules/splash/views/splash_view.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:getwork/app/utils/text_style.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../controllers/home_controller.dart';
 

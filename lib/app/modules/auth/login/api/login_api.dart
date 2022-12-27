@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:get/get.dart';
+import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/modules/auth/forgot_password/views/forgot_password_view.dart';
 import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:getwork/app/modules/auth/login/model/login_model.dart';
 import 'package:getwork/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:getwork/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:getwork/app/utils/colors.dart';
 import 'package:http/http.dart' as http;
 
 class LoginAPI {
@@ -50,11 +50,9 @@ class LoginAPI {
         Get.offAll(() => DashboardView());
 
         // Display a welcome snackbar
-        Get.snackbar(
-          'Welcome to GETWORKER',
-          loginModel.name!,
-          backgroundColor: greenColor,
-          colorText: whiteColor,
+
+        CustomSnackBar.welcomeSnackBar(
+          message: loginModel.name!,
         );
         // Log the token to the console
         log(loginModel.token!);
@@ -63,13 +61,9 @@ class LoginAPI {
       // If the email or password was incorrect (status code 404)
       else if (response.statusCode == 404) {
         // Display an error snackbar
-        Get.showSnackbar(
-          const GetSnackBar(
-            message: "Email or Password incorrect",
-            backgroundColor: errorColor,
-            duration: Duration(seconds: 3),
-            snackStyle: SnackStyle.FLOATING,
-          ),
+
+        CustomSnackBar.showErrorSnackBar(
+          message: 'Email or Password incorrect',
         );
       }
       // If the request returned any other status code
@@ -118,24 +112,16 @@ class LoginAPI {
       if (valid == '"Success"') {
         // Display a snackbar message indicating that an OTP has been sent to the provided email address
         // and navigate to a new screen
-        Get.showSnackbar(
-          const GetSnackBar(
-            message: "Otp send to your email",
-            backgroundColor: greenColor,
-            duration: Duration(seconds: 3),
-            snackStyle: SnackStyle.FLOATING,
-          ),
+
+        CustomSnackBar.showSuccessSnackBar(
+          message: 'Otp send to your email',
         );
         Get.to(() => ForgotPasswordView());
       } else {
         // If the response body is not "Success", display a snackbar message indicating that no such user was found
-        Get.showSnackbar(
-          const GetSnackBar(
-            message: "No such user found",
-            backgroundColor: errorColor,
-            duration: Duration(seconds: 3),
-            snackStyle: SnackStyle.FLOATING,
-          ),
+
+        CustomSnackBar.showErrorSnackBar(
+          message: 'No such user found',
         );
       }
     } catch (e) {

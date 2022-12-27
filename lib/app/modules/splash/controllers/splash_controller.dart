@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:getwork/app/modules/auth/login/views/login_view.dart';
 import 'package:getwork/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashController extends GetxController {
   final loginController = Get.put(LoginController());

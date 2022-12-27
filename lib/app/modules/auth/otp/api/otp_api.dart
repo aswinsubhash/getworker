@@ -1,14 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:getwork/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:getwork/app/utils/colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:getwork/app/modules/auth/otp/model/otp_model.dart';
 import 'package:get/get.dart';
 
 class OtpAPI {
-  
   Future<OTPModel?> postData(String? userId, String otp) async {
     // Define the URL for the POST request
     final url = Uri.parse('http://10.0.2.2:3001/api/verify-email');
@@ -40,24 +39,18 @@ class OtpAPI {
         // Navigate to a new screen
         Get.lazyPut<DashboardController>(() => DashboardController());
         Get.offAll(() => DashboardView());
-        Get.snackbar(
-          'Welcome to GETWORKER',
-          otpModel.name!,
-          backgroundColor: greenColor,
-          colorText: whiteColor,
+
+        CustomSnackBar.welcomeSnackBar(
+          message: otpModel.name!,
         );
 
         // Return the OTPModel instance
         return otpModel;
       } else if (response.statusCode == 500) {
         // If the status code is 500, display a snackbar message indicating that the OTP is invalid
-        Get.showSnackbar(
-          const GetSnackBar(
-            message: "Invalid otp",
-            backgroundColor: errorColor,
-            duration: Duration(seconds: 3),
-            snackStyle: SnackStyle.FLOATING,
-          ),
+
+        CustomSnackBar.showErrorSnackBar(
+          message: 'Invalid otp',
         );
       } else {
         // If the status code is anything else, log the status code and the response body

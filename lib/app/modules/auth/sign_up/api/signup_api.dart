@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
+import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:getwork/app/modules/auth/otp/views/otp_view.dart';
-import 'package:getwork/app/utils/colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:getwork/app/modules/auth/sign_up/model/signup_model.dart';
 
@@ -46,26 +46,18 @@ class SignupAPI {
         // Display a snackbar message indicating that an OTP has been sent successfully
         // Navigate to a new screen
         Get.to(() => OtpView());
-        Get.showSnackbar(
-          GetSnackBar(
-            message: "Otp send successfully",
-            backgroundColor: greenColor,
-            duration: const Duration(seconds: 3),
-            snackStyle: SnackStyle.FLOATING,
-          ),
+
+        CustomSnackBar.showSuccessSnackBar(
+          message: 'Otp send successfully',
         );
 
         // Return the SignupModel instance
         return signupResponseModel;
       } else if (response.statusCode == 404) {
         // If the status code is 404, display a snackbar message indicating that the provided email is already in use
-        Get.showSnackbar(
-          GetSnackBar(
-            message: "Email already in use",
-            backgroundColor: errorColor,
-            duration: const Duration(seconds: 3),
-            snackStyle: SnackStyle.FLOATING,
-          ),
+
+        CustomSnackBar.showErrorSnackBar(
+          message: 'Email already in use',
         );
       } else {
         // If the status code is anything else, log the status code and the response body
