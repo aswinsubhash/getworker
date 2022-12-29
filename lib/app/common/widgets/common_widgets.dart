@@ -16,10 +16,8 @@ commonWidthBox(double width) {
 }
 
 commonDivider(double thickness) {
-  return Expanded(
-    child: Divider(
-      color: dividerColor,
-      thickness: thickness,
-    ),
+  return Divider(
+    color: dividerColor,
+    thickness: thickness,
   );
 }

@@ -14,10 +14,7 @@ class SplashController extends GetxController {
     super.onInit();
   }
 
-  // void goToLandingScreen() async {
-  //   await Future.delayed(const Duration(seconds: 3));
-  //   Get.off(() => LoginView());
-  // }
+
 
   Future<void> checkUserLoggedIn()async{
     final storage = FlutterSecureStorage();

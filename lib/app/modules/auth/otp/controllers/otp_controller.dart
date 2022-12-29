@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:getwork/app/modules/auth/otp/api/otp_api.dart';
 import 'package:getwork/app/modules/auth/otp/model/otp_model.dart';
 import 'package:getwork/app/modules/auth/sign_up/controllers/sign_up_controller.dart';
-import 'package:getwork/app/utils/colors.dart';
 
 class OtpController extends GetxController {
   final TextEditingController otpTextController = TextEditingController();
@@ -15,13 +15,9 @@ class OtpController extends GetxController {
 
   void verifyOtp() {
     if (otpTextController.text.isEmpty) {
-      Get.showSnackbar(
-        GetSnackBar(
-          message: "Please enter otp",
-          backgroundColor: errorColor,
-          duration: const Duration(seconds: 3),
-          snackStyle: SnackStyle.FLOATING,
-        ),
+
+      CustomSnackBar.showErrorSnackBar(
+        message: 'Please enter otp',
       );
     } else {
       verification();
@@ -40,9 +36,10 @@ class OtpController extends GetxController {
     }
     tokenSaving();
   }
-   Future<void> tokenSaving() async {
+
+  Future<void> tokenSaving() async {
     final storage = FlutterSecureStorage();
     await storage.write(key: 'token', value: tokenId);
-   loginController.setIsLoggedIn(true);
+    loginController.setIsLoggedIn(true);
   }
 }

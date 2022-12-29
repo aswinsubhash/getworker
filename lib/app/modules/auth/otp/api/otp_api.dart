@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:getwork/app/common/widgets/custom_snackbar.dart';
+import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:getwork/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:getwork/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:http/http.dart' as http;
@@ -8,6 +9,7 @@ import 'package:getwork/app/modules/auth/otp/model/otp_model.dart';
 import 'package:get/get.dart';
 
 class OtpAPI {
+  final loginController = Get.put(LoginController());
   Future<OTPModel?> postData(String? userId, String otp) async {
     // Define the URL for the POST request
     final url = Uri.parse('http://10.0.2.2:3001/api/verify-email');
@@ -24,8 +26,13 @@ class OtpAPI {
 
     try {
       // Make the POST request
-      http.Response response =
-          await http.post(url, headers: headers, body: jsonEncode(requestBody));
+      loginController.showLoading();
+      http.Response response = await http.post(
+        url,
+        headers: headers,
+        body: jsonEncode(requestBody),
+      );
+      loginController.hideLoading();
 
       // Check the response status code
       if (response.statusCode == 200) {
@@ -48,7 +55,7 @@ class OtpAPI {
         return otpModel;
       } else if (response.statusCode == 500) {
         // If the status code is 500, display a snackbar message indicating that the OTP is invalid
-
+        print(response.statusCode);
         CustomSnackBar.showErrorSnackBar(
           message: 'Invalid otp',
         );
