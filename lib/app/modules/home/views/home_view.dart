@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
-import 'package:getwork/app/modules/dashboard/views/job_tile_widget.dart';
+import 'package:getwork/app/modules/home/views/widgets/job_tile_widget.dart';
 import 'package:getwork/app/modules/home/views/widgets/custom_search_bar.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:getwork/app/utils/text_style.dart';

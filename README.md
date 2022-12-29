@@ -8,5 +8,8 @@ Getworker is a freelancing platform where the freelancer can search and get jobs
 
 ## Libraries and packages used
 - Getx
+- Http
+- FlutterSecureStorage
+- FlutterSpinKit
 
 
