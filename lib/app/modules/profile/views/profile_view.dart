@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:getwork/app/utils/app_string.dart';
 import 'package:getwork/app/utils/colors.dart';
-import 'package:getwork/app/utils/text_style.dart';
+import 'package:getwork/app/utils/app_styles.dart';
 
 import '../controllers/profile_controller.dart';
 
@@ -13,8 +14,8 @@ class ProfileView extends GetView<ProfileController> {
       backgroundColor: whiteColor,
       appBar: AppBar(
         title: Text(
-          'Profile',
-          style: appBarStyle,
+          AppString.profileText,
+          style:  AppStyle.appBarStyle,
         ),
         centerTitle: true,
         backgroundColor: whiteColor,

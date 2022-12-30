@@ -4,8 +4,9 @@ import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/common/widgets/custom_button.dart';
 import 'package:getwork/app/common/widgets/text_field_widget.dart';
+import 'package:getwork/app/utils/app_string.dart';
 import 'package:getwork/app/utils/colors.dart';
-import 'package:getwork/app/utils/text_style.dart';
+import 'package:getwork/app/utils/app_styles.dart';
 
 import '../controllers/forgot_password_controller.dart';
 
@@ -19,7 +20,7 @@ class ForgotPasswordView extends GetView {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: backgroundImage,
+        decoration: AppStyle.backgroundImage, 
         child: Center(
           child: SingleChildScrollView(
             child: Form(
@@ -27,8 +28,8 @@ class ForgotPasswordView extends GetView {
               child: Column(
                 children: [
                   Text(
-                    'Reset Password',
-                    style: resetAndOtpStyle,
+                    AppString.resetPasswordText,
+                    style: AppStyle.resetAndOtpStyle,
                   ),
                   commonSizedBox(20),
                   TextFieldWidget(

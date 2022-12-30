@@ -25,7 +25,7 @@ class JobDetailsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 250,
+      height: 230,
       // color: greenColor,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
@@ -41,7 +41,11 @@ class JobDetailsTile extends StatelessWidget {
                     softWrap: true,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'poppins',
+                    ),
                   ),
                 ),
                 CircleAvatar(
@@ -74,7 +78,10 @@ class JobDetailsTile extends StatelessWidget {
                     commonSizedBox(5),
                     Text(
                       'Budget',
-                      style: TextStyle(fontSize: 12, color: dimBlack),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: dimBlack,
+                      ),
                     ),
                   ],
                 ),
@@ -102,17 +109,16 @@ class JobDetailsTile extends StatelessWidget {
             Expanded(
               child: Text(
                 description,
+                softWrap: false,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 12
+                  fontSize: 12,
                 ),
               ),
             ),
-            commonSizedBox(20),
-            Row(
-              // mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text("Total Proposals : 5"),
-              ],
+            Text(
+              "Total Proposals : 5",
             ),
           ],
         ),

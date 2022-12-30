@@ -7,8 +7,9 @@ import 'package:getwork/app/common/widgets/custom_button.dart';
 import 'package:getwork/app/common/widgets/text_field_widget.dart';
 import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:getwork/app/modules/auth/login/views/widgets/password_textfield.dart';
+import 'package:getwork/app/utils/app_string.dart';
 import 'package:getwork/app/utils/colors.dart';
-import 'package:getwork/app/utils/text_style.dart';
+import 'package:getwork/app/utils/app_styles.dart';
 
 class LoginView extends GetView {
   @override
@@ -20,19 +21,19 @@ class LoginView extends GetView {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: backgroundImage,
+        decoration: AppStyle.backgroundImage,
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Text(
-                  'GETWORKER',
-                  style: logoNameStyle,
+                  AppString.appName,
+                  style: AppStyle.logoNameStyle,
                 ),
                 commonSizedBox(10),
                 Text(
-                  'Log In to Getworker',
-                  style: subTextStyle,
+                  AppString.loginSubtitle,
+                  style: AppStyle.subTextStyle,
                 ),
                 Form(
                   key: loginController.formKeyLogin,
@@ -59,13 +60,13 @@ class LoginView extends GetView {
                           children: [
                             RichText(
                               text: TextSpan(
-                                text: 'Forgot Password?',
-                                style: TextStyle(
-                                  color: signUpColor,
-                                ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = loginController.forgotPasswordClick
-                              ),
+                                  text: 'Forgot Password?',
+                                  style: TextStyle(
+                                    color: signUpColor,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap =
+                                        loginController.forgotPasswordClick),
                             ),
                           ],
                         ),
@@ -77,7 +78,7 @@ class LoginView extends GetView {
                 SizedBox(
                   width: size.width * 0.9,
                   child: CustomButton(
-                    text: 'Log In',
+                    text: AppString.loginButtonText,
                     onPressed: loginController.onLoginClick,
                     textColor: whiteColor,
                     buttonColor: greenColor,

@@ -4,8 +4,9 @@ import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:getwork/app/modules/home/views/widgets/job_tile_widget.dart';
 import 'package:getwork/app/modules/home/views/widgets/custom_search_bar.dart';
+import 'package:getwork/app/utils/app_string.dart';
 import 'package:getwork/app/utils/colors.dart';
-import 'package:getwork/app/utils/text_style.dart';
+import 'package:getwork/app/utils/app_styles.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView {
@@ -28,8 +29,8 @@ class HomeView extends GetView {
           )
         ],
         title: Text(
-          'Jobs',
-          style: appBarStyle,
+         AppString.jobsText,
+          style:  AppStyle.appBarStyle,
         ),
         centerTitle: true,
         backgroundColor: whiteColor,
