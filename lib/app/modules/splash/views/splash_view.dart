@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:getwork/app/utils/app_string.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 import '../controllers/splash_controller.dart';
@@ -17,11 +18,11 @@ class SplashView extends GetView {
         color: Colors.white,
         child: const Center(
           child: Text(
-            'GETWORKER',
+            AppString.appName,
             style: TextStyle(
               fontFamily: 'Poppins',
               fontSize: 35,
-              color: greenColor,
+              color: AppColor.greenColor,
               fontWeight: FontWeight.w600
             ),
           ),

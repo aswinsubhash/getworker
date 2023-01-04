@@ -37,13 +37,8 @@ class LoginAPI {
       loginController.hideLoading();
       // If the request was successful (status code 200)
       if (response.statusCode == 200) {
-        // Parse the response body as JSON
-        final json = jsonDecode(response.body);
-        // Log the response body to the console
-        log(response.body);
-
         // Create a LoginModel object from the JSON
-        LoginModel loginModel = LoginModel.fromJson(json);
+        LoginModel loginModel = LoginModel.fromJson(jsonDecode(response.body));
         // Initialize the DashboardController
         Get.lazyPut<DashboardController>(() => DashboardController());
         // Navigate to the DashboardView
@@ -54,8 +49,7 @@ class LoginAPI {
         CustomSnackBar.welcomeSnackBar(
           message: loginModel.name!,
         );
-        // Log the token to the console
-        log(loginModel.token!);
+
         return loginModel;
       }
       // If the email or password was incorrect (status code 404)

@@ -15,7 +15,7 @@ class LoginController extends GetxController {
   final isLoggedIn = false.obs;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  GlobalKey<FormState> formKeyLogin = GlobalKey<FormState>();
+ final GlobalKey<FormState> formKeyLogin = GlobalKey<FormState>();
 
   void onLoginClick() {
     if (formKeyLogin.currentState!.validate()) {
@@ -23,7 +23,7 @@ class LoginController extends GetxController {
     }
   }
 
-
+ 
   String? tokenId;
 
   void login() async {
@@ -45,7 +45,7 @@ class LoginController extends GetxController {
        Get.showSnackbar(
           const GetSnackBar(
             message: "Enter your email", 
-            backgroundColor: errorColor,
+            backgroundColor: AppColor.errorColor,
             duration: Duration(seconds: 3),
             snackStyle: SnackStyle.FLOATING,
           ),

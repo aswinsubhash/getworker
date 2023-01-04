@@ -32,7 +32,7 @@ class PasswordTextField extends GetView {
             width: size.width * 0.9,
             child: TextFormField(
               controller: controller,
-              cursorColor: greenColor,
+              cursorColor: AppColor.greenColor,
               obscureText: signUpController.isPasswordHidden.value,
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -55,8 +55,8 @@ class PasswordTextField extends GetView {
                         ? Icons.visibility_off_outlined
                         : Icons.visibility_outlined,
                     color: signUpController.isPasswordHidden.value
-                        ? greyColor
-                        : greenColor,
+                        ? AppColor.greyColor
+                        : AppColor.greenColor,
                     size: 20,
                   ),
                   onTap: () {
@@ -66,7 +66,7 @@ class PasswordTextField extends GetView {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: greenColor,
+                    color: AppColor.greenColor,
                   ),
                 ),
                 border: OutlineInputBorder(

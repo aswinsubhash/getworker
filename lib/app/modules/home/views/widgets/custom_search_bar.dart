@@ -18,17 +18,17 @@ class CustomSearchBar extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: whiteColor,
+        color: AppColor.whiteColor,
         borderRadius: BorderRadius.circular(5),
         border: Border.all(
-          color: dividerColor,
+          color: AppColor.dividerColor,
         ),
       ),
       child: Row(
         children: [
           Expanded(
             child: TextField(
-              cursorColor: greenColor,
+              cursorColor: AppColor.greenColor,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.only(
                   bottom: 5,
@@ -45,7 +45,7 @@ class CustomSearchBar extends StatelessWidget {
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               elevation: 0,
-              backgroundColor: greenColor,
+              backgroundColor: AppColor.greenColor,
               minimumSize: Size(50, 45),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(

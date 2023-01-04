@@ -11,14 +11,14 @@ class MessagesView extends GetView<MessagesController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: AppColor.whiteColor,
       appBar: AppBar(
         title: Text(
           AppString.messageText,
           style:  AppStyle.appBarStyle,
         ),
         centerTitle: true,
-        backgroundColor: whiteColor,
+        backgroundColor: AppColor.whiteColor,
         elevation: 0.8,
       ),
       body: Center(

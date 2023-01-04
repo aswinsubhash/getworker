@@ -3,14 +3,14 @@ import 'package:getwork/app/utils/colors.dart';
 
 class AppStyle {
   static const TextStyle appBarStyle = TextStyle(
-    color: blackColor,
+    color:  AppColor.blackColor,
     fontFamily: 'Poppins',
   );
 
   static const TextStyle logoNameStyle = TextStyle(
     fontFamily: 'Poppins',
     fontSize: 30,
-    color: greenColor,
+    color: AppColor.greenColor,
     fontWeight: FontWeight.w600,
   );
 

@@ -11,14 +11,14 @@ class ProposalsView extends GetView<ProposalsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: AppColor.whiteColor,
       appBar: AppBar(
         title: Text(
           AppString.proposalsText,
           style: AppStyle.appBarStyle,
         ),
         centerTitle: true,
-        backgroundColor: whiteColor,
+        backgroundColor: AppColor.whiteColor,
         elevation: 0.8,
       ),
       body: Center(

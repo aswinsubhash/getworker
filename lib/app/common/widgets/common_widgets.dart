@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:getwork/app/utils/colors.dart';
 
@@ -17,7 +15,7 @@ commonWidthBox(double width) {
 
 commonDivider(double thickness) {
   return Divider(
-    color: dividerColor,
+    color: AppColor.dividerColor,
     thickness: thickness,
   );
 }

@@ -17,7 +17,7 @@ class SignUpView extends GetView {
 
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: AppColor.whiteColor,
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -72,8 +72,8 @@ class SignUpView extends GetView {
                         child: CustomButton(
                           text: AppString.signupButtonText,
                           onPressed: signUpController.createAccountClick,
-                          textColor: whiteColor,
-                          buttonColor: greenColor,
+                          textColor: AppColor.whiteColor,
+                          buttonColor: AppColor.greenColor,
                           radius: 30,
                         ),
                       ),
@@ -82,7 +82,7 @@ class SignUpView extends GetView {
                         text: 'Already have an account?',
                         clickText: ' Login',
                         onPressed: signUpController.loginClick,
-                        clickTextColor: signUpColor,
+                        clickTextColor: AppColor.signUpColor,
                       ),
                     ],
                   ),

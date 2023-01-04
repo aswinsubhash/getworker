@@ -14,7 +14,7 @@ class OtpView extends GetView {
     final size = MediaQuery.of(context).size;
     final otpController = Get.put(OtpController());
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: AppColor.whiteColor,
       body: SafeArea(
         child: Container(
           height: double.infinity,
@@ -40,8 +40,8 @@ class OtpView extends GetView {
                     child: CustomButton(
                       text: 'Verify',
                       onPressed: otpController.verifyOtp,
-                      textColor: whiteColor,
-                      buttonColor: greenColor,
+                      textColor: AppColor.whiteColor,
+                      buttonColor: AppColor.greenColor,
                       radius: 30,
                     ),
                   ),

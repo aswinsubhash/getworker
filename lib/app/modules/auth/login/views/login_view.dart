@@ -17,7 +17,7 @@ class LoginView extends GetView {
     final size = MediaQuery.of(context).size;
     final loginController = Get.put(LoginController());
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: AppColor.whiteColor,
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -62,7 +62,7 @@ class LoginView extends GetView {
                               text: TextSpan(
                                   text: 'Forgot Password?',
                                   style: TextStyle(
-                                    color: signUpColor,
+                                    color: AppColor.signUpColor,
                                   ),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap =
@@ -80,8 +80,8 @@ class LoginView extends GetView {
                   child: CustomButton(
                     text: AppString.loginButtonText,
                     onPressed: loginController.onLoginClick,
-                    textColor: whiteColor,
-                    buttonColor: greenColor,
+                    textColor: AppColor.whiteColor,
+                    buttonColor: AppColor.greenColor,
                     radius: 30,
                   ),
                 ),
@@ -90,7 +90,7 @@ class LoginView extends GetView {
                   text: 'New to Getworker?',
                   clickText: ' Sign Up',
                   onPressed: loginController.onSignUpClick,
-                  clickTextColor: signUpColor,
+                  clickTextColor: AppColor.signUpColor,
                 ),
               ],
             ),

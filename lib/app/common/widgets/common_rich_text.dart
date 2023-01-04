@@ -26,7 +26,7 @@ class RichTextWidget extends StatelessWidget {
           TextSpan(
             text: clickText,
             style: TextStyle(
-              color: signUpColor,
+              color: AppColor.signUpColor,
               fontSize: 15,
             ),
             recognizer: TapGestureRecognizer()..onTap = onPressed,

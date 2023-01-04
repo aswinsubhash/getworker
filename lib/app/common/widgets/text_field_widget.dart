@@ -39,7 +39,7 @@ class TextFieldWidget extends StatelessWidget {
           return null;
         },
         controller: controller,
-        cursorColor: greenColor,
+        cursorColor: AppColor.greenColor,
         style: TextStyle(
           fontSize: 15,
         ),
@@ -47,7 +47,7 @@ class TextFieldWidget extends StatelessWidget {
           hintText: hintText,
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: greenColor,
+              color: AppColor.greenColor,
             ),
           ),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),

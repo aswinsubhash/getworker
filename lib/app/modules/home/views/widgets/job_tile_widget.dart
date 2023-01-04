@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +11,7 @@ class JobDetailsTile extends StatelessWidget {
   final String description;
   final String? proposals;
   final String level;
+  final String deadline;
   const JobDetailsTile({
     Key? key,
     required this.title,
@@ -19,19 +19,28 @@ class JobDetailsTile extends StatelessWidget {
     required this.description,
     this.proposals,
     required this.level,
+    required this.deadline,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       width: double.infinity,
-      height: 230,
-      // color: greenColor,
+      height: size.height / 6,
+     
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        color: AppColor.jobScreenContainer,
+      ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 15,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            commonSizedBox(8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -39,24 +48,24 @@ class JobDetailsTile extends StatelessWidget {
                   child: Text(
                     title,
                     softWrap: true,
-                    maxLines: 2,
+                   // maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'poppins',
+                      fontFamily: 'Poppins',
                     ),
                   ),
                 ),
                 CircleAvatar(
-                  backgroundColor: dividerColor,
+                  backgroundColor: AppColor.dividerColor,
                   child: CircleAvatar(
-                    backgroundColor: whiteColor,
+                    backgroundColor: AppColor.whiteColor,
                     radius: 16.5,
                     child: Icon(
                       CupertinoIcons.suit_heart,
                       size: 20,
-                      color: greenColor,
+                      color: AppColor.greenColor,
                     ),
                   ),
                   radius: 18,
@@ -80,7 +89,7 @@ class JobDetailsTile extends StatelessWidget {
                       'Budget',
                       style: TextStyle(
                         fontSize: 12,
-                        color: dimBlack,
+                        color: AppColor.dimBlack,
                       ),
                     ),
                   ],
@@ -98,27 +107,30 @@ class JobDetailsTile extends StatelessWidget {
                       'Experience Level',
                       style: TextStyle(
                         fontSize: 12,
-                        color: dimBlack,
+                        color: AppColor.dimBlack,
                       ),
                     ),
                   ],
                 )
               ],
             ),
-            commonSizedBox(15),
-            Expanded(
-              child: Text(
-                description,
-                softWrap: false,
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 12,
-                ),
-              ),
-            ),
+            commonSizedBox(10),
+            // Expanded(
+            //   child: Text(
+            //     description,
+            //     softWrap: false,
+            //     maxLines: 3,
+            //     overflow: TextOverflow.ellipsis,
+            //     style: TextStyle(
+            //       fontSize: 12,
+            //     ),
+            //   ),
+            // ),
             Text(
-              "Total Proposals : 5",
+              "Deadline : $deadline days",
+              style: TextStyle(
+                fontSize: 12
+              ),
             ),
           ],
         ),

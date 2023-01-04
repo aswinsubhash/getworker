@@ -9,7 +9,7 @@ class CustomSnackBar {
     Get.showSnackbar(
       GetSnackBar(
         message: message,
-        backgroundColor: errorColor,
+        backgroundColor: AppColor.errorColor,
         duration: Duration(seconds: 3),
         snackStyle: SnackStyle.FLOATING,
       ),
@@ -23,7 +23,7 @@ class CustomSnackBar {
     Get.showSnackbar(
       GetSnackBar(
         message: message,
-        backgroundColor: greenColor,
+        backgroundColor: AppColor.greenColor,
         duration: Duration(seconds: 3),
         snackStyle: SnackStyle.FLOATING,
       ),
@@ -37,8 +37,8 @@ class CustomSnackBar {
     Get.snackbar(
       'Welcome to GETWORKER',
       message,
-      backgroundColor: greenColor,
-      colorText: whiteColor,
+      backgroundColor: AppColor.greenColor,
+      colorText: AppColor.whiteColor,
     );
   }
 }

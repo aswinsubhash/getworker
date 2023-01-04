@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 class SignUpController extends GetxController {
   var isPasswordHidden = true.obs;
 
- final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -21,7 +21,7 @@ class SignUpController extends GetxController {
         Get.showSnackbar(
           GetSnackBar(
             message: "Password do not match",
-            backgroundColor: errorColor,
+            backgroundColor: AppColor.errorColor,
             duration: const Duration(seconds: 3),
             snackStyle: SnackStyle.FLOATING,
           ),

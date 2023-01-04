@@ -18,6 +18,8 @@ abstract class Routes {
   static const MESSAGES = _Paths.MESSAGES;
   static const DASHBOARD = _Paths.DASHBOARD;
   static const FORGET_OTP = _Paths.FORGET_OTP;
+  static const JOB_DETAILS = _Paths.JOB_DETAILS;
+  static const SUBMIT_PROPOSAL = _Paths.SUBMIT_PROPOSAL;
 }
 
 abstract class _Paths {
@@ -33,4 +35,6 @@ abstract class _Paths {
   static const MESSAGES = '/messages';
   static const DASHBOARD = '/dashboard';
   static const FORGET_OTP = '/forget-otp';
+  static const JOB_DETAILS = '/job-details';
+  static const SUBMIT_PROPOSAL = '/submit-proposal';
 }

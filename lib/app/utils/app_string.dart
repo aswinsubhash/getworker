@@ -10,6 +10,6 @@ class AppString {
   static const String resetPasswordText = 'Reset Password';
   static const String loginButtonText = 'Log In';
   static const String signupButtonText = 'Create account';
-  
-  
+  static const String jobDetails = 'Job Details';
+  static const String submitProposal = 'Submit Proposal';
 }

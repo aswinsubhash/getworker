@@ -26,7 +26,7 @@ class PasswordLoginTextField extends GetView {
             width: size.width * 0.9,
             child: TextFormField(
               controller: controller,
-              cursorColor: greenColor,
+              cursorColor: AppColor.greenColor,
               obscureText: loginController.isPasswordHidden.value,
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -45,8 +45,8 @@ class PasswordLoginTextField extends GetView {
                         ? Icons.visibility_off_outlined
                         : Icons.visibility_outlined,
                     color: loginController.isPasswordHidden.value
-                        ? greyColor
-                        : greenColor,
+                        ? AppColor.greyColor
+                        : AppColor.greenColor,
                     size: 20,
                   ),
                   onTap: () {
@@ -56,7 +56,7 @@ class PasswordLoginTextField extends GetView {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: greenColor,
+                    color: AppColor.greenColor,
                   ),
                 ),
                 border: OutlineInputBorder(

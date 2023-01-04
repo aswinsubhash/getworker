@@ -8,7 +8,7 @@ class FullScreenDialogLoader {
     Get.dialog(
       Center(
         child: SpinKitThreeBounce(
-          color: greenColor,
+          color: AppColor.greenColor,
         ),
       ),
     );

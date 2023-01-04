@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 
+import 'package:getwork/app/modules/auth/forgot_password/bindings/forgot_password_binding.dart';
+import 'package:getwork/app/modules/auth/forgot_password/views/forgot_password_view.dart';
 import 'package:getwork/app/modules/auth/login/bindings/login_binding.dart';
 import 'package:getwork/app/modules/auth/login/views/login_view.dart';
 import 'package:getwork/app/modules/auth/otp/bindings/otp_binding.dart';
 import 'package:getwork/app/modules/auth/otp/views/otp_view.dart';
-import 'package:getwork/app/modules/auth/forgot_password/bindings/forgot_password_binding.dart';
-import 'package:getwork/app/modules/auth/forgot_password/views/forgot_password_view.dart';
 import 'package:getwork/app/modules/auth/sign_up/bindings/sign_up_binding.dart';
 import 'package:getwork/app/modules/auth/sign_up/views/sign_up_view.dart';
 import 'package:getwork/app/modules/contracts/bindings/contracts_binding.dart';
@@ -14,6 +14,8 @@ import 'package:getwork/app/modules/dashboard/bindings/dashboard_binding.dart';
 import 'package:getwork/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:getwork/app/modules/home/bindings/home_binding.dart';
 import 'package:getwork/app/modules/home/views/home_view.dart';
+import 'package:getwork/app/modules/job_details/bindings/job_details_binding.dart';
+import 'package:getwork/app/modules/job_details/views/job_details_view.dart';
 import 'package:getwork/app/modules/messages/bindings/messages_binding.dart';
 import 'package:getwork/app/modules/messages/views/messages_view.dart';
 import 'package:getwork/app/modules/profile/bindings/profile_binding.dart';
@@ -22,6 +24,8 @@ import 'package:getwork/app/modules/proposals/bindings/proposals_binding.dart';
 import 'package:getwork/app/modules/proposals/views/proposals_view.dart';
 import 'package:getwork/app/modules/splash/bindings/splash_binding.dart';
 import 'package:getwork/app/modules/splash/views/splash_view.dart';
+import 'package:getwork/app/modules/submit_proposal/bindings/submit_proposal_binding.dart';
+import 'package:getwork/app/modules/submit_proposal/views/submit_proposal_view.dart';
 
 // ignore_for_file: constant_identifier_names
 
@@ -88,6 +92,15 @@ class AppPages {
       page: () => MessagesView(),
       binding: MessagesBinding(),
     ),
-   
+    GetPage(
+      name: _Paths.JOB_DETAILS,
+      page: () => JobDetailsView(),
+      binding: JobDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.SUBMIT_PROPOSAL,
+      page: () => SubmitProposalView(),
+      binding: SubmitProposalBinding(),
+    ),
   ];
 }

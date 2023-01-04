@@ -16,7 +16,7 @@ class ForgotPasswordView extends GetView {
     final size = MediaQuery.of(context).size;
     final forgotPasswordController = Get.put(ForgotPasswordController());
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: AppColor.whiteColor,
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -51,8 +51,8 @@ class ForgotPasswordView extends GetView {
                     child: CustomButton(
                       text: 'Verify',
                       onPressed: forgotPasswordController.forgotPassword,
-                      textColor: whiteColor,
-                      buttonColor: greenColor,
+                      textColor: AppColor.whiteColor,
+                      buttonColor: AppColor.greenColor,
                       radius: 30,
                     ),
                   ),

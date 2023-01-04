@@ -1,10 +1,10 @@
-class AllJob {
-  AllJob({
+class JobDetailsModel {
+  JobDetailsModel({
     this.id,
     this.owner,
     this.title,
     this.description,
-    this.tags, //sdfsdf
+    this.tags,
     this.level,
     this.budget,
     this.searchTag,
@@ -22,12 +22,13 @@ class AllJob {
   String? level;
   int? budget;
   List<String>? searchTag;
-  List<String>? proposals;
+  List<Proposal>? proposals;
   String? status;
   int? deadline;
   int? v;
 
-  factory AllJob.fromJson(Map<String, dynamic> json) => AllJob(
+  factory JobDetailsModel.fromJson(Map<String, dynamic> json) =>
+      JobDetailsModel(
         id: json["_id"] ?? '',
         owner: json["owner"] ?? '',
         title: json["title"] ?? '',
@@ -40,9 +41,43 @@ class AllJob {
         searchTag: json["searchTag"] == null
             ? null
             : List<String>.from(json["searchTag"].map((x) => x)),
-        proposals: List<String>.from(json["proposals"].map((x) => x)),
+        proposals: List<Proposal>.from(
+            json["proposals"].map((x) => Proposal.fromJson(x))),
         status: json["status"] ?? '',
         deadline: json["deadline"] ?? '',
         v: json["__v"] ?? '',
+      );
+}
+
+class Proposal {
+  Proposal({
+    this.id,
+    this.owner,
+    this.jobs,
+    this.cover,
+    this.bid,
+    this.status,
+    this.deadline,
+    this.v,
+  });
+
+  String? id;
+  String? owner;
+  String? jobs;
+  String? cover;
+  int? bid;
+  String? status;
+  int? deadline;
+  int? v;
+
+  factory Proposal.fromJson(Map<String, dynamic> json) => Proposal(
+        id: json["_id"],
+        owner: json["owner"],
+        jobs: json["jobs"],
+        cover: json["cover"],
+        bid: json["bid"],
+        status: json["status"],
+        deadline: json["deadline"],
+        v: json["__v"],
       );
 }
