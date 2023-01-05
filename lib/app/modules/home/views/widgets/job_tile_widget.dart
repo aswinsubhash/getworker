@@ -86,7 +86,7 @@ class JobDetailsTile extends StatelessWidget {
                     ),
                     commonSizedBox(5),
                     Text(
-                      'Budget',
+                      'Est.Budget',
                       style: TextStyle(
                         fontSize: 12,
                         color: AppColor.dimBlack,
@@ -104,7 +104,7 @@ class JobDetailsTile extends StatelessWidget {
                     ),
                     commonSizedBox(5),
                     Text(
-                      'Experience Level',
+                      'Difficulty',
                       style: TextStyle(
                         fontSize: 12,
                         color: AppColor.dimBlack,
@@ -115,17 +115,6 @@ class JobDetailsTile extends StatelessWidget {
               ],
             ),
             commonSizedBox(10),
-            // Expanded(
-            //   child: Text(
-            //     description,
-            //     softWrap: false,
-            //     maxLines: 3,
-            //     overflow: TextOverflow.ellipsis,
-            //     style: TextStyle(
-            //       fontSize: 12,
-            //     ),
-            //   ),
-            // ),
             Text(
               "Deadline : $deadline days",
               style: TextStyle(

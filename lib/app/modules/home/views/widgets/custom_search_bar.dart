@@ -46,11 +46,11 @@ class CustomSearchBar extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               elevation: 0,
               backgroundColor: AppColor.greenColor,
-              minimumSize: Size(50, 45),
+              minimumSize: Size(50, 50),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(5),
-                  bottomRight: Radius.circular(5),
+                  topRight: Radius.circular(4),
+                  bottomRight: Radius.circular(4),
                 ),
               ),
             ),

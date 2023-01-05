@@ -25,6 +25,7 @@ class HomeController extends GetxController {
   Future<void> logout() async {
     final storage = FlutterSecureStorage();
     await storage.delete(key: 'token');
+    await storage.delete(key: 'userId');
     loginController.setIsLoggedIn(false);
     Get.offAll(() => LoginView());
   }
@@ -52,6 +53,5 @@ class HomeController extends GetxController {
     );
 
     jobId = jobDetailsId;
-    print('JOB ID IS :---------$jobId-----------------------');
   }
 }

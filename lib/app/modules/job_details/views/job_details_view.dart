@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/common/widgets/custom_button.dart';
@@ -36,14 +37,13 @@ class JobDetailsView extends GetView {
       body: Obx(
         () => jobDetailsController.isLoading.value
             ? Center(
-                child: CircularProgressIndicator(
+                child: SpinKitThreeBounce(
                   color: AppColor.greenColor,
                 ),
               )
             : Stack(
                 children: [
                   ListView(
-                    //crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       commonSizedBox(20),
                       Padding(
@@ -52,6 +52,7 @@ class JobDetailsView extends GetView {
                         ),
                         child: Text(
                           jobDetailsController.jobTitle.toString(),
+                          softWrap: true,
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -80,39 +81,35 @@ class JobDetailsView extends GetView {
                         padding: const EdgeInsets.symmetric(
                           horizontal: 21,
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  '\$${jobDetailsController.budget}',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                commonSizedBox(5),
-                                Text(
-                                  'Budget',
+                                  'Estimated Budget',
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: AppColor.dimBlack,
                                   ),
                                 ),
-                              ],
-                            ),
-                            // commonWidthBox(150),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
                                 Text(
-                                  "${jobDetailsController.deadline.toString()} Days ",
+                                  '\$${jobDetailsController.budget}',
                                   style: TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12,
                                   ),
                                 ),
-                                commonSizedBox(5),
+                              ],
+                            ),
+
+                            commonSizedBox(5),
+
+                            // commonWidthBox(150),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
                                 Text(
                                   'Deadline',
                                   style: TextStyle(
@@ -120,25 +117,52 @@ class JobDetailsView extends GetView {
                                     color: AppColor.dimBlack,
                                   ),
                                 ),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
                                 Text(
-                                  jobDetailsController.level
-                                      .toString()
-                                      .toUpperCase(),
+                                  "${jobDetailsController.deadline.toString()} days ",
                                   style: TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12,
                                   ),
                                 ),
-                                commonSizedBox(5),
+                              ],
+                            ),
+                            commonSizedBox(5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
                                 Text(
-                                  'Experience Level',
+                                  'Difficulty',
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: AppColor.dimBlack,
+                                  ),
+                                ),
+                                Text(
+                                  jobDetailsController.level.toString(),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            commonSizedBox(5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Proposals',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: AppColor.dimBlack,
+                                  ),
+                                ),
+                                Text(
+                                  jobDetailsController.proposals!.length
+                                      .toString(),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12,
                                   ),
                                 ),
                               ],
@@ -194,7 +218,7 @@ class JobDetailsView extends GetView {
                       child: SizedBox(
                         width: size.width * 0.9,
                         child: CustomButton(
-                          text: 'Submit a proposal',
+                          text: 'Apply now',
                           onPressed: jobDetailsController.onSubmitProposal,
                           textColor: AppColor.whiteColor,
                           buttonColor: AppColor.greenColor,

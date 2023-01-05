@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/modules/home/views/widgets/job_tile_widget.dart';
@@ -7,6 +8,7 @@ import 'package:getwork/app/utils/app_string.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:getwork/app/utils/app_styles.dart';
 import '../controllers/home_controller.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeView extends GetView {
   final homeContrller = Get.put(HomeController());
@@ -49,19 +51,38 @@ class HomeView extends GetView {
             ),
           ),
           commonSizedBox(10),
-        
           Expanded(
             child: Obx(
-              () => homeContrller.isLoading.value // 34:28
-                  ? Center(
-                      child: CircularProgressIndicator(
-                        color: AppColor.greenColor,
+              () => homeContrller.isLoading.value
+                  ? Shimmer.fromColors(
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ListView.separated(
+                          separatorBuilder: (context, index) => Divider(
+                            color: AppColor.transparent,
+                          ),
+                          itemCount: 7,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              height: size.height / 6,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: AppColor.greyColor,
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     )
                   : Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ListView.separated(
-                       separatorBuilder: (context, index) => Divider(color: AppColor.transparent,),
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListView.separated(
+                        separatorBuilder: (context, index) => Divider(
+                          color: AppColor.transparent,
+                        ),
                         itemCount: homeContrller.allJobs?.length ?? 0,
                         itemBuilder: (context, index) {
                           return InkWell(
@@ -76,7 +97,8 @@ class HomeView extends GetView {
                                       .toString() ??
                                   '',
                               description:
-                                  homeContrller.allJobs?[index].description ?? '',
+                                  homeContrller.allJobs?[index].description ??
+                                      '',
                               level: homeContrller.allJobs?[index].level
                                       ?.toUpperCase() ??
                                   '',
@@ -91,7 +113,7 @@ class HomeView extends GetView {
                           );
                         },
                       ),
-                  ),
+                    ),
             ),
           ),
         ],

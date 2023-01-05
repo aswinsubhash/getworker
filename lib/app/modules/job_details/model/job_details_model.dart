@@ -41,7 +41,7 @@ class JobDetailsModel {
         searchTag: json["searchTag"] == null
             ? null
             : List<String>.from(json["searchTag"].map((x) => x)),
-        proposals: List<Proposal>.from(
+        proposals:json["proposals"] == null ? null : List<Proposal>.from(
             json["proposals"].map((x) => Proposal.fromJson(x))),
         status: json["status"] ?? '',
         deadline: json["deadline"] ?? '',

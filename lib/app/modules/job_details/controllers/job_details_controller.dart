@@ -9,13 +9,14 @@ class JobDetailsController extends GetxController {
   final homeController = Get.put(HomeController());
 
   RxBool isLoading = true.obs;
-
+  RxString jobId = ''.obs;
   RxString jobTitle = ''.obs;
   RxString description = ''.obs;
   RxInt budget = 0.obs;
   RxString level = ''.obs;
   RxInt deadline = 0.obs;
   List<String>? searchTag = [];
+  List<Proposal>? proposals = [];
 
   @override
   void onInit() {
@@ -35,7 +36,9 @@ class JobDetailsController extends GetxController {
       level.value = response.level.toString();
       deadline.value = response.deadline ?? 0;
       searchTag = response.searchTag;
-      print(searchTag?[0]);
+      proposals = response.proposals;
+      jobId.value = response.id.toString();
+      print(jobId);
     } else {
       isLoading(false);
       CustomSnackBar.showErrorSnackBar(
