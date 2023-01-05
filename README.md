@@ -1,15 +1,21 @@
 # GETWORKER
 
-Getworker is a freelancing platform where the freelancer can search and get jobs.Using node backend and it's a combined project that means i made the employee side and the another person done the employer side app.
+Getworker is a freelancer application with node js as the
+backend, where the employee can search for freelance jobs
+and submit a proposal. If the employer accepts the proposal,
+an employee can work on that project within a certain time
+period.
+Following MVC architecture.
 
 
 
 
 
 ## Libraries and packages used
-- Getx
-- Http
-- FlutterSecureStorage
-- FlutterSpinKit
+- Getx for state management
+- Http for API calls
+- FlutterSecureStorage for storing credentials
+- FlutterSpinKit for loader
+- Shimmer for skeleton loader
 
 
