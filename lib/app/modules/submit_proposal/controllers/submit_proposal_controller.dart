@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/common/widgets/full_screen_dialog_loader.dart';
+import 'package:getwork/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:getwork/app/modules/home/views/home_view.dart';
 import 'package:getwork/app/modules/job_details/controllers/job_details_controller.dart';
 import 'package:getwork/app/modules/submit_proposal/api/submit_proposal_api.dart';
@@ -30,7 +31,7 @@ class SubmitProposalController extends GetxController {
         jobDetailsController.jobId.toString(),
       );
       FullScreenDialogLoader.hideLoading();
-      Get.offAll(() => HomeView(), transition: Transition.fade);
+      Get.offAll(() => DashboardView(), transition: Transition.fade); 
       CustomSnackBar.showSuccessSnackBar(message: 'Proposal submitted');
       print(response!.proposal!.id);
       print(response.job?.title);

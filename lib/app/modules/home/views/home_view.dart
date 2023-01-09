@@ -46,7 +46,7 @@ class HomeView extends GetView {
               height: 45,
               child: CustomSearchBar(
                 hintText: 'Search for job',
-                onPressed: () {},
+                onPressed: (){},
               ),
             ),
           ),

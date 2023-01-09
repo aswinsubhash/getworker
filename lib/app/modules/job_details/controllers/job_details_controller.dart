@@ -41,8 +41,6 @@ class JobDetailsController extends GetxController {
       print(jobId);
     } else {
       isLoading(false);
-      CustomSnackBar.showErrorSnackBar(
-          message: 'Check your internet connection');
     }
   }
 

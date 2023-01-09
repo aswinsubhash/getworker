@@ -18,6 +18,7 @@ class JobDetailsView extends GetView {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+   
       appBar: AppBar(
         backgroundColor: AppColor.whiteColor,
         elevation: 0.5,

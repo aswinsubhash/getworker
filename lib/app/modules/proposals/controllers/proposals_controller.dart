@@ -1,20 +1,37 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:getwork/app/common/widgets/custom_snackbar.dart';
+import 'package:getwork/app/modules/proposals/api/proposal_api.dart';
+import 'package:getwork/app/modules/proposals/model/proposal_model.dart';
 
 class ProposalsController extends GetxController {
-  //TODO: Implement ProposalsController
+  RxBool isLoading = true.obs;
 
-  final count = 0.obs;
+  List<Proposal>? myProposals = [];
+ // RxList proposals = <Proposal>[].obs;
+ List<Proposal>?reversedProposals ; 
+
   @override
   void onInit() {
+    getAllProposals();
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  void getAllProposals() async {
+    ProposalsModel? response = await ProposalsAPI().getMyProposals();
 
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+    if (response != null) {
+      isLoading(false);
+      if (response.proposals != null) {
+         myProposals = response.proposals;
+        // print(myProposals);
+      reversedProposals = myProposals?.reversed.toList();
+     
+      }
+    } else {
+      isLoading(false);
+      CustomSnackBar.showErrorSnackBar(
+          message: 'Check your internet connection');
+    }
+  }
 }
