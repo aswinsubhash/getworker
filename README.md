@@ -57,11 +57,11 @@ Login Screen                    |   Job Screen             |  Job Detail Screen 
 
 ## Packages and Credits
 
-- [GetX]()
-- [Http]()
-- [Flutter secure storage]()
-- [Flutter spin kit]()
-- [Shimmer]()
+- [GetX](https://github.com/jonataslaw/getx)
+- [Http](https://github.com/dart-lang/http/tree/master/pkgs/http)
+- [Flutter secure storage](https://github.com/mogol/flutter_secure_storage/tree/develop/flutter_secure_storage)
+- [Flutter spin kit](https://github.com/jogboms/flutter_spinkit)
+- [Shimmer](https://github.com/hnvn/flutter_shimmer)
 
 
 
