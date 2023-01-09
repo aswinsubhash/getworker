@@ -47,24 +47,12 @@ User can do  the following:
 - Get paid by the employer 
 - Chat with employee (on the process)
 
-## Screenshots
 
-- Login screen of this application
+## Screenshots 
 
-![screenshot](assets/gitimages/login.png)
-
-- Job screen of this application
-
-![screenshot](assets/gitimages/job.png)
-
-- Job details screen of this application
-
-![screenshot](assets/gitimages/jobdetails.png)
-
-- Submit proposal screen of this application
-
-![screenshot](assets/gitimages/submitproposal.png)
-
+Login Screen                    |   Job Screen             |  Job Detail Screen    |  Submit Proposal Screen
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![](assets/gitimages/login.png)|![](assets/gitimages/job.png)|![](assets/gitimages/jobdetails.png)|![](assets/gitimages/submitproposal.png)
 
 
 ## Packages and Credits
@@ -85,12 +73,6 @@ User can do  the following:
 
 
 
-
-## Screenshots (Light mode)
-
-Preview                    |   Home screen             |  Food Detail Screen    |  Cart Screen
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![](assets/gitimages/job.png)|![](https://github.com/SinaSys/flutter_japanese_restaurant_app/blob/master/screenshots/food_list_screen_light.png?raw=true)|![](https://github.com/SinaSys/flutter_japanese_restaurant_app/blob/master/screenshots/food_detail_screen_light.png?raw=true)|![](https://github.com/SinaSys/flutter_japanese_restaurant_app/blob/master/screenshots/cart_screen_light.png?raw=true)
 
 
 
