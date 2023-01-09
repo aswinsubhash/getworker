@@ -12,7 +12,7 @@ Following MVC architecture.
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Screeshots](#screenshots)
+- [Screenshots](#screenshots)
 - [Packages and Credits](#packages-and-credits)
 - [License](#license)
 
