@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/modules/proposals/api/proposal_api.dart';
@@ -8,7 +7,6 @@ class ProposalsController extends GetxController {
   RxBool isLoading = true.obs;
 
   List<Proposal>? myProposals = [];
- // RxList proposals = <Proposal>[].obs;
  List<Proposal>?reversedProposals ; 
 
   @override

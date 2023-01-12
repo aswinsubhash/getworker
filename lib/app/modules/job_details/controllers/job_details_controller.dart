@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/modules/home/controllers/home_controller.dart';
 import 'package:getwork/app/modules/job_details/api/job_details_api.dart';
 import 'package:getwork/app/modules/job_details/model/job_details_model.dart';

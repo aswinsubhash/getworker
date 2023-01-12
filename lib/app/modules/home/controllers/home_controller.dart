@@ -8,13 +8,12 @@ import 'package:getwork/app/modules/home/model/all_job_list_model.dart';
 import 'package:getwork/app/modules/home/model/get_all_jobs_model.dart';
 import 'package:getwork/app/modules/job_details/views/job_details_view.dart';
 
-
 class HomeController extends GetxController {
   final loginController = Get.put(LoginController());
 
   RxBool isLoading = true.obs;
 
-  List<AllJob>? allJobs =[];
+  List<AllJob>? allJobs = [];
   String? jobId;
 
   @override
@@ -55,7 +54,4 @@ class HomeController extends GetxController {
 
     jobId = jobDetailsId;
   }
-
-
-
 }

@@ -22,6 +22,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: buttonColor,
@@ -39,6 +40,7 @@ class CustomButton extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
+      
       
     );
   }
