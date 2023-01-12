@@ -7,11 +7,11 @@ import 'package:getwork/app/modules/profile/model/profile_model.dart';
 class ProfileAPI {
   Future<ProfileModel?> getProfile() async {
     final storage = FlutterSecureStorage();
-   
     final token = await storage.read(key: 'token');
-     final userId = await storage.read(key: 'userId');
+    final userId = await storage.read(key: 'userId');
     final url = Uri.parse('http://10.0.2.2:3001/api/employee/profile/$userId');
-
+    print(userId);
+    print(token);
     var headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -22,14 +22,47 @@ class ProfileAPI {
       http.Response response = await http.get(
         url,
         headers: headers,
-      ); 
-        if(response.statusCode == 200){
-          return ProfileModel.fromJson(jsonDecode(response.body));
-        }else{
-          log(response.body);
-          log(response.statusCode.toString());
-        }
+      );
+      if (response.statusCode == 200) {
+        return ProfileModel.fromJson(jsonDecode(response.body));
+      } else {
+        log(response.body);
+        log(response.statusCode.toString());
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
+  }
 
+  Future<PatchMessage?> updateUserInfo(
+      String infoTitle, String infoDescription) async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+    final userId = await storage.read(key: 'userId');
+    final url = Uri.parse('http://10.0.2.2:3001/api/employee/editInfo/$userId');
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token'
+    };
+
+    Map<String, dynamic> requestBody = {
+      "title": infoTitle,
+      "info": infoDescription
+    };
+
+    try {
+      http.Response response = await http.patch(
+        url,
+        headers: headers,
+        body: jsonEncode(requestBody),
+      );
+     // print(response.body);
+      if(response.statusCode == 201){
+        return PatchMessage.fromJson(jsonDecode(response.body));
+      }
     } catch (e) {
       log(e.toString());
     }

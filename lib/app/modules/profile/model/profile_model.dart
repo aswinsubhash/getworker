@@ -270,3 +270,15 @@ class Skill {
         skill: json["skill"],
       );
 }
+
+class PatchMessage {
+    PatchMessage({
+        this.message,
+    });
+
+    String? message;
+
+    factory PatchMessage.fromJson(Map<String, dynamic> json) => PatchMessage(
+        message: json["message"],
+    );
+}

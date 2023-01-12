@@ -1,6 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getwork/app/common/widgets/common_bottom_sheet.dart';
 import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/modules/profile/api/profile_api.dart';
 import 'package:getwork/app/modules/profile/model/profile_model.dart';
@@ -19,9 +20,15 @@ class ProfileController extends GetxController {
   var education = <Education?>[].obs;
   var portfolios = <Portfolio?>[].obs;
 
+  //Text editing controllers
+  final TextEditingController infoTitleController = TextEditingController();
+  final TextEditingController infoDescriptionController =
+      TextEditingController();
+
   @override
   void onInit() {
     getProfie();
+    assignDataToTextfield();
     super.onInit();
   }
 
@@ -112,12 +119,19 @@ class ProfileController extends GetxController {
     print('sdfsdfsdf');
   }
 
-  void showEditInfoBottomSheet(BuildContext context) {
-    showBottomSheet(
-      context: context,
-      builder: (_) => BottomSheetWithTextFields(),
-    );
+  void assignDataToTextfield() async {
+    infoTitleController.text = userTitle.toString();
+    infoDescriptionController.text = userInfo.toString();
+    await getProfie();
   }
 
-
+  Future<void> updateUserInfo() async {
+   
+  PatchMessage? response =   await ProfileAPI().updateUserInfo(
+      infoTitleController.text,
+      infoDescriptionController.text,
+    );
+    print(response?.message);
+    CustomSnackBar.showSuccessSnackBar(message: response?.message ?? ''); 
+  }
 }
