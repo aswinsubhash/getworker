@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,14 +26,13 @@ class ProfileController extends GetxController {
 
   @override
   void onInit() {
-    getProfie();
-    assignDataToTextfield();
+     getProfie();
     super.onInit();
   }
 
   Future<void> getProfie() async {
     ProfileModel? response = await ProfileAPI().getProfile();
-
+  update();
     if (response != null) {
       isLoading(false);
       if (response.image != null) {
@@ -114,24 +112,30 @@ class ProfileController extends GetxController {
     }
   }
 
-  Future<void> refreshProfile() async {
-    await getProfie();
-    print('sdfsdfsdf');
-  }
 
-  void assignDataToTextfield() async {
+  void assignDataToTextfield() {
     infoTitleController.text = userTitle.toString();
     infoDescriptionController.text = userInfo.toString();
-    await getProfie();
   }
 
   Future<void> updateUserInfo() async {
-   
-  PatchMessage? response =   await ProfileAPI().updateUserInfo(
-      infoTitleController.text,
-      infoDescriptionController.text,
-    );
-    print(response?.message);
-    CustomSnackBar.showSuccessSnackBar(message: response?.message ?? ''); 
+    if (infoTitleController.text.isEmpty) {
+      CustomSnackBar.showErrorSnackBar(message: 'Enter your info title');
+    } else if (infoDescriptionController.text.isEmpty) {
+      CustomSnackBar.showErrorSnackBar(
+          message: 'Enter your detailed description');
+    } else {
+      PatchMessage? response = await ProfileAPI().updateUserInfo(
+        infoTitleController.text,
+        infoDescriptionController.text,
+      );
+      getProfie();
+      Get.back();
+      CustomSnackBar.showSuccessSnackBar(
+        message: response?.message ?? '',
+      );
+    }
   }
+
+
 }

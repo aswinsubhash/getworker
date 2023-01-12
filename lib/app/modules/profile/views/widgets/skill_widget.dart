@@ -35,7 +35,7 @@ class SkillsWidget extends StatelessWidget {
                 radius: 15,
                 backgroundColor: AppColor.greenColor,
                 child: InkWell(
-                  onTap: () {},
+                  onTap: onPressed,
                   child: CircleAvatar(
                     radius: 13,
                     backgroundColor: AppColor.whiteColor,

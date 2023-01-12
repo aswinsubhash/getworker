@@ -3,6 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/common/widgets/custom_bottom_sheet.dart';
+import 'package:getwork/app/common/widgets/custom_button.dart';
 import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
 import 'package:getwork/app/modules/profile/views/widgets/education_widget.dart';
 import 'package:getwork/app/modules/profile/views/widgets/languages_widget.dart';
@@ -16,151 +17,290 @@ import 'package:getwork/app/utils/app_styles.dart';
 
 class ProfileView extends GetView {
   final profileController = Get.put(ProfileController());
+
   @override
   Widget build(BuildContext context) {
-    //  final size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
     profileController.onInit();
     return Scaffold(
-        backgroundColor: AppColor.whiteColor,
-        appBar: AppBar(
-          title: Text(
-            AppString.profileText,
-            style: AppStyle.appBarStyle,
-          ),
-          centerTitle: true,
-          backgroundColor: AppColor.whiteColor,
-          elevation: 0.8,
+      backgroundColor: AppColor.whiteColor,
+      appBar: AppBar(
+        title: Text(
+          AppString.profileText,
+          style: AppStyle.appBarStyle,
         ),
-        body: Obx(
-          () => profileController.isLoading.value
-              ? SpinKitThreeBounce(
-                  color: AppColor.greenColor,
-                )
-              : RefreshIndicator(
-                  onRefresh: profileController.refreshProfile,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        commonSizedBox(20),
-                        UserInfoWidget(
-                          profilePic: profileController.profilePic.toString(),
-                          profileName: profileController.profileName.toString(),
-                          emailId: profileController.emailId.toString(),
-                          onPressed: () {},
-                        ),
-                        commonSizedBox(15),
-                        commonDivider(0.8),
-                        commonSizedBox(15),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              children: [
-                                Text(
-                                  '\$${profileController.totalEarned.toString()}',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                Text(
-                                  'Total Earnings',
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Text(
-                                  '\$${profileController.pendingWithdraw.toString()}',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                Text(
-                                  'Pending Withdraw',
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        commonSizedBox(20),
-                        commonDivider(0.8),
-                        UserInfoAndTitleWidget(
-                          userTitle: profileController.userTitle.toString(),
-                          userInfo: profileController.userInfo.toString(),
-                          onPressed: () {
-                            //profileController.showEditInfoBottomSheet(context);
-                            Get.bottomSheet(
-                              isScrollControlled: true,
-                              ignoreSafeArea: false,
-                              CustomBottomSheet(
-                                infoTitle:
-                                    profileController.infoTitleController,
-                                infoDescription:
-                                    profileController.infoDescriptionController,
-                                hintTextInfoTitle: 'Add info title',
-                                hintTextInfoDescription: 'Add info description',
-                                onPressed: () {
-                                 // print('servsdr');
-                                  profileController.updateUserInfo(); 
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                        commonDivider(0.8),
-                        SkillsWidget(
-                          list: profileController.skills,
-                          onPressed: () {},
-                        ),
-                        commonDivider(0.8),
-                        LanguagesWidget(
-                          list: profileController.languages,
-                          onPressed: () {},
-                        ),
-                        commonDivider(0.8),
-                        EducationWidget(
-                          onPressed: () {},
-                          educationList: profileController.education,
-                        ),
-                        commonDivider(0.8),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+        centerTitle: true,
+        backgroundColor: AppColor.whiteColor,
+        elevation: 0.8,
+      ),
+      body: Obx(
+        () => profileController.isLoading.value
+            ? SpinKitThreeBounce(
+                color: AppColor.greenColor,
+              )
+            : RefreshIndicator(
+                onRefresh: profileController.getProfie,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      commonSizedBox(20),
+                      UserInfoWidget(
+                        profilePic: profileController.profilePic.toString(),
+                        profileName: profileController.profileName.toString(),
+                        emailId: profileController.emailId.toString(),
+                        onPressed: () {},
+                      ),
+                      commonSizedBox(15),
+                      commonDivider(0.8),
+                      commonSizedBox(15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
                             children: [
-                              commonSizedBox(5),
                               Text(
-                                'Work History',
+                                '\$${profileController.totalEarned.toString()}',
                                 style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 20,
                                   fontWeight: FontWeight.bold,
+                                  fontSize: 18,
                                 ),
                               ),
-                              commonSizedBox(10),
                               Text(
-                                'Your work history is visible here',
-                                style: TextStyle(fontFamily: 'Poppins'),
+                                'Total Earnings',
                               ),
-                              commonSizedBox(10),
                             ],
                           ),
+                          Column(
+                            children: [
+                              Text(
+                                '\$${profileController.pendingWithdraw.toString()}',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Text(
+                                'Pending Withdraw',
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      commonSizedBox(20),
+                      commonDivider(0.8),
+                      UserInfoAndTitleWidget(
+                        userTitle: profileController.userTitle.toString(),
+                        userInfo: profileController.userInfo.toString(),
+                        onPressed: () {
+                          profileController.assignDataToTextfield();
+                          Get.bottomSheet(
+                            isScrollControlled: true,
+                            ignoreSafeArea: false,
+                            CustomBottomSheet(
+                              infoTitle: profileController.infoTitleController,
+                              infoDescription:
+                                  profileController.infoDescriptionController,
+                              hintTextInfoTitle: 'Add info title',
+                              hintTextInfoDescription: 'Add info description',
+                              onPressed: profileController.updateUserInfo,
+                            ),
+                          );
+                        },
+                      ),
+                      commonDivider(0.8),
+                      SkillsWidget(
+                        list: profileController.skills,
+                        onPressed: () {
+                          Get.bottomSheet(
+                              ignoreSafeArea: false,
+                              isScrollControlled: true,
+                              SafeArea(
+                                child: Container(
+                                  // height: 100,
+                                  height: size.height * 0.8,
+                                  // color: AppColor.whiteColor,
+                                  decoration: BoxDecoration(
+                                    color: AppColor.whiteColor,
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // commonSizedBox(5),
+                                      Row(
+                                        children: [
+                                          IconButton(
+                                            onPressed: () => Get.back(),
+                                            icon: Icon(
+                                              Icons.close_outlined,
+                                            ),
+                                          ),
+                                          commonWidthBox(130),
+                                          Text(
+                                            'Skills',
+                                            style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      commonSizedBox(10),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 15,
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Your title',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            commonSizedBox(10),
+                                            Text(
+                                              'Enter skill in which you are good at.(e.g.Flutter, React js, Python, etc)',
+                                              style: TextStyle(height: 1.3),
+                                            ),
+                                            commonSizedBox(15),
+                                            Container(
+                                              height: 55,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                border: Border.all(
+                                                  color: AppColor.dividerColor,
+                                                ),
+                                              ),
+                                              child: TextField(
+                                                //  controller: infoTitle,
+                                                cursorColor:
+                                                    AppColor.greenColor,
+                                                decoration: InputDecoration(
+                                                  contentPadding:
+                                                      EdgeInsets.symmetric(
+                                                    horizontal: 10,
+                                                  ),
+                                                  border: InputBorder.none,
+                                                  //  hintText: hintTextInfoTitle,
+                                                  hintMaxLines: 3,
+                                                  hintStyle: TextStyle(
+                                                    height: 1.5,
+                                                  ),
+                                                ),
+                                                maxLines: 2,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                ),
+                                              ),
+                                            ),
+                                            commonSizedBox(15),
+                                            Container(
+                                              height: 200,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                border: Border.all(
+                                                  color: AppColor.dividerColor,
+                                                ),
+                                              ),
+                                              child: TextField(
+                                                //  controller: infoDescription,
+                                                cursorColor:
+                                                    AppColor.greenColor,
+                                                decoration: InputDecoration(
+                                                  contentPadding:
+                                                      EdgeInsets.symmetric(
+                                                    horizontal: 10,
+                                                  ),
+                                                  border: InputBorder.none,
+                                                  //   hintText: hintTextInfoDescription,
+                                                  hintMaxLines: 3,
+                                                  hintStyle: TextStyle(
+                                                    height: 1.5,
+                                                  ),
+                                                ),
+                                                maxLines: null,
+                                                keyboardType:
+                                                    TextInputType.multiline,
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                ),
+                                              ),
+                                            ),
+                                            commonSizedBox(size.height * 0.05),
+                                            CustomButton(
+                                              text: 'Save',
+                                              onPressed: () {},
+                                              textColor: AppColor.whiteColor,
+                                              buttonColor: AppColor.greenColor,
+                                              radius: 30,
+                                            ),
+                                            
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ));
+                        },
+                      ),
+                      commonDivider(0.8),
+                      LanguagesWidget(
+                        list: profileController.languages,
+                        onPressed: () {},
+                      ),
+                      commonDivider(0.8),
+                      EducationWidget(
+                        onPressed: () {},
+                        educationList: profileController.education,
+                      ),
+                      commonDivider(0.8),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            commonSizedBox(5),
+                            Text(
+                              'Work History',
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            commonSizedBox(10),
+                            Text(
+                              'Your work history is visible here',
+                              style: TextStyle(fontFamily: 'Poppins'),
+                            ),
+                            commonSizedBox(10),
+                          ],
                         ),
-                        commonDivider(0.8),
-                        PortfolioWidget(
-                          list: profileController.portfolios,
-                          onPressed: () {},
-                          imageClick: () {
-                            print('image clicked');
-                          },
-                        ),
-                      ],
-                    ),
+                      ),
+                      commonDivider(0.8),
+                      PortfolioWidget(
+                        list: profileController.portfolios,
+                        onPressed: () {},
+                        imageClick: () {
+                          print('image clicked');
+                        },
+                      ),
+                    ],
                   ),
                 ),
-        ));
+              ),
+      ),
+    );
   }
 }

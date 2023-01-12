@@ -1,5 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:flutter/cupertino.dart';
+import 'package:getwork/app/common/widgets/custom_bottom_sheet.dart';
+import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:getwork/app/modules/profile/model/profile_model.dart';
@@ -60,8 +63,10 @@ class ProfileAPI {
         body: jsonEncode(requestBody),
       );
      // print(response.body);
-      if(response.statusCode == 201){
+      if(response.statusCode >= 200 && response.statusCode <= 299){
         return PatchMessage.fromJson(jsonDecode(response.body));
+      }else{
+        CustomSnackBar.showErrorSnackBar(message: 'Something went wrong');
       }
     } catch (e) {
       log(e.toString());
