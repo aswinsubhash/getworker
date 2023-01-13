@@ -4,7 +4,10 @@ import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/common/widgets/custom_bottom_sheet.dart';
 import 'package:getwork/app/common/widgets/custom_button.dart';
+import 'package:getwork/app/common/widgets/custom_textfield_with_button.dart';
+import 'package:getwork/app/modules/home/views/widgets/custom_search_bar.dart';
 import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
+import 'package:getwork/app/modules/profile/views/user_info_bottom_sheet.dart';
 import 'package:getwork/app/modules/profile/views/widgets/education_widget.dart';
 import 'package:getwork/app/modules/profile/views/widgets/languages_widget.dart';
 import 'package:getwork/app/modules/profile/views/widgets/portfolio_widget.dart';
@@ -110,159 +113,159 @@ class ProfileView extends GetView {
                       ),
                       commonDivider(0.8),
                       SkillsWidget(
-                        list: profileController.skills,
                         onPressed: () {
                           Get.bottomSheet(
-                              ignoreSafeArea: false,
-                              isScrollControlled: true,
-                              SafeArea(
-                                child: Container(
-                                  // height: 100,
-                                  height: size.height * 0.8,
-                                  // color: AppColor.whiteColor,
-                                  decoration: BoxDecoration(
-                                    color: AppColor.whiteColor,
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      topRight: Radius.circular(20),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      // commonSizedBox(5),
-                                      Row(
-                                        children: [
-                                          IconButton(
-                                            onPressed: () => Get.back(),
-                                            icon: Icon(
-                                              Icons.close_outlined,
-                                            ),
-                                          ),
-                                          commonWidthBox(130),
-                                          Text(
-                                            'Skills',
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      commonSizedBox(10),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 15,
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Your title',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            commonSizedBox(10),
-                                            Text(
-                                              'Enter skill in which you are good at.(e.g.Flutter, React js, Python, etc)',
-                                              style: TextStyle(height: 1.3),
-                                            ),
-                                            commonSizedBox(15),
-                                            Container(
-                                              height: 55,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                border: Border.all(
-                                                  color: AppColor.dividerColor,
-                                                ),
-                                              ),
-                                              child: TextField(
-                                                //  controller: infoTitle,
-                                                cursorColor:
-                                                    AppColor.greenColor,
-                                                decoration: InputDecoration(
-                                                  contentPadding:
-                                                      EdgeInsets.symmetric(
-                                                    horizontal: 10,
-                                                  ),
-                                                  border: InputBorder.none,
-                                                  //  hintText: hintTextInfoTitle,
-                                                  hintMaxLines: 3,
-                                                  hintStyle: TextStyle(
-                                                    height: 1.5,
-                                                  ),
-                                                ),
-                                                maxLines: 2,
-                                                keyboardType:
-                                                    TextInputType.text,
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                ),
-                                              ),
-                                            ),
-                                            commonSizedBox(15),
-                                            Container(
-                                              height: 200,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                border: Border.all(
-                                                  color: AppColor.dividerColor,
-                                                ),
-                                              ),
-                                              child: TextField(
-                                                //  controller: infoDescription,
-                                                cursorColor:
-                                                    AppColor.greenColor,
-                                                decoration: InputDecoration(
-                                                  contentPadding:
-                                                      EdgeInsets.symmetric(
-                                                    horizontal: 10,
-                                                  ),
-                                                  border: InputBorder.none,
-                                                  //   hintText: hintTextInfoDescription,
-                                                  hintMaxLines: 3,
-                                                  hintStyle: TextStyle(
-                                                    height: 1.5,
-                                                  ),
-                                                ),
-                                                maxLines: null,
-                                                keyboardType:
-                                                    TextInputType.multiline,
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                ),
-                                              ),
-                                            ),
-                                            commonSizedBox(size.height * 0.05),
-                                            CustomButton(
-                                              text: 'Save',
-                                              onPressed: () {},
-                                              textColor: AppColor.whiteColor,
-                                              buttonColor: AppColor.greenColor,
-                                              radius: 30,
-                                            ),
-                                            
-                                          ],
-                                        ),
-                                      )
-                                    ],
+                            ignoreSafeArea: false,
+                            isScrollControlled: true,
+                            SafeArea(
+                              child: Container(
+                                // height: 100,
+                                height: size.height * 0.6,
+                                // color: AppColor.whiteColor,
+                                decoration: BoxDecoration(
+                                  color: AppColor.whiteColor,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20),
                                   ),
                                 ),
-                              ));
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // commonSizedBox(5),
+                                    Row(
+                                      children: [
+                                        IconButton(
+                                          onPressed: () => Get.back(),
+                                          icon: Icon(
+                                            Icons.close_outlined,
+                                          ),
+                                        ),
+                                        commonWidthBox(130),
+                                        Text(
+                                          'Skills',
+                                          style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    commonSizedBox(10),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 15,
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Enter the skill in which you are good at.(e.g.Flutter, React js, Python, etc)',
+                                            style: TextStyle(height: 1.3),
+                                          ),
+                                          commonSizedBox(15),
+                                          CustomTextFieldWithButton(
+                                            onPressed:
+                                                profileController.updateSkills,
+                                            controller: profileController
+                                                .skillController,
+                                            hintText: 'Add your skill',
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
                         },
                       ),
                       commonDivider(0.8),
                       LanguagesWidget(
-                        list: profileController.languages,
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.bottomSheet(
+                            ignoreSafeArea: false,
+                            isScrollControlled: true,
+                            SafeArea(
+                              child: Container(
+                                height: size.height * 0.6,
+                                decoration: BoxDecoration(
+                                  color: AppColor.whiteColor,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20),
+                                  ),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // commonSizedBox(5),
+                                    Row(
+                                      children: [
+                                        IconButton(
+                                          onPressed: () => Get.back(),
+                                          icon: Icon(
+                                            Icons.close_outlined,
+                                          ),
+                                        ),
+                                        commonWidthBox(115),
+                                        Text(
+                                          'Languages',
+                                          style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    commonSizedBox(10),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 15,
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Enter the language in which you are good at.(e.g.English, German, etc)',
+                                            style: TextStyle(height: 1.3),
+                                          ),
+                                          commonSizedBox(15),
+                                          CustomTextFieldWithButton(
+                                            onPressed: profileController
+                                                .updateLanguage,
+                                            controller: profileController
+                                                .languageController,
+                                            hintText: 'Add language here',
+                                          ),
+                                          commonSizedBox(size.height * 0.05),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                       commonDivider(0.8),
                       EducationWidget(
-                        onPressed: () {},
-                        educationList: profileController.education,
+                        onPressed: () {
+                          Get.bottomSheet(
+                              isScrollControlled: true,
+                              ignoreSafeArea: false,
+                              CustomEducationBottomSheet(
+                                hintTextInfoDescription: 'Name of your degree',
+                                hintTextInfoTitle: 'School of education',
+                                schoolNameController:
+                                    profileController.schoolNameController,
+                                degreeController:
+                                    profileController.degreeController,
+                                onPressed: () {},
+                              ));
+                        },
                       ),
                       commonDivider(0.8),
                       Padding(

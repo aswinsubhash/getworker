@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:getwork/app/common/widgets/custom_bottom_sheet.dart';
 import 'package:getwork/app/common/widgets/custom_snackbar.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:getwork/app/modules/profile/model/profile_model.dart';
@@ -38,7 +39,7 @@ class ProfileAPI {
     return null;
   }
 
-  Future<PatchMessage?> updateUserInfo(
+  Future<Message?> updateUserInfo(
       String infoTitle, String infoDescription) async {
     final storage = FlutterSecureStorage();
     final token = await storage.read(key: 'token');
@@ -62,15 +63,71 @@ class ProfileAPI {
         headers: headers,
         body: jsonEncode(requestBody),
       );
-     // print(response.body);
-      if(response.statusCode >= 200 && response.statusCode <= 299){
-        return PatchMessage.fromJson(jsonDecode(response.body));
-      }else{
+      // print(response.body);
+      if (response.statusCode >= 200 && response.statusCode <= 299) {
+        return Message.fromJson(jsonDecode(response.body));
+      } else {
         CustomSnackBar.showErrorSnackBar(message: 'Something went wrong');
       }
     } catch (e) {
       log(e.toString());
     }
     return null;
+  }
+
+  Future<void> updateSkills(String skill) async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+    final userId = await storage.read(key: 'userId');
+    final url =
+        Uri.parse('http://10.0.2.2:3001/api/employee/editProfile/$userId');
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token'
+    };
+
+    Map<String, dynamic> requestBody = {
+      "skill": skill,
+    };
+
+    try {
+      await http.post(
+        url,
+        headers: headers,
+        body: jsonEncode(requestBody),
+      );
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<void> updateLanguage(String language) async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+    final userId = await storage.read(key: 'userId');
+    final url =
+        Uri.parse('http://10.0.2.2:3001/api/employee/editProfile/$userId');
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token'
+    };
+
+    Map<String, dynamic> requestBody = {
+      "language": language,
+    };
+
+    try {
+      await http.post(
+        url,
+        headers: headers,
+        body: jsonEncode(requestBody),
+      );
+    } catch (e) {
+      log(e.toString());
+    }
   }
 }

@@ -271,14 +271,20 @@ class Skill {
       );
 }
 
-class PatchMessage {
-    PatchMessage({
+class Message {
+    Message({
         this.message,
     });
 
     String? message;
 
-    factory PatchMessage.fromJson(Map<String, dynamic> json) => PatchMessage(
+    factory Message.fromJson(Map<String, dynamic> json) => Message(
         message: json["message"],
     );
 }
+
+
+
+
+
+

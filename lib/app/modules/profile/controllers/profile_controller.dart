@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/custom_snackbar.dart';
@@ -23,16 +22,22 @@ class ProfileController extends GetxController {
   final TextEditingController infoTitleController = TextEditingController();
   final TextEditingController infoDescriptionController =
       TextEditingController();
+  final TextEditingController skillController = TextEditingController();
+  final TextEditingController languageController = TextEditingController();
+  final TextEditingController schoolNameController = TextEditingController();  
+  final TextEditingController degreeController = TextEditingController();  
+  
+
+
 
   @override
   void onInit() {
-     getProfie();
+    getProfie();
     super.onInit();
   }
 
   Future<void> getProfie() async {
     ProfileModel? response = await ProfileAPI().getProfile();
-  update();
     if (response != null) {
       isLoading(false);
       if (response.image != null) {
@@ -80,6 +85,7 @@ class ProfileController extends GetxController {
       }
       // fetching skills from API
       if (response.skills != null) {
+        // print(response.skills);
         skills.value = response.skills ?? [];
       } else {
         skills.value = [];
@@ -112,7 +118,6 @@ class ProfileController extends GetxController {
     }
   }
 
-
   void assignDataToTextfield() {
     infoTitleController.text = userTitle.toString();
     infoDescriptionController.text = userInfo.toString();
@@ -125,7 +130,7 @@ class ProfileController extends GetxController {
       CustomSnackBar.showErrorSnackBar(
           message: 'Enter your detailed description');
     } else {
-      PatchMessage? response = await ProfileAPI().updateUserInfo(
+      Message? response = await ProfileAPI().updateUserInfo(
         infoTitleController.text,
         infoDescriptionController.text,
       );
@@ -137,5 +142,33 @@ class ProfileController extends GetxController {
     }
   }
 
+  Future<void> updateSkills() async {
+    if (skillController.text.isEmpty) {
+      CustomSnackBar.showErrorSnackBar(
+        message: 'Please add your skill',
+      );
+    } else {
+      await ProfileAPI().updateSkills(skillController.text);
+      getProfie();
+      skillController.clear();
+      Get.back();
+       CustomSnackBar.showSuccessSnackBar(
+        message: 'Successfully submitted', 
+      );
+    }
+  }
 
+  Future<void> updateLanguage() async {
+    if (languageController.text.isEmpty) {
+      CustomSnackBar.showErrorSnackBar(message: 'Please add language');
+    } else {
+      await ProfileAPI().updateLanguage(languageController.text);
+      getProfie();
+      languageController.clear();
+      Get.back();
+      CustomSnackBar.showSuccessSnackBar(
+        message: 'Successfully submitted',
+      );
+    }
+  }
 }
