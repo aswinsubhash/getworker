@@ -31,7 +31,7 @@ class JobDetailsTile extends StatelessWidget {
      
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: AppColor.jobScreenContainer,
+        color: AppColor.whiteColor,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(

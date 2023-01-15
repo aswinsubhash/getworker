@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/modules/home/views/widgets/job_tile_widget.dart';
 import 'package:getwork/app/modules/home/views/widgets/custom_search_bar.dart';
+import 'package:getwork/app/modules/home/views/widgets/shimmer.dart';
 import 'package:getwork/app/utils/app_string.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:getwork/app/utils/app_styles.dart';
 import '../controllers/home_controller.dart';
-import 'package:shimmer/shimmer.dart';
 
 class HomeView extends GetView {
   final homeContrller = Get.put(HomeController());
@@ -45,42 +45,20 @@ class HomeView extends GetView {
               height: 45,
               child: CustomSearchBar(
                 hintText: 'Search for job',
-                onPressed: (){},
+                onPressed: () {},
               ),
             ),
           ),
           commonSizedBox(10),
           Expanded(
             child: Obx(
-              () => homeContrller.isLoading.value
-                  ? Shimmer.fromColors(
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListView.separated(
-                          separatorBuilder: (context, index) => Divider(
-                            color: AppColor.transparent,
-                          ),
-                          itemCount: 7,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              height: size.height / 6,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: AppColor.greyColor,
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    )
+              () => homeContrller.isLoading.value 
+                  ? ShimmerWidgetHome()
                   : Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ListView.separated(
                         separatorBuilder: (context, index) => Divider(
-                          color: AppColor.transparent,
+                          color: AppColor.dividerColor,
                         ),
                         itemCount: homeContrller.allJobs?.length ?? 0,
                         itemBuilder: (context, index) {
