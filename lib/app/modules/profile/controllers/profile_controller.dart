@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/custom_snackbar.dart';
+import 'package:getwork/app/common/widgets/full_screen_dialog_loader.dart';
 import 'package:getwork/app/modules/profile/api/profile_api.dart';
 import 'package:getwork/app/modules/profile/model/profile_model.dart';
+import 'package:http/http.dart';
 
 class ProfileController extends GetxController {
   var isLoading = true.obs;
@@ -24,11 +26,8 @@ class ProfileController extends GetxController {
       TextEditingController();
   final TextEditingController skillController = TextEditingController();
   final TextEditingController languageController = TextEditingController();
-  final TextEditingController schoolNameController = TextEditingController();  
-  final TextEditingController degreeController = TextEditingController();  
-  
-
-
+  final TextEditingController schoolNameController = TextEditingController();
+  final TextEditingController degreeController = TextEditingController();
 
   @override
   void onInit() {
@@ -135,10 +134,15 @@ class ProfileController extends GetxController {
         infoDescriptionController.text,
       );
       getProfie();
+
       Get.back();
-      CustomSnackBar.showSuccessSnackBar(
-        message: response?.message ?? '',
-      );
+
+      (infoTitleController.text == userTitle.toString() &&
+              infoDescriptionController.text == userInfo.toString())
+          ? CustomSnackBar.showSuccessSnackBar(message: 'No changes')
+          : CustomSnackBar.showSuccessSnackBar(
+              message: response?.message ?? '',
+            );
     }
   }
 
@@ -150,25 +154,62 @@ class ProfileController extends GetxController {
     } else {
       await ProfileAPI().updateSkills(skillController.text);
       getProfie();
+
       skillController.clear();
       Get.back();
-       CustomSnackBar.showSuccessSnackBar(
-        message: 'Successfully submitted', 
+      CustomSnackBar.showSuccessSnackBar(
+        message: 'Successfully submitted',
       );
     }
   }
 
   Future<void> updateLanguage() async {
     if (languageController.text.isEmpty) {
-      CustomSnackBar.showErrorSnackBar(message: 'Please add language');
+      CustomSnackBar.showErrorSnackBar(
+        message: 'Please add language',
+      );
     } else {
       await ProfileAPI().updateLanguage(languageController.text);
       getProfie();
+
       languageController.clear();
       Get.back();
       CustomSnackBar.showSuccessSnackBar(
         message: 'Successfully submitted',
       );
     }
+  }
+
+  Future<void> updateEducation() async {
+    if (schoolNameController.text.isEmpty) {
+      CustomSnackBar.showErrorSnackBar(
+        message: 'Please add school name',
+      );
+    } else if (degreeController.text.isEmpty) {
+      CustomSnackBar.showErrorSnackBar(
+        message: 'Please add degree name',
+      );
+    } else {
+      await ProfileAPI().updateEducation(
+        schoolNameController.text,
+        degreeController.text,
+      );
+      getProfie();
+
+      Get.back();
+      schoolNameController.clear();
+      degreeController.clear();
+
+      CustomSnackBar.showSuccessSnackBar(
+        message: 'Successfully submitted',
+      );
+    }
+  }
+
+  Future<void>deleteEducation(String educationId)async{
+    await  ProfileAPI().deleteEducation(educationId);
+    Get.back();
+    getProfie();
+    CustomSnackBar.showErrorSnackBar(message: 'Education deleted');
   }
 }

@@ -7,7 +7,7 @@ import 'package:getwork/app/common/widgets/custom_button.dart';
 import 'package:getwork/app/common/widgets/custom_textfield_with_button.dart';
 import 'package:getwork/app/modules/home/views/widgets/custom_search_bar.dart';
 import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
-import 'package:getwork/app/modules/profile/views/user_info_bottom_sheet.dart';
+import 'package:getwork/app/modules/profile/views/widgets/user_info_bottom_sheet.dart';
 import 'package:getwork/app/modules/profile/views/widgets/education_widget.dart';
 import 'package:getwork/app/modules/profile/views/widgets/languages_widget.dart';
 import 'package:getwork/app/modules/profile/views/widgets/portfolio_widget.dart';
@@ -254,19 +254,21 @@ class ProfileView extends GetView {
                       EducationWidget(
                         onPressed: () {
                           Get.bottomSheet(
-                              isScrollControlled: true,
-                              ignoreSafeArea: false,
-                              CustomEducationBottomSheet(
-                                hintTextInfoDescription: 'Name of your degree',
-                                hintTextInfoTitle: 'School of education',
-                                schoolNameController:
-                                    profileController.schoolNameController,
-                                degreeController:
-                                    profileController.degreeController,
-                                onPressed: () {},
-                              ));
+                            isScrollControlled: true,
+                            ignoreSafeArea: false,
+                            CustomEducationBottomSheet(
+                              hintTextInfoDescription: 'Name of your degree',
+                              hintTextInfoTitle: 'School of education',
+                              schoolNameController:
+                                  profileController.schoolNameController,
+                              degreeController:
+                                  profileController.degreeController,
+                              onPressed: profileController.updateEducation,
+                            ),
+                          );
                         },
                       ),
+                      commonSizedBox(10),
                       commonDivider(0.8),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -293,7 +295,6 @@ class ProfileView extends GetView {
                       ),
                       commonDivider(0.8),
                       PortfolioWidget(
-                        list: profileController.portfolios,
                         onPressed: () {},
                         imageClick: () {
                           print('image clicked');

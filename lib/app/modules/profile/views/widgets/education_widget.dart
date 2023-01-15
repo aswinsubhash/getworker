@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
@@ -14,6 +17,7 @@ class EducationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final profileController = Get.put(ProfileController());
+    final size = MediaQuery.of(context).size;
     return Obx(
       () => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -41,7 +45,7 @@ class EducationWidget extends StatelessWidget {
                       radius: 13,
                       backgroundColor: AppColor.whiteColor,
                       child: Icon(
-                        Icons.edit,
+                        Icons.add,
                         color: AppColor.blackColor,
                         size: 16,
                       ),
@@ -50,31 +54,89 @@ class EducationWidget extends StatelessWidget {
                 ),
               ],
             ),
-            commonSizedBox(8),
+
+            // commonSizedBox(8),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(
-                profileController.education.isEmpty
-                    ? profileController.education.length = 1
-                    : profileController.education.length,
-                (index) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        profileController.education[index]?.school ??
-                            'Add your education details here',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Poppins',
-                        ),
+                profileController.education.length,
+                (int index) {
+                  return Padding(
+                    padding: EdgeInsets.only(bottom: 0, top: 10),
+                    child: Container(
+                      width: double.infinity,
+                      height: size.height / 19,
+                      // color: Colors.blue,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                profileController.education[index]?.school ??
+                                    '',
+                                style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                profileController.education[index]?.title ?? '',
+                                style: TextStyle(fontFamily: 'Poppins'),
+                              ),
+                            ],
+                          ),
+                          InkWell(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (ctx1) {
+                                  return AlertDialog(
+                                    title: const Text('Delete Education'),
+                                    content: Text(
+                                      'Are you sure you want to delete this education?',
+                                      style: TextStyle(height: 1.5),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () => Get.back(),
+                                        child: const Text(
+                                          'No',
+                                          style: TextStyle(
+                                            color: AppColor.greenColor,
+                                          ),
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          profileController.deleteEducation(
+                                              profileController
+                                                      .education[index]?.id ??
+                                                  '');
+                                        },
+                                        child: const Text(
+                                          'Yes',
+                                          style: TextStyle(
+                                            color: AppColor.greenColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                                        
+                              // log(profileController.education[index]?.id ?? '');
+                            },
+                            child: Icon(
+                              CupertinoIcons.delete,
+                              size: 20,
+                              color: AppColor.greenColor,
+                            ),
+                          )
+                        ],
                       ),
-                      commonSizedBox(5),
-                      Text(
-                        profileController.education[index]?.title ?? '',
-                      ),
-                      commonSizedBox(10)
-                    ],
+                    ),
                   );
                 },
               ),

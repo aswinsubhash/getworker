@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:getwork/app/common/widgets/common_widgets.dart';
+import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 class PortfolioWidget extends StatelessWidget {
-  final List<dynamic> list;
+
   final VoidCallback onPressed;
   final VoidCallback imageClick;
   const PortfolioWidget({
     Key? key,
-    required this.list,
     required this.onPressed,
     required this.imageClick,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+     final profileController = Get.put(ProfileController());
+    return Obx(() => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +59,7 @@ class PortfolioWidget extends StatelessWidget {
             spacing: 10.0,
             runSpacing: 10.0,
             children: List.generate(
-              list.length,
+              profileController.portfolios.length,
               (index) {
                 return InkWell(
                   onTap: imageClick,
@@ -68,7 +70,7 @@ class PortfolioWidget extends StatelessWidget {
                       color: AppColor.greyColor,
                       image: DecorationImage(
                         image: NetworkImage(
-                          list[index]?.image ?? '',
+                          profileController.portfolios[index]?.image ?? '',
                         ),
                         fit: BoxFit.fill,
                       ),
@@ -84,6 +86,6 @@ class PortfolioWidget extends StatelessWidget {
            commonSizedBox(30)
         ],
       ),
-    );
+    ),);
   }
 }

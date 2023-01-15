@@ -1,7 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:flutter/cupertino.dart';
-import 'package:getwork/app/common/widgets/custom_bottom_sheet.dart';
 import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 
 import 'package:http/http.dart' as http;
@@ -125,6 +123,62 @@ class ProfileAPI {
         url,
         headers: headers,
         body: jsonEncode(requestBody),
+      );
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<void> updateEducation(String schoolName, String degreeName) async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+    final userId = await storage.read(key: 'userId');
+    final url =
+        Uri.parse('http://10.0.2.2:3001/api/employee/education/$userId');
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token'
+    };
+
+    Map<String, dynamic> requestBody = {
+      "education": {
+        "school": schoolName,
+        "title": degreeName,
+      }
+    };
+
+    try {
+      await http.post(
+        url,
+        headers: headers,
+        body: jsonEncode(requestBody),
+      );
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+    Future<void> deleteEducation(String educationId) async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+    final userId = await storage.read(key: 'userId');
+    final url =
+        Uri.parse('http://10.0.2.2:3001/api/employee/education/$userId/$educationId');
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token'
+    };
+
+
+
+    try {
+      await http.delete(
+        url,
+        headers: headers,
       );
     } catch (e) {
       log(e.toString());

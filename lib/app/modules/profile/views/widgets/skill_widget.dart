@@ -1,12 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 class SkillsWidget extends StatelessWidget {
   final VoidCallback onPressed;
-
   const SkillsWidget({
     Key? key,
     required this.onPressed,
@@ -51,7 +52,6 @@ class SkillsWidget extends StatelessWidget {
                 ),
               ],
             ),
-            //  commonSizedBox(10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(
