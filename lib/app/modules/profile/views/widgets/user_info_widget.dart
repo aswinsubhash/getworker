@@ -38,13 +38,13 @@ class UserInfoWidget extends StatelessWidget {
                             child: CircleAvatar(
                               backgroundColor: AppColor.greenColor,
                               radius: 12,
-                              child: CircleAvatar(
-                                radius: 11,
-                                backgroundColor: AppColor.whiteColor,
-                                child: InkWell(
-                                  onTap: () {},
+                              child: InkWell(
+                                onTap: onPressed,
+                                child: CircleAvatar(
+                                  radius: 11,
+                                  backgroundColor: AppColor.whiteColor,
                                   child: Icon(
-                                    Icons.edit,
+                                    Icons.add_a_photo_outlined,
                                     size: 11,
                                     color: AppColor.blackColor,
                                   ),

@@ -52,7 +52,9 @@ class ProfileView extends GetView {
                         profilePic: profileController.profilePic.toString(),
                         profileName: profileController.profileName.toString(),
                         emailId: profileController.emailId.toString(),
-                        onPressed: () {},
+                        onPressed: () {
+                        profileController.uploadImage();
+                        },
                       ),
                       commonSizedBox(15),
                       commonDivider(0.8),
