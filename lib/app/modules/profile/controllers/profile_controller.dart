@@ -1,9 +1,8 @@
-import 'dart:developer';
-
 import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/custom_snackbar.dart';
+import 'package:getwork/app/common/widgets/full_screen_dialog_loader.dart';
 import 'package:getwork/app/modules/profile/api/profile_api.dart';
 import 'package:getwork/app/modules/profile/model/profile_model.dart';
 import 'package:image_picker/image_picker.dart';
@@ -21,7 +20,6 @@ class ProfileController extends GetxController {
   var languages = <Language?>[].obs;
   var education = <Education?>[].obs;
   var portfolios = <Portfolio?>[].obs;
-  var imageUrl = ''.obs;
 
   //Text editing controllers
   final TextEditingController infoTitleController = TextEditingController();
@@ -29,8 +27,14 @@ class ProfileController extends GetxController {
       TextEditingController();
   final TextEditingController skillController = TextEditingController();
   final TextEditingController languageController = TextEditingController();
+  //education controllers
   final TextEditingController schoolNameController = TextEditingController();
   final TextEditingController degreeController = TextEditingController();
+  //reset password controllers
+  final TextEditingController oldPasswordController = TextEditingController();
+  final TextEditingController newPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   @override
   void onInit() {
@@ -209,6 +213,7 @@ class ProfileController extends GetxController {
     }
   }
 
+  //? fuction for deleting the education
   Future<void> deleteEducation(String educationId) async {
     await ProfileAPI().deleteEducation(educationId);
     Get.back();
@@ -216,7 +221,8 @@ class ProfileController extends GetxController {
     CustomSnackBar.showErrorSnackBar(message: 'Education deleted');
   }
 
-  Future<void> uploadImage() async {
+  //? function to uploadprofile pic to couldinary
+  Future<void> uploadProfilePic() async {
     final cloudinary = CloudinaryPublic('dficlknqi', 'zueui8am');
     var image = await ImagePicker().pickImage(source: ImageSource.gallery);
 
@@ -225,16 +231,54 @@ class ProfileController extends GetxController {
         CloudinaryResponse response = await cloudinary.uploadFile(
           CloudinaryFile.fromFile(image.path, folder: 'getworker'),
         );
-      
-        imageUrl.value = response.secureUrl;
-        print('url vanno mone');
-        log(imageUrl.toString());
+
+        await ProfileAPI().updateProfilePic(response.secureUrl);
+
+        getProfie();
       } on CloudinaryException catch (e) {
         print(e.message);
         print(e);
       }
     } else {
       print("No image selected");
+    }
+  }
+
+  //? function to upload portfolio to couldinary
+  Future<void> uploadPortfolio() async {
+    final cloudinary = CloudinaryPublic('dficlknqi', 'zueui8am');
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      try {
+        CloudinaryResponse response = await cloudinary.uploadFile(
+          CloudinaryFile.fromFile(image.path, folder: 'getworker'),
+        );
+
+        await ProfileAPI().uploadPortfolio(response.secureUrl);
+        getProfie();
+      } on CloudinaryException catch (e) {
+        print(e.message);
+        print(e);
+      }
+    } else {
+      print("No image selected");
+    }
+  }
+
+  //? fuction for reset password
+  Future<void> resetPassword() async {
+    if (oldPasswordController.text.isEmpty) {
+      CustomSnackBar.showErrorSnackBar(message: 'Enter your old password');
+    } else if (newPasswordController.text.isEmpty) {
+      CustomSnackBar.showErrorSnackBar(message: 'Enter your new password');
+    } else if (newPasswordController.text != confirmPasswordController.text) {
+      CustomSnackBar.showErrorSnackBar(message: 'Password does not match');
+    } else {
+      await ProfileAPI().resetPassword(
+        oldPasswordController.text,
+        newPasswordController.text,
+      );
     }
   }
 }

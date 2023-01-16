@@ -3,9 +3,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/common/widgets/custom_bottom_sheet.dart';
-import 'package:getwork/app/common/widgets/custom_button.dart';
+import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/common/widgets/custom_textfield_with_button.dart';
-import 'package:getwork/app/modules/home/views/widgets/custom_search_bar.dart';
 import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
 import 'package:getwork/app/modules/profile/views/widgets/user_info_bottom_sheet.dart';
 import 'package:getwork/app/modules/profile/views/widgets/education_widget.dart';
@@ -24,7 +23,7 @@ class ProfileView extends GetView {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    profileController.onInit();
+    // profileController.onInit();
     return Scaffold(
       backgroundColor: AppColor.whiteColor,
       appBar: AppBar(
@@ -49,12 +48,7 @@ class ProfileView extends GetView {
                     children: [
                       commonSizedBox(20),
                       UserInfoWidget(
-                        profilePic: profileController.profilePic.toString(),
-                        profileName: profileController.profileName.toString(),
-                        emailId: profileController.emailId.toString(),
-                        onPressed: () {
-                        profileController.uploadImage();
-                        },
+                        onPressed: profileController.uploadProfilePic,
                       ),
                       commonSizedBox(15),
                       commonDivider(0.8),
@@ -297,7 +291,19 @@ class ProfileView extends GetView {
                       ),
                       commonDivider(0.8),
                       PortfolioWidget(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (profileController.portfolios.length <= 3) {
+                            print(profileController.portfolios.length);
+                            profileController.uploadPortfolio();
+                          } else {
+                            Get.snackbar(
+                              'Upload limit',
+                              'You can upload only 4 portfolios',
+                              backgroundColor: AppColor.errorColor,
+                              colorText: AppColor.whiteColor,
+                            );
+                          }
+                        },
                         imageClick: () {
                           print('image clicked');
                         },

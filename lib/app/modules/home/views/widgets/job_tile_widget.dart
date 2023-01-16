@@ -57,18 +57,23 @@ class JobDetailsTile extends StatelessWidget {
                     ),
                   ),
                 ),
-                CircleAvatar(
-                  backgroundColor: AppColor.dividerColor,
+                InkWell(
+                  onTap:(){
+                   
+                  },
                   child: CircleAvatar(
-                    backgroundColor: AppColor.whiteColor,
-                    radius: 16.5,
-                    child: Icon(
-                      CupertinoIcons.suit_heart,
-                      size: 20,
-                      color: AppColor.greenColor,
+                    backgroundColor: AppColor.dividerColor,
+                    child: CircleAvatar(
+                      backgroundColor: AppColor.whiteColor,
+                      radius: 16.5,
+                      child: Icon(
+                        CupertinoIcons.suit_heart,
+                        size: 20,
+                        color: AppColor.greenColor,
+                      ),
                     ),
+                    radius: 18,
                   ),
-                  radius: 18,
                 )
               ],
             ),
