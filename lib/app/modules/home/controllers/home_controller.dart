@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/custom_snackbar.dart';
@@ -8,10 +9,20 @@ import 'package:getwork/app/modules/home/model/all_job_list_model.dart';
 import 'package:getwork/app/modules/home/model/get_all_jobs_model.dart';
 import 'package:getwork/app/modules/job_details/views/job_details_view.dart';
 
-class HomeController extends GetxController {
+class HomeController extends GetxController with GetTickerProviderStateMixin{
   final loginController = Get.put(LoginController());
 
   RxBool isLoading = true.obs;
+
+ late TabController tabController;
+ List<Tab>myTabs =<Tab>[
+  Tab(
+    text: 'Available',
+  ),
+    Tab(
+    text: 'Saved',
+  )
+ ];
 
   List<AllJob>? allJobs = [];
   String? jobId;
@@ -19,8 +30,16 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     jobData();
+    tabController = TabController(length: 2, vsync: this);
     super.onInit();
   }
+  
+  @override
+  void onClose() {
+    tabController.dispose();
+    super.onClose();
+  }
+  
 
   Future<void> logout() async {
     final storage = FlutterSecureStorage();
@@ -54,4 +73,6 @@ class HomeController extends GetxController {
 
     jobId = jobDetailsId;
   }
+
+
 }
