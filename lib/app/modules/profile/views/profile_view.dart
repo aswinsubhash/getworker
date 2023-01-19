@@ -3,7 +3,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/common/widgets/custom_bottom_sheet.dart';
-import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/common/widgets/custom_textfield_with_button.dart';
 import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
 import 'package:getwork/app/modules/profile/views/widgets/user_info_bottom_sheet.dart';

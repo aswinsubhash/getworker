@@ -160,10 +160,14 @@ class ProfileController extends GetxController {
       );
     } else {
       await ProfileAPI().updateSkills(skillController.text);
+
+      isLoading(true);
+      Get.back();
+      await Future.delayed(Duration(seconds: 1));
+
       getProfie();
 
       skillController.clear();
-      Get.back();
       CustomSnackBar.showSuccessSnackBar(
         message: 'Successfully submitted',
       );
@@ -177,10 +181,13 @@ class ProfileController extends GetxController {
       );
     } else {
       await ProfileAPI().updateLanguage(languageController.text);
+      isLoading(true);
+      Get.back();
+      await Future.delayed(Duration(seconds: 1));
       getProfie();
 
       languageController.clear();
-      Get.back();
+
       CustomSnackBar.showSuccessSnackBar(
         message: 'Successfully submitted',
       );

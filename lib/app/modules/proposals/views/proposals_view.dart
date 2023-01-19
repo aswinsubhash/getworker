@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
@@ -27,7 +28,7 @@ class ProposalsView extends GetView {
       body: SafeArea(
         child: Obx(
           () => proposalController.isLoading.value
-              ? CircularProgressIndicator(color: AppColor.greenColor)
+              ? SpinKitThreeBounce(color: AppColor.greenColor)
               : ListView.separated(
                 
                   itemBuilder: (context, index) {

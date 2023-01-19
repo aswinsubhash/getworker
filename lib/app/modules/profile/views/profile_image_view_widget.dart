@@ -4,7 +4,6 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
-import 'package:getwork/app/utils/app_styles.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:getwork/app/utils/common_app_function.dart';
 

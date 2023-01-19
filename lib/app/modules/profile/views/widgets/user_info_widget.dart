@@ -89,7 +89,7 @@ class UserInfoWidget extends StatelessWidget {
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           print('sdfsdfsedfsdf');
-                         Get.to(()=> ResetPasswordScreen());
+                         Get.to(()=> ResetPasswordScreen(),transition: Transition.cupertino);
 
                           // profileController.resetPassword();
                         },
