@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:get/get.dart';
-import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/modules/proposals/views/active_proposals_view.dart';
 import 'package:getwork/app/modules/proposals/views/rejected_proposals_view.dart';
 import 'package:getwork/app/modules/proposals/views/shortlisted_proposals_view.dart';

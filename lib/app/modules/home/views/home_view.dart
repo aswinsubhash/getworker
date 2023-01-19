@@ -4,10 +4,6 @@ import 'package:get/get.dart';
 import 'package:getwork/app/modules/home/views/available_jobs_view.dart';
 
 import 'package:getwork/app/modules/home/views/saved_jobs_view.dart';
-import 'package:getwork/app/modules/home/views/widgets/job_tile_widget.dart';
-import 'package:getwork/app/modules/home/views/widgets/custom_search_bar.dart';
-import 'package:getwork/app/modules/home/views/widgets/shimmer.dart';
-import 'package:getwork/app/modules/profile/model/profile_model.dart';
 import 'package:getwork/app/utils/app_string.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:getwork/app/utils/app_styles.dart';

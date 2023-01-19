@@ -2,7 +2,6 @@ import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/custom_snackbar.dart';
-import 'package:getwork/app/common/widgets/full_screen_dialog_loader.dart';
 import 'package:getwork/app/modules/profile/api/profile_api.dart';
 import 'package:getwork/app/modules/profile/model/profile_model.dart';
 import 'package:image_picker/image_picker.dart';

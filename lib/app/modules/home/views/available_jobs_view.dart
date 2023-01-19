@@ -4,9 +4,7 @@ import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/modules/home/views/widgets/job_tile_widget.dart';
 import 'package:getwork/app/modules/home/views/widgets/custom_search_bar.dart';
 import 'package:getwork/app/modules/home/views/widgets/shimmer.dart';
-import 'package:getwork/app/utils/app_string.dart';
 import 'package:getwork/app/utils/colors.dart';
-import 'package:getwork/app/utils/app_styles.dart';
 import '../controllers/home_controller.dart';
 
 class AvailableJobsView extends GetView {

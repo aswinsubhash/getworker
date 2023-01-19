@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/modules/home/controllers/home_controller.dart';
