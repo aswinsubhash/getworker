@@ -3,6 +3,9 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
+import 'package:getwork/app/modules/proposals/views/active_proposals_view.dart';
+import 'package:getwork/app/modules/proposals/views/rejected_proposals_view.dart';
+import 'package:getwork/app/modules/proposals/views/shortlisted_proposals_view.dart';
 import 'package:getwork/app/utils/app_string.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:getwork/app/utils/app_styles.dart';
@@ -24,25 +27,42 @@ class ProposalsView extends GetView {
         centerTitle: true,
         backgroundColor: AppColor.whiteColor,
         elevation: 0.8,
-      ),
-      body: SafeArea(
-        child: Obx(
-          () => proposalController.isLoading.value
-              ? SpinKitThreeBounce(color: AppColor.greenColor)
-              : ListView.separated(
-                
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      // title:
-                      //     Text(proposalController.reversedProposals?[0].cover ?? ''),
-                      //     subtitle: Text("Your Bid :\$${proposalController.myProposals?[1].bid}"),
-                    );
-                  },
-                  separatorBuilder: (context, index) => commonDivider(0.8),
-                  itemCount: 4,
-                ),
+        bottom: TabBar(
+          controller: proposalController.tabController,
+          tabs: proposalController.myTabs,
+          labelColor: AppColor.greenColor,
+          unselectedLabelColor: AppColor.blackColor,
+          labelStyle: TextStyle(fontFamily: 'Poppins'),
+          indicatorColor: AppColor.greenColor,
         ),
       ),
+      body: TabBarView(
+        controller: proposalController.tabController,
+        children: [
+          ActiveProposalsView(),
+          ShortlistedProposalsView(),
+          RejectedProposalsView(),
+        ],
+      ),
+
+      // body: SafeArea(
+      //   child: Obx(
+      //     () => proposalController.isLoading.value
+      //         ? SpinKitThreeBounce(color: AppColor.greenColor)
+      //         : ListView.separated(
+
+      //             itemBuilder: (context, index) {
+      //               return ListTile(
+      //                 // title:
+      //                 //     Text(proposalController.reversedProposals?[0].cover ?? ''),
+      //                 //     subtitle: Text("Your Bid :\$${proposalController.myProposals?[1].bid}"),
+      //               );
+      //             },
+      //             separatorBuilder: (context, index) => commonDivider(0.8),
+      //             itemCount: 4,
+      //           ),
+      //   ),
+      // ),
     );
   }
 }
