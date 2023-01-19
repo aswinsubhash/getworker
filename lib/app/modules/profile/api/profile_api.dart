@@ -230,8 +230,8 @@ class ProfileAPI {
 
     Map<String, dynamic> requestBody = {
       "image": imageUrl,
-      "title": "Portfolio title",
-      "description": "Portfolio description"
+      "title": 'Portfolio title',
+      "description": 'Portfolio description'
     };
 
     try {
@@ -244,6 +244,34 @@ class ProfileAPI {
     } catch (e) {
       log(e.toString());
     }
+  }
+
+  Future<Message?> deletePortfolio(String id) async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+    final userId = await storage.read(key: 'userId');
+    final url = Uri.parse(
+        'http://10.0.2.2:3001/api/employee/deletePortfolio/$userId/$id');
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token'
+    };
+    try {
+      http.Response response = await delete(
+        url,
+        headers: headers,
+      );
+      if (response.statusCode >= 200 && response.statusCode <= 299) {
+        return Message.fromJson(jsonDecode(response.body));
+      } else {
+        CustomSnackBar.showErrorSnackBar(message: 'Something went wrong');
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
   }
 
   Future<void> resetPassword(String oldPass, String newPass) async {
@@ -284,5 +312,34 @@ class ProfileAPI {
     } catch (e) {
       log(e.toString());
     }
+  }
+
+  Future<Message?> deleteLanguageAndSkill(
+      String? skill, String? language) async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+    final userId = await storage.read(key: 'userId');
+    final url = Uri.parse(
+        'http://10.0.2.2:3001/api/employee/editProfile/$userId?skill=$skill&language=$language');
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token'
+    };
+    try {
+      http.Response response = await delete(
+        url,
+        headers: headers,
+      );
+      if (response.statusCode >= 200 && response.statusCode <= 299) {
+        return Message.fromJson(jsonDecode(response.body));
+      } else {
+        CustomSnackBar.showErrorSnackBar(message: 'Something went wrong');
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
   }
 }

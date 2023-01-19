@@ -43,7 +43,7 @@ class SkillsWidget extends StatelessWidget {
                       radius: 13,
                       backgroundColor: AppColor.whiteColor,
                       child: Icon(
-                        Icons.edit,
+                        Icons.add,
                         color: AppColor.blackColor,
                         size: 16,
                       ),
@@ -52,24 +52,29 @@ class SkillsWidget extends StatelessWidget {
                 ),
               ],
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            commonSizedBox(10),
+            Wrap(
+              direction: Axis.horizontal,
+              spacing: 5.0,
               children: List.generate(
                 profileController.skills.isEmpty
                     ? profileController.skills.length = 1
                     : profileController.skills.length,
                 (index) {
-                  return Column(
-                    children: [
-                      commonSizedBox(8),
-                      Text(
-                        profileController.skills[index]?.skill ??
-                            'Add your skills here',
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                        ),
-                      ),
-                    ],
+                  return Chip(
+                    backgroundColor: AppColor.searchTagContainer,
+                    label: Text(profileController.skills[index]?.skill ?? 'Add your skill'),
+                    labelStyle: TextStyle(fontFamily: 'Poppins'),
+                    deleteIcon: Icon(
+                      Icons.close,
+                      size: 20,
+                    ),
+                    onDeleted: () {
+                      profileController.deleteLanguageAndSkill(
+                        profileController.skills[index]?.skill ?? '',
+                        '',
+                      );
+                    },
                   );
                 },
               ),

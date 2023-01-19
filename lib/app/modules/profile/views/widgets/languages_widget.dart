@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:getwork/app/common/widgets/common_widgets.dart';
 import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
-import 'package:getwork/app/modules/profile/model/profile_model.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 class LanguagesWidget extends StatelessWidget {
- 
   final VoidCallback onPressed;
 
   const LanguagesWidget({
     Key? key,
-   
     required this.onPressed,
   }) : super(key: key);
 
@@ -45,7 +43,7 @@ class LanguagesWidget extends StatelessWidget {
                       radius: 13,
                       backgroundColor: AppColor.whiteColor,
                       child: Icon(
-                        Icons.edit,
+                        Icons.add,
                         color: AppColor.blackColor,
                         size: 16,
                       ),
@@ -54,26 +52,31 @@ class LanguagesWidget extends StatelessWidget {
                 ),
               ],
             ),
-            //commonSizedBox(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            commonSizedBox(10),
+            Wrap(
+              direction: Axis.horizontal,
+              spacing: 5.0,
+              //  runSpacing: ,
               children: List.generate(
                 profileController.languages.isEmpty
                     ? profileController.languages.length = 1
                     : profileController.languages.length,
                 (index) {
-                  return Column(
-                    children: [
-                      commonSizedBox(8),
-                      Text(
-                        profileController.languages[index]?.language ??
-                            'Add your languages here',
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                        ),
+                  return Chip(
+                      backgroundColor: AppColor.searchTagContainer,
+                      label: Text(
+                          profileController.languages[index]?.language ?? 'Add language'),
+                      labelStyle: TextStyle(fontFamily: 'Poppins'),
+                      deleteIcon: Icon(
+                        Icons.close,
+                        size: 20,
                       ),
-                    ],
-                  );
+                      onDeleted: () {
+                        profileController.deleteLanguageAndSkill(
+                          '',
+                          profileController.languages[index]?.language ?? '',
+                        );
+                      });
                 },
               ),
             ),

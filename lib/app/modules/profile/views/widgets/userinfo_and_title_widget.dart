@@ -57,6 +57,7 @@ class UserInfoAndTitleWidget extends StatelessWidget {
             userInfo,
             style: TextStyle(
               fontSize: 16,
+              fontFamily: 'Poppins',
             ),
           ),
           commonSizedBox(15),

@@ -1,13 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 import 'package:getwork/app/common/widgets/common_widgets.dart';
-import 'package:getwork/app/common/widgets/custom_button.dart';
 import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
-import 'package:getwork/app/modules/profile/views/profile_image_view_widget.dart';
-import 'package:getwork/app/modules/profile/views/reset_password_screen.dart';
+import 'package:getwork/app/modules/profile/views/widgets/profile_image_view_widget.dart';
+import 'package:getwork/app/modules/profile/views/widgets/reset_password_screen.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 class UserInfoWidget extends StatelessWidget {

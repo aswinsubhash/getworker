@@ -66,6 +66,9 @@ class ProfileView extends GetView {
                               ),
                               Text(
                                 'Total Earnings',
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
                               ),
                             ],
                           ),
@@ -80,6 +83,9 @@ class ProfileView extends GetView {
                               ),
                               Text(
                                 'Pending Withdraw',
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                ),
                               ),
                             ],
                           ),
@@ -114,9 +120,7 @@ class ProfileView extends GetView {
                             isScrollControlled: true,
                             SafeArea(
                               child: Container(
-                                // height: 100,
-                                height: size.height * 0.6,
-                                // color: AppColor.whiteColor,
+                                height: size.height * 0.3,
                                 decoration: BoxDecoration(
                                   color: AppColor.whiteColor,
                                   borderRadius: BorderRadius.only(
@@ -184,7 +188,7 @@ class ProfileView extends GetView {
                             isScrollControlled: true,
                             SafeArea(
                               child: Container(
-                                height: size.height * 0.6,
+                                height: size.height * 0.3,
                                 decoration: BoxDecoration(
                                   color: AppColor.whiteColor,
                                   borderRadius: BorderRadius.only(
@@ -289,24 +293,7 @@ class ProfileView extends GetView {
                         ),
                       ),
                       commonDivider(0.8),
-                      PortfolioWidget(
-                        onPressed: () {
-                          if (profileController.portfolios.length <= 3) {
-                            print(profileController.portfolios.length);
-                            profileController.uploadPortfolio();
-                          } else {
-                            Get.snackbar(
-                              'Upload limit',
-                              'You can upload only 4 portfolios',
-                              backgroundColor: AppColor.errorColor,
-                              colorText: AppColor.whiteColor,
-                            );
-                          }
-                        },
-                        imageClick: () {
-                          print('image clicked');
-                        },
-                      ),
+                      PortfolioWidget(),
                     ],
                   ),
                 ),

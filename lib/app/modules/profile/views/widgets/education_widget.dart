@@ -75,58 +75,21 @@ class EducationWidget extends StatelessWidget {
                             children: [
                               Text(
                                 profileController.education[index]?.school ??
-                                    '',
+                                    'sdfsdf',
                                 style: TextStyle(
                                     fontFamily: 'Poppins',
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                profileController.education[index]?.title ?? '',
+                                profileController.education[index]?.title ?? 'sdfsd',
                                 style: TextStyle(fontFamily: 'Poppins'),
                               ),
                             ],
                           ),
                           InkWell(
                             onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (ctx1) {
-                                  return AlertDialog(
-                                    title: const Text('Delete Education'),
-                                    content: Text(
-                                      'Are you sure you want to delete this education?',
-                                      style: TextStyle(height: 1.5),
-                                    ),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Get.back(),
-                                        child: const Text(
-                                          'No',
-                                          style: TextStyle(
-                                            color: AppColor.greenColor,
-                                          ),
-                                        ),
-                                      ),
-                                      TextButton(
-                                        onPressed: () {
-                                          profileController.deleteEducation(
-                                              profileController
-                                                      .education[index]?.id ??
-                                                  '');
-                                        },
-                                        child: const Text(
-                                          'Yes',
-                                          style: TextStyle(
-                                            color: AppColor.greenColor,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                                        
-                              // log(profileController.education[index]?.id ?? '');
+                              profileController.deleteEducation(
+                                  profileController.education[index]?.id ?? '');
                             },
                             child: Icon(
                               CupertinoIcons.delete,

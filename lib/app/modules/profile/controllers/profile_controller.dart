@@ -114,7 +114,7 @@ class ProfileController extends GetxController {
       // fetching portfolio from API
       if (response.portfolios != null) {
         portfolios.value = response.portfolios ?? [];
-      } else {}
+      }
     } else {
       isLoading(false);
       print('sedvsdfesf');
@@ -140,6 +140,7 @@ class ProfileController extends GetxController {
         infoTitleController.text,
         infoDescriptionController.text,
       );
+      isLoading(true);
       getProfie();
 
       Get.back();
@@ -225,7 +226,7 @@ class ProfileController extends GetxController {
     await ProfileAPI().deleteEducation(educationId);
     Get.back();
     getProfie();
-    CustomSnackBar.showErrorSnackBar(message: 'Education deleted');
+    CustomSnackBar.showErrorSnackBar(message: 'Deleted successfully');
   }
 
   //? function to uploadprofile pic to couldinary
@@ -273,6 +274,17 @@ class ProfileController extends GetxController {
     }
   }
 
+  //? function for deleting portfolio
+
+  Future<void> deletePortfolio(String portfolioId) async {
+    Message? response = await ProfileAPI().deletePortfolio(portfolioId);
+    isLoading(true);
+
+    getProfie();
+
+    CustomSnackBar.showErrorSnackBar(message: response?.message ?? '');
+  }
+
   //? fuction for reset password
   Future<void> resetPassword() async {
     if (oldPasswordController.text.isEmpty) {
@@ -287,5 +299,16 @@ class ProfileController extends GetxController {
         newPasswordController.text,
       );
     }
+  }
+
+  Future<void> deleteLanguageAndSkill([String? skill, String? language]) async {
+    Message? respose =
+        await ProfileAPI().deleteLanguageAndSkill(skill, language);
+
+    isLoading(true);
+
+    getProfie();
+
+    CustomSnackBar.showErrorSnackBar(message: respose?.message ?? '');
   }
 }
