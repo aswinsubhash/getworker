@@ -62,6 +62,9 @@ Login Screen                    |   Job Screen             |  Job Detail Screen 
 - [Flutter secure storage](https://github.com/mogol/flutter_secure_storage/tree/develop/flutter_secure_storage)
 - [Flutter spin kit](https://github.com/jogboms/flutter_spinkit)
 - [Shimmer](https://github.com/hnvn/flutter_shimmer)
+- [Image picker](https://github.com/flutter/plugins/tree/main/packages/image_picker/image_picker)
+- [Cloundinary public](https://github.com/djade007/cloudinary_public)
+- [Animated text kit](https://github.com/aagarwal1012/Animated-Text-Kit/)
 
 
 
