@@ -8,8 +8,6 @@ import 'package:getwork/app/modules/auth/otp/bindings/otp_binding.dart';
 import 'package:getwork/app/modules/auth/otp/views/otp_view.dart';
 import 'package:getwork/app/modules/auth/sign_up/bindings/sign_up_binding.dart';
 import 'package:getwork/app/modules/auth/sign_up/views/sign_up_view.dart';
-import 'package:getwork/app/modules/contracts/bindings/contracts_binding.dart';
-import 'package:getwork/app/modules/contracts/views/contracts_view.dart';
 import 'package:getwork/app/modules/dashboard/bindings/dashboard_binding.dart';
 import 'package:getwork/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:getwork/app/modules/home/bindings/home_binding.dart';
@@ -18,6 +16,8 @@ import 'package:getwork/app/modules/job_details/bindings/job_details_binding.dar
 import 'package:getwork/app/modules/job_details/views/job_details_view.dart';
 import 'package:getwork/app/modules/messages/bindings/messages_binding.dart';
 import 'package:getwork/app/modules/messages/views/messages_view.dart';
+import 'package:getwork/app/modules/my_dash/bindings/my_dash_binding.dart';
+import 'package:getwork/app/modules/my_dash/views/my_dash_view.dart';
 import 'package:getwork/app/modules/profile/bindings/profile_binding.dart';
 import 'package:getwork/app/modules/profile/views/profile_view.dart';
 import 'package:getwork/app/modules/proposals/bindings/proposals_binding.dart';
@@ -83,11 +83,6 @@ class AppPages {
       binding: ProposalsBinding(),
     ),
     GetPage(
-      name: _Paths.CONTRACTS,
-      page: () => ContractsView(),
-      binding: ContractsBinding(),
-    ),
-    GetPage(
       name: _Paths.MESSAGES,
       page: () => MessagesView(),
       binding: MessagesBinding(),
@@ -101,6 +96,11 @@ class AppPages {
       name: _Paths.SUBMIT_PROPOSAL,
       page: () => SubmitProposalView(),
       binding: SubmitProposalBinding(),
+    ),
+    GetPage(
+      name: _Paths.MY_DASH,
+      page: () => MyDashView(),
+      binding: MyDashBinding(),
     ),
   ];
 }

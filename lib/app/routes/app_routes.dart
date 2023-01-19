@@ -14,12 +14,12 @@ abstract class Routes {
   static const OTP = _Paths.OTP;
   static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
   static const PROPOSALS = _Paths.PROPOSALS;
-  static const CONTRACTS = _Paths.CONTRACTS;
   static const MESSAGES = _Paths.MESSAGES;
   static const DASHBOARD = _Paths.DASHBOARD;
   static const FORGET_OTP = _Paths.FORGET_OTP;
   static const JOB_DETAILS = _Paths.JOB_DETAILS;
   static const SUBMIT_PROPOSAL = _Paths.SUBMIT_PROPOSAL;
+  static const MY_DASH = _Paths.MY_DASH;
 }
 
 abstract class _Paths {
@@ -31,10 +31,10 @@ abstract class _Paths {
   static const OTP = '/otp';
   static const FORGOT_PASSWORD = '/forgot-password';
   static const PROPOSALS = '/proposals';
-  static const CONTRACTS = '/contracts';
   static const MESSAGES = '/messages';
   static const DASHBOARD = '/dashboard';
   static const FORGET_OTP = '/forget-otp';
   static const JOB_DETAILS = '/job-details';
   static const SUBMIT_PROPOSAL = '/submit-proposal';
+  static const MY_DASH = '/my-dash';
 }

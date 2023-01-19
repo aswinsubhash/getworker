@@ -1,11 +1,13 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:getwork/app/modules/contracts/views/contracts_view.dart';
+
 import 'package:getwork/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:getwork/app/modules/home/views/home_view.dart';
 import 'package:getwork/app/modules/messages/views/messages_view.dart';
+import 'package:getwork/app/modules/my_dash/views/my_dash_view.dart';
 import 'package:getwork/app/modules/profile/views/profile_view.dart';
 import 'package:getwork/app/modules/proposals/views/proposals_view.dart';
 import 'package:getwork/app/utils/colors.dart';
@@ -22,7 +24,7 @@ class DashboardView extends GetView {
               children: [
                 HomeView(),
                 ProposalsView(),
-                ContractsView(),
+                MyDashView(),
                 MessagesView(),
                 ProfileView(),
               ],
@@ -42,23 +44,23 @@ class DashboardView extends GetView {
             unselectedFontSize: 11,
             items: [
               bottomNavigationBarItem(
-                icon: Icons.search,
+                icon: CupertinoIcons.search,
                 label: 'Jobs',
               ),
                bottomNavigationBarItem(
-                icon: Icons.library_books_outlined,
+                icon: CupertinoIcons.doc_checkmark,
                 label: 'Proposals',
               ),
                bottomNavigationBarItem(
-                icon: Icons.note_alt_outlined,
-                label: 'Contracts',
+                icon: Icons.dashboard_outlined,
+                label: 'My dash',
               ),
                bottomNavigationBarItem(
-                icon: Icons.mail_outlined,
+                icon: CupertinoIcons.chat_bubble_2,
                 label: 'Messages',
               ),
                bottomNavigationBarItem(
-                icon: Icons.person_pin,
+                icon: CupertinoIcons.person,
                 label: 'Profile',
               ),
             ],

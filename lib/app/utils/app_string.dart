@@ -4,7 +4,7 @@ class AppString {
   static const String signUpSubtitle = 'Sign Up to find work you love';
   static const String jobsText = 'Jobs';
   static const String proposalsText = 'Proposals';
-  static const String contractsText = 'Contracts';
+  static const String mydashText = 'My Dash';
   static const String messageText = 'Messages';
   static const String profileText = 'Freelancer Profile';
   static const String resetPasswordText = 'Reset Password';
