@@ -20,6 +20,7 @@ class ProfileController extends GetxController {
   var education = <Education?>[].obs;
   var portfolios = <Portfolio?>[].obs;
   var savedJobs = <SavedJob?>[].obs;
+  var totalCredits = 0.obs;
 
   //Text editing controllers
   final TextEditingController infoTitleController = TextEditingController();
@@ -120,6 +121,10 @@ class ProfileController extends GetxController {
       if (response.savedJobs != null) {
       
         savedJobs.value = response.savedJobs ?? [];
+      }
+      // fetching total credits from API
+      if(response.connects != null){
+        totalCredits.value = response.connects ?? 0;
       }
     
     } else {

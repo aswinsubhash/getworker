@@ -79,10 +79,24 @@ class ProfileView extends GetView {
                                 ),
                               ),
                               Text(
-                                'Pending Withdraw',
+                                'Total Balance',
                               ),
                             ],
                           ),
+                          Column(
+                            children: [
+                              Text(
+                                profileController.totalCredits.toString(),
+                                 style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Text(
+                                'Total Credits',
+                              )
+                            ],
+                          )
                         ],
                       ),
                       commonSizedBox(20),
