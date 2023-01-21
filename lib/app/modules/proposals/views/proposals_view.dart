@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:getwork/app/modules/proposals/views/active_proposals_view.dart';
 import 'package:getwork/app/modules/proposals/views/rejected_proposals_view.dart';
@@ -7,7 +6,6 @@ import 'package:getwork/app/modules/proposals/views/shortlisted_proposals_view.d
 import 'package:getwork/app/utils/app_string.dart';
 import 'package:getwork/app/utils/colors.dart';
 import 'package:getwork/app/utils/app_styles.dart';
-
 import '../controllers/proposals_controller.dart';
 
 class ProposalsView extends GetView {
@@ -30,7 +28,6 @@ class ProposalsView extends GetView {
           tabs: proposalController.myTabs,
           labelColor: AppColor.greenColor,
           unselectedLabelColor: AppColor.blackColor,
-        
           indicatorColor: AppColor.greenColor,
         ),
       ),
@@ -42,25 +39,6 @@ class ProposalsView extends GetView {
           RejectedProposalsView(),
         ],
       ),
-
-      // body: SafeArea(
-      //   child: Obx(
-      //     () => proposalController.isLoading.value
-      //         ? SpinKitThreeBounce(color: AppColor.greenColor)
-      //         : ListView.separated(
-
-      //             itemBuilder: (context, index) {
-      //               return ListTile(
-      //                 // title:
-      //                 //     Text(proposalController.reversedProposals?[0].cover ?? ''),
-      //                 //     subtitle: Text("Your Bid :\$${proposalController.myProposals?[1].bid}"),
-      //               );
-      //             },
-      //             separatorBuilder: (context, index) => commonDivider(0.8),
-      //             itemCount: 4,
-      //           ),
-      //   ),
-      // ),
     );
   }
 }
