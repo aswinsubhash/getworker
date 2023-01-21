@@ -13,6 +13,8 @@ class HomeController extends GetxController with GetTickerProviderStateMixin{
   final loginController = Get.put(LoginController());
 
   RxBool isLoading = true.obs;
+  
+
 
  late TabController tabController;
  List<Tab>myTabs =<Tab>[
@@ -73,6 +75,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin{
 
     jobId = jobDetailsId;
   }
+
 
 
 }

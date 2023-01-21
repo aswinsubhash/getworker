@@ -16,9 +16,7 @@ class JobDetailsView extends GetView {
   final jobDetailsController = Get.put(JobDetailsController());
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
-   
       appBar: AppBar(
         backgroundColor: AppColor.whiteColor,
         elevation: 0.5,
@@ -57,7 +55,6 @@ class JobDetailsView extends GetView {
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'Poppins',
                           ),
                         ),
                       ),
@@ -75,7 +72,6 @@ class JobDetailsView extends GetView {
                           ),
                         ),
                       ),
-                      commonSizedBox(6),
                       commonDivider(0.8),
                       commonSizedBox(10),
                       Padding(
@@ -92,13 +88,13 @@ class JobDetailsView extends GetView {
                                   'Estimated Budget',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: AppColor.dimBlack,
+                                    color: AppColor.blackColor,
                                   ),
                                 ),
                                 Text(
                                   '\$${jobDetailsController.budget}',
                                   style: TextStyle(
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.bold,
                                     fontSize: 12,
                                   ),
                                 ),
@@ -115,13 +111,13 @@ class JobDetailsView extends GetView {
                                   'Deadline',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: AppColor.dimBlack,
+                                    color: AppColor.blackColor,
                                   ),
                                 ),
                                 Text(
                                   "${jobDetailsController.deadline.toString()} days ",
                                   style: TextStyle(
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.bold,
                                     fontSize: 12,
                                   ),
                                 ),
@@ -135,13 +131,14 @@ class JobDetailsView extends GetView {
                                   'Difficulty',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: AppColor.dimBlack,
+                                    color: AppColor.blackColor,
                                   ),
                                 ),
                                 Text(
-                                  jobDetailsController.level.toString(),
+                                  jobDetailsController.level.value
+                                      .toUpperCase(),
                                   style: TextStyle(
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.bold,
                                     fontSize: 12,
                                   ),
                                 ),
@@ -155,14 +152,14 @@ class JobDetailsView extends GetView {
                                   'Proposals',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: AppColor.dimBlack,
+                                    color: AppColor.blackColor,
                                   ),
                                 ),
                                 Text(
                                   jobDetailsController.proposals!.length
                                       .toString(),
                                   style: TextStyle(
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.bold,
                                     fontSize: 12,
                                   ),
                                 ),
@@ -185,7 +182,7 @@ class JobDetailsView extends GetView {
                               'Skills and Expertise',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontFamily: 'Poppins',
+
                               ),
                             ),
                             commonSizedBox(10),
@@ -216,15 +213,45 @@ class JobDetailsView extends GetView {
                     bottom: 0,
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
-                      child: SizedBox(
-                        width: size.width * 0.9,
-                        child: CustomButton(
-                          text: 'Apply now',
-                          onPressed: jobDetailsController.onSubmitProposal,
-                          textColor: AppColor.whiteColor,
-                          buttonColor: AppColor.greenColor,
-                          radius: 30,
-                        ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: Get.height / 2.65,
+                            child: CustomButton(
+                              text: 'Apply now',
+                              onPressed: jobDetailsController.onSubmitProposal,
+                              textColor: AppColor.whiteColor,
+                              buttonColor: AppColor.greenColor,
+                              radius: 30,
+                            ),
+                          ),
+                          commonWidthBox(5),
+                          InkWell(
+                            onTap: () {
+                              jobDetailsController.saveJobs();
+                            },
+                            child: CircleAvatar(
+                              radius: 22,
+                              backgroundColor: AppColor.greenColor,
+                              child: CircleAvatar(
+                                radius: 20,
+                                backgroundColor: AppColor.whiteColor,
+                                child: jobDetailsController.isClicked.value ==
+                                        false
+                                    ? Icon(
+                                        CupertinoIcons.heart,
+                                        size: 24,
+                                        color: AppColor.greenColor,
+                                      )
+                                    : Icon(
+                                        CupertinoIcons.heart_fill,
+                                        size: 24,
+                                        color: AppColor.errorColor,
+                                      ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   )

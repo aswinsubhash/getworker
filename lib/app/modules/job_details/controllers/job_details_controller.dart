@@ -1,7 +1,11 @@
 import 'package:get/get.dart';
+import 'package:getwork/app/common/widgets/full_screen_dialog_loader.dart';
+import 'package:getwork/app/modules/dashboard/views/dashboard_view.dart';
+import 'package:getwork/app/modules/home/api/get_all_jobs_api.dart';
 import 'package:getwork/app/modules/home/controllers/home_controller.dart';
 import 'package:getwork/app/modules/job_details/api/job_details_api.dart';
 import 'package:getwork/app/modules/job_details/model/job_details_model.dart';
+import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
 import 'package:getwork/app/modules/submit_proposal/views/submit_proposal_view.dart';
 
 class JobDetailsController extends GetxController {
@@ -16,6 +20,7 @@ class JobDetailsController extends GetxController {
   RxInt deadline = 0.obs;
   List<String>? searchTag = [];
   List<Proposal>? proposals = [];
+  var isClicked = false.obs;
 
   @override
   void onInit() {
@@ -48,5 +53,15 @@ class JobDetailsController extends GetxController {
       () => SubmitProposalView(),
       transition: Transition.rightToLeft,
     );
+  }
+
+  Future<void> saveJobs() async {
+    isClicked(true);
+    FullScreenDialogLoader.showLoading();
+    await GetAllJobsAPI().saveJobs(jobId.value);
+    Get.find<ProfileController>().getProfie();
+    FullScreenDialogLoader.hideLoading();
+    Get.off(()=>DashboardView());
+    print(jobId);
   }
 }

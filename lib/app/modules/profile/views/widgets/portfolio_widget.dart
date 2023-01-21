@@ -26,7 +26,6 @@ class PortfolioWidget extends StatelessWidget {
                 Text(
                   'Portfolio',
                   style: TextStyle(
-                    fontFamily: 'Poppins',
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -95,7 +94,9 @@ class PortfolioWidget extends StatelessWidget {
                           radius: 12,
                           child: InkWell(
                             onTap: () {
-                              profileController.deletePortfolio(profileController.portfolios[index]?.id ?? '');
+                              profileController.deletePortfolio(
+                                  profileController.portfolios[index]?.id ??
+                                      '');
                             },
                             child: CircleAvatar(
                               radius: 11,

@@ -51,7 +51,7 @@ class CustomBottomSheet extends StatelessWidget {
                 Text(
                   'Edit your info',
                   style: TextStyle(
-                    fontFamily: 'Poppins',
+                   
                   ),
                 )
               ],

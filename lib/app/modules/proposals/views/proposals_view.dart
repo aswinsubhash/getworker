@@ -30,7 +30,7 @@ class ProposalsView extends GetView {
           tabs: proposalController.myTabs,
           labelColor: AppColor.greenColor,
           unselectedLabelColor: AppColor.blackColor,
-          labelStyle: TextStyle(fontFamily: 'Poppins'),
+        
           indicatorColor: AppColor.greenColor,
         ),
       ),

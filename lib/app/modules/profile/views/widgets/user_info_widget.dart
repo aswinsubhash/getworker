@@ -67,14 +67,14 @@ class UserInfoWidget extends StatelessWidget {
                     profileController.profileName.value,
                     style: TextStyle(
                       fontSize: 18,
-                      fontFamily: 'Poppins',
+                  
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
                     profileController.emailId.value,
                     style: TextStyle(
-                      fontFamily: 'Poppins',
+                  
                     ),
                   ),
                   commonSizedBox(5),

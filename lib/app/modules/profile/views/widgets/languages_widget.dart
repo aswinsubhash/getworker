@@ -28,7 +28,6 @@ class LanguagesWidget extends StatelessWidget {
                 Text(
                   'Languages',
                   style: TextStyle(
-                    fontFamily: 'Poppins',
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -65,8 +64,9 @@ class LanguagesWidget extends StatelessWidget {
                   return Chip(
                       backgroundColor: AppColor.searchTagContainer,
                       label: Text(
-                          profileController.languages[index]?.language ?? 'Add language'),
-                      labelStyle: TextStyle(fontFamily: 'Poppins'),
+                          profileController.languages[index]?.language ??
+                              'Add language'),
+                    
                       deleteIcon: Icon(
                         Icons.close,
                         size: 20,

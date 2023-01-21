@@ -49,7 +49,7 @@ class CustomEducationBottomSheet extends StatelessWidget {
                 Text(
                   'Add education',
                   style: TextStyle(
-                    fontFamily: 'Poppins',
+             
                   ),
                 )
               ],

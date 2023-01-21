@@ -28,7 +28,7 @@ class MyDashView extends GetView {
             tabs: myDashController.myTabs,
             labelColor: AppColor.greenColor,
             unselectedLabelColor: AppColor.blackColor,
-            labelStyle: TextStyle(fontFamily: 'Poppins'),
+           
             indicatorColor: AppColor.greenColor,
           ),
         ),

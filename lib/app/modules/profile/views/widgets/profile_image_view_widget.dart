@@ -15,20 +15,18 @@ class ShowProfilePicScreen extends StatelessWidget {
       () => Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Profile Picture',
-          style: TextStyle(
-            fontFamily: 'Poppins'
-          ),
+          title: Text(
+            'Profile Picture',
           ),
           backgroundColor: AppColor.blackColor,
           elevation: 0,
-            leading: IconButton(
-          onPressed: AppFuctions.onBackButton,
-          icon: Icon(
-            CupertinoIcons.back,
-            color: AppColor.whiteColor,
+          leading: IconButton(
+            onPressed: AppFuctions.onBackButton,
+            icon: Icon(
+              CupertinoIcons.back,
+              color: AppColor.whiteColor,
+            ),
           ),
-        ),
         ),
         body: Container(
           height: double.infinity,

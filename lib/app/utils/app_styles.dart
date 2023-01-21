@@ -3,12 +3,10 @@ import 'package:getwork/app/utils/colors.dart';
 
 class AppStyle {
   static const TextStyle appBarStyle = TextStyle(
-    color:  AppColor.blackColor,
-    fontFamily: 'Poppins',
+    color: AppColor.blackColor,
   );
 
   static const TextStyle logoNameStyle = TextStyle(
-    fontFamily: 'Poppins',
     fontSize: 30,
     color: AppColor.greenColor,
     fontWeight: FontWeight.w600,
@@ -17,13 +15,11 @@ class AppStyle {
   static const TextStyle subTextStyle = TextStyle(
     fontSize: 18.5,
     fontWeight: FontWeight.w500,
-    fontFamily: 'Poppins',
   );
 
   static const TextStyle resetAndOtpStyle = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w500,
-    fontFamily: 'Poppins',
   );
 
   static const BoxDecoration backgroundImage = BoxDecoration(

@@ -30,7 +30,7 @@ class SubmitProposalController extends GetxController {
         jobDetailsController.jobId.toString(),
       );
       FullScreenDialogLoader.hideLoading();
-      Get.offAll(() => DashboardView(), transition: Transition.fade); 
+      Get.off(() => DashboardView(), transition: Transition.fade); 
       CustomSnackBar.showSuccessSnackBar(message: 'Proposal submitted');
       print(response!.proposal!.id);
       print(response.job?.title);

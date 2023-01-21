@@ -50,7 +50,6 @@ class SubmitProposalView extends GetView {
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Poppins',
                     ),
                     softWrap: true,
                   ),
@@ -69,7 +68,8 @@ class SubmitProposalView extends GetView {
                       ),
                     ),
                     child: TextField(
-                      controller: submitProposalController.coverLetterController,
+                      controller:
+                          submitProposalController.coverLetterController,
                       cursorColor: AppColor.greenColor,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(
@@ -129,7 +129,8 @@ class SubmitProposalView extends GetView {
                                 ),
                                 Expanded(
                                   child: TextField(
-                                    controller: submitProposalController.budgetBidController,
+                                    controller: submitProposalController
+                                        .budgetBidController,
                                     cursorColor: AppColor.greenColor,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
@@ -184,7 +185,8 @@ class SubmitProposalView extends GetView {
                           children: [
                             Expanded(
                               child: TextField(
-                                controller: submitProposalController.daysController,
+                                controller:
+                                    submitProposalController.daysController,
                                 cursorColor: AppColor.greenColor,
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.only(

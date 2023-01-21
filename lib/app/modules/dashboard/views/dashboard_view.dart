@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +30,7 @@ class DashboardView extends GetView {
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(
-            unselectedItemColor:  AppColor.blackColor,
+            unselectedItemColor: AppColor.blackColor,
             selectedItemColor: AppColor.greenColor,
             onTap: controller.changeTabIndex,
             currentIndex: controller.tabIndex,
@@ -47,19 +46,19 @@ class DashboardView extends GetView {
                 icon: CupertinoIcons.search,
                 label: 'Jobs',
               ),
-               bottomNavigationBarItem(
+              bottomNavigationBarItem(
                 icon: CupertinoIcons.doc_checkmark,
                 label: 'Proposals',
               ),
-               bottomNavigationBarItem(
+              bottomNavigationBarItem(
                 icon: Icons.dashboard_outlined,
                 label: 'My dash',
               ),
-               bottomNavigationBarItem(
+              bottomNavigationBarItem(
                 icon: CupertinoIcons.chat_bubble_2,
                 label: 'Messages',
               ),
-               bottomNavigationBarItem(
+              bottomNavigationBarItem(
                 icon: CupertinoIcons.person,
                 label: 'Profile',
               ),

@@ -1,17 +1,78 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:getwork/app/common/widgets/common_widgets.dart';
+import 'package:getwork/app/modules/home/controllers/home_controller.dart';
+import 'package:getwork/app/modules/home/views/widgets/custom_search_bar.dart';
+import 'package:getwork/app/modules/home/views/widgets/job_tile_widget.dart';
+import 'package:getwork/app/modules/home/views/widgets/shimmer.dart';
+import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
+import 'package:getwork/app/utils/colors.dart';
 
 class SavedJobsView extends GetView {
+  final profileController = Get.put(ProfileController());
+   final homeContrller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-  
-      body: Center(
-        child: Text(
-          'SavedJobsView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      backgroundColor: AppColor.whiteColor,
+      body: Column(
+        children: [
+          commonSizedBox(20),
+          Center(
+            child: SizedBox(
+              width: Get.width * 0.95,
+              height: 45,
+              child: CustomSearchBar(
+                hintText: 'Search for job',
+                onPressed: () {},
+              ),
+            ),
+          ),
+          commonSizedBox(10),
+          Expanded(
+            child: Obx(
+              () => homeContrller.isLoading.value
+                  ? ShimmerWidgetHome()
+                  : ListView.separated(
+                      separatorBuilder: (context, index) => Divider(
+                        color: AppColor.dividerColor,
+                      ),
+                      itemCount: profileController.savedJobs.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                             homeContrller.onJobClick(
+                                 homeContrller.allJobs?[index].id ?? '');
+                          },
+                          splashColor: AppColor.transparent,
+                          child: JobDetailsTile(
+                            title:
+                                profileController.savedJobs[index]?.title ?? '',
+                            budget: profileController.savedJobs[index]?.budget
+                                    .toString() ??
+                                '',
+                            description: profileController
+                                    .savedJobs[index]?.description ??
+                                '',
+                            level: profileController.savedJobs[index]?.level
+                                    ?.toUpperCase() ??
+                                '',
+                            deadline: profileController
+                                    .savedJobs[index]?.deadline
+                                    .toString() ??
+                                '',
+                            proposals: profileController
+                                    .savedJobs[index]?.proposals?.length
+                                    .toString() ??
+                                '',
+                          ),
+                        );
+                      },
+                    ),
+            ),
+          ),
+        ],
       ),
     );
   }

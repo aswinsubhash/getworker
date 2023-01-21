@@ -32,44 +32,40 @@ class AvailableJobsView extends GetView {
           commonSizedBox(10),
           Expanded(
             child: Obx(
-              () => homeContrller.isLoading.value 
+              () => homeContrller.isLoading.value
                   ? ShimmerWidgetHome()
-                  : Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListView.separated(
-                        separatorBuilder: (context, index) => Divider(
-                          color: AppColor.dividerColor,
-                        ),
-                        itemCount: homeContrller.allJobs?.length ?? 0,
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: () {
-                              homeContrller.onJobClick(
-                                  homeContrller.allJobs?[index].id ?? '');
-                            },
-                            splashColor: AppColor.transparent,
-                            child: JobDetailsTile(
-                              title: homeContrller.allJobs?[index].title ?? '',
-                              budget: homeContrller.allJobs?[index].budget
-                                      .toString() ??
-                                  '',
-                              description:
-                                  homeContrller.allJobs?[index].description ??
-                                      '',
-                              level: homeContrller.allJobs?[index].level
-                                      ?.toUpperCase() ??
-                                  '',
-                              deadline: homeContrller.allJobs?[index].deadline
-                                      .toString() ??
-                                  '',
-                              proposals: homeContrller
-                                      .allJobs?[index].proposals?.length
-                                      .toString() ??
-                                  '',
-                            ),
-                          );
-                        },
+                  : ListView.separated(
+                      separatorBuilder: (context, index) => Divider(
+                        color: AppColor.dividerColor,
                       ),
+                      itemCount: homeContrller.allJobs?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            homeContrller.onJobClick(
+                                homeContrller.allJobs?[index].id ?? '');
+                          },
+                          splashColor: AppColor.transparent,
+                          child: JobDetailsTile(
+                            title: homeContrller.allJobs?[index].title ?? '',
+                            budget: homeContrller.allJobs?[index].budget
+                                    .toString() ??
+                                '',
+                            description:
+                                homeContrller.allJobs?[index].description ?? '',
+                            level: homeContrller.allJobs?[index].level
+                                    ?.toUpperCase() ??
+                                '',
+                            deadline: homeContrller.allJobs?[index].deadline
+                                    .toString() ??
+                                '',
+                            proposals: homeContrller
+                                    .allJobs?[index].proposals?.length
+                                    .toString() ??
+                                '',
+                          ),
+                        );
+                      },
                     ),
             ),
           ),

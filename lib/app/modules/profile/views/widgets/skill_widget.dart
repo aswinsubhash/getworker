@@ -28,7 +28,7 @@ class SkillsWidget extends StatelessWidget {
                 Text(
                   'Skills',
                   style: TextStyle(
-                    fontFamily: 'Poppins',
+                  
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -64,7 +64,7 @@ class SkillsWidget extends StatelessWidget {
                   return Chip(
                     backgroundColor: AppColor.searchTagContainer,
                     label: Text(profileController.skills[index]?.skill ?? 'Add your skill'),
-                    labelStyle: TextStyle(fontFamily: 'Poppins'),
+               
                     deleteIcon: Icon(
                       Icons.close,
                       size: 20,

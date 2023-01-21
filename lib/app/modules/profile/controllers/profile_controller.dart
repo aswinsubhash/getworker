@@ -19,6 +19,7 @@ class ProfileController extends GetxController {
   var languages = <Language?>[].obs;
   var education = <Education?>[].obs;
   var portfolios = <Portfolio?>[].obs;
+  var savedJobs = <SavedJob?>[].obs;
 
   //Text editing controllers
   final TextEditingController infoTitleController = TextEditingController();
@@ -114,9 +115,16 @@ class ProfileController extends GetxController {
       if (response.portfolios != null) {
         portfolios.value = response.portfolios ?? [];
       }
+
+      // fetching saved jobs from API
+      if (response.savedJobs != null) {
+      
+        savedJobs.value = response.savedJobs ?? [];
+      }
+    
     } else {
       isLoading(false);
-      print('sedvsdfesf');
+
       CustomSnackBar.showErrorSnackBar(
         message: 'Something went wrong',
       );

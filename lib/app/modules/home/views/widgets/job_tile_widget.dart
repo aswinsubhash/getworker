@@ -1,8 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:getwork/app/common/widgets/common_widgets.dart';
+import 'package:getwork/app/modules/home/controllers/home_controller.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 class JobDetailsTile extends StatelessWidget {
@@ -24,11 +26,9 @@ class JobDetailsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Container(
       width: double.infinity,
-      height: size.height / 6,
-     
+      height: Get.height / 6.4,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: AppColor.whiteColor,
@@ -48,33 +48,15 @@ class JobDetailsTile extends StatelessWidget {
                   child: Text(
                     title,
                     softWrap: true,
-                   // maxLines: 2,
+                    // maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Poppins',
+                     
                     ),
                   ),
                 ),
-                InkWell(
-                  onTap:(){
-                   
-                  },
-                  child: CircleAvatar(
-                    backgroundColor: AppColor.dividerColor,
-                    child: CircleAvatar(
-                      backgroundColor: AppColor.whiteColor,
-                      radius: 16.5,
-                      child: Icon(
-                        CupertinoIcons.suit_heart,
-                        size: 20,
-                        color: AppColor.greenColor,
-                      ),
-                    ),
-                    radius: 18,
-                  ),
-                )
               ],
             ),
             commonSizedBox(15),
@@ -122,9 +104,7 @@ class JobDetailsTile extends StatelessWidget {
             commonSizedBox(10),
             Text(
               "Deadline : $deadline days",
-              style: TextStyle(
-                fontSize: 12
-              ),
+              style: TextStyle(fontSize: 12),
             ),
           ],
         ),

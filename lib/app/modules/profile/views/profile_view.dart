@@ -66,9 +66,6 @@ class ProfileView extends GetView {
                               ),
                               Text(
                                 'Total Earnings',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                ),
                               ),
                             ],
                           ),
@@ -83,9 +80,6 @@ class ProfileView extends GetView {
                               ),
                               Text(
                                 'Pending Withdraw',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                ),
                               ),
                             ],
                           ),
@@ -143,9 +137,7 @@ class ProfileView extends GetView {
                                         commonWidthBox(130),
                                         Text(
                                           'Skills',
-                                          style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                          ),
+                                          style: TextStyle(),
                                         )
                                       ],
                                     ),
@@ -211,9 +203,7 @@ class ProfileView extends GetView {
                                         commonWidthBox(115),
                                         Text(
                                           'Languages',
-                                          style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                          ),
+                                          style: TextStyle(),
                                         )
                                       ],
                                     ),
@@ -278,7 +268,6 @@ class ProfileView extends GetView {
                             Text(
                               'Work History',
                               style: TextStyle(
-                                fontFamily: 'Poppins',
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -286,7 +275,6 @@ class ProfileView extends GetView {
                             commonSizedBox(10),
                             Text(
                               'Your work history is visible here',
-                              style: TextStyle(fontFamily: 'Poppins'),
                             ),
                             commonSizedBox(10),
                           ],

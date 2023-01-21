@@ -27,7 +27,7 @@ class UserInfoAndTitleWidget extends StatelessWidget {
                 child: Text(
                   userTitle,
                   style: TextStyle(
-                    fontFamily: 'Poppins',
+                
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -57,7 +57,7 @@ class UserInfoAndTitleWidget extends StatelessWidget {
             userInfo,
             style: TextStyle(
               fontSize: 16,
-              fontFamily: 'Poppins',
+          
             ),
           ),
           commonSizedBox(15),

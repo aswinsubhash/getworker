@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,7 +28,6 @@ class EducationWidget extends StatelessWidget {
                 Text(
                   'Education',
                   style: TextStyle(
-                    fontFamily: 'Poppins',
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -75,13 +73,11 @@ class EducationWidget extends StatelessWidget {
                               Text(
                                 profileController.education[index]?.school ??
                                     'sdfsdf',
-                                style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                profileController.education[index]?.title ?? 'sdfsd',
-                                style: TextStyle(fontFamily: 'Poppins'),
+                                profileController.education[index]?.title ??
+                                    'sdfsd',
                               ),
                             ],
                           ),

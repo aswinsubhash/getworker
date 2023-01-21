@@ -38,7 +38,7 @@ class HomeView extends GetView {
           tabs: homeContrller.myTabs,
           labelColor: AppColor.greenColor,
           unselectedLabelColor: AppColor.blackColor,
-          labelStyle: TextStyle(fontFamily: 'Poppins'),
+        
           indicatorColor: AppColor.greenColor,
         ),
       ),
