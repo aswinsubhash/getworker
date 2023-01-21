@@ -140,6 +140,15 @@ class JobDetailsView extends GetView {
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 12,
+                                    color: jobDetailsController.level.value
+                                                .toUpperCase() ==
+                                            'EASY'
+                                        ? AppColor.greenColor
+                                        : jobDetailsController.level.value
+                                                    .toUpperCase() ==
+                                                'ADVANCED'
+                                            ? AppColor.errorColor
+                                            : AppColor.orangeColor,
                                   ),
                                 ),
                               ],
@@ -182,7 +191,6 @@ class JobDetailsView extends GetView {
                               'Skills and Expertise',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-
                               ),
                             ),
                             commonSizedBox(10),

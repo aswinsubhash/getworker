@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/custom_snackbar.dart';
@@ -11,26 +10,20 @@ class ProposalsController extends GetxController
 
   var myProposals = <Proposal?>[].obs;
   var reversedProposals = <Proposal?>[].obs;
-  var activeProposals = <Proposal?>[].obs;
-  var shortlistedProposals = <Proposal?>[].obs;
-  var rejectedProposals = <Proposal?>[].obs;
-  // List<Proposal?> get activeProposals => reversedProposals.where((item) => item!.status == 'shortlisted').toList();
+
+  get activeProposals =>
+      reversedProposals.where((item) => item?.status == 'active').toList();
+  get shortlistedProposals =>
+      reversedProposals.where((item) => item?.status == 'shortlisted').toList();
+  get rejectedProposals =>
+      reversedProposals.where((item) => item?.status == 'rejected').toList();
 
 //  List<YourData> activeData = originalData.where((item) => item.status == 'active').toList();
 
   @override
   void onInit() {
     getAllProposals();
-    //? filtering active proposals from all proposals
-    activeProposals.value =
-        reversedProposals.where((item) => item?.status == 'active').toList();
-    //? filtering shortlisted proposals from all proposals
-    shortlistedProposals.value = reversedProposals
-        .where((item) => item?.status == 'shortlisted')
-        .toList();
-    //? filtering rejected proposals from all proposals
-    rejectedProposals.value =
-        reversedProposals.where((item) => item?.status == 'rejected').toList();
+
     tabController = TabController(length: 3, vsync: this);
 
     super.onInit();

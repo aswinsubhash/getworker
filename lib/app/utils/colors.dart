@@ -9,6 +9,7 @@ class AppColor {
   static const dividerColor = Colors.black12;
   static const blackColor = Colors.black;
   static const errorColor = Colors.red;
+  static const orangeColor = Colors.orange;
   static const greyColor = Colors.grey;
   static const transparent = Colors.transparent;
   static const jobScreenContainer = Color.fromARGB(32, 60, 207, 77); 

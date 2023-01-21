@@ -53,7 +53,6 @@ class JobDetailsTile extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
-                     
                     ),
                   ),
                 ),
@@ -87,7 +86,14 @@ class JobDetailsTile extends StatelessWidget {
                   children: [
                     Text(
                       level,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: level.toUpperCase() == 'EASY'
+                            ? AppColor.greenColor
+                            : level.toUpperCase() == 'ADVANCED'
+                                ? AppColor.errorColor
+                                : AppColor.orangeColor,
+                      ),
                     ),
                     commonSizedBox(5),
                     Text(

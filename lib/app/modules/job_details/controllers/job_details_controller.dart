@@ -16,7 +16,7 @@ class JobDetailsController extends GetxController {
   RxString jobTitle = ''.obs;
   RxString description = ''.obs;
   RxInt budget = 0.obs;
-  RxString level = ''.obs;
+  RxString level = ''.toUpperCase().obs;
   RxInt deadline = 0.obs;
   List<String>? searchTag = [];
   List<Proposal>? proposals = [];
@@ -37,7 +37,7 @@ class JobDetailsController extends GetxController {
       jobTitle.value = response.title.toString();
       description.value = response.description.toString();
       budget.value = response.budget ?? 0;
-      level.value = response.level.toString();
+      level.value = response.level ?? '';
       deadline.value = response.deadline ?? 0;
       searchTag = response.searchTag;
       proposals = response.proposals;
