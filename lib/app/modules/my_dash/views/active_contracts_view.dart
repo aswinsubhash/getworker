@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
+import 'package:getwork/app/common/widgets/custom_button.dart';
+import 'package:getwork/app/modules/my_dash/controllers/my_dash_controller.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 class ActiveContractsView extends GetView {
- 
-  @override
+  final myDashController = Get.put(MyDashController());
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.whiteColor,
       body: Column(
-           crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           commonSizedBox(15),
           Padding(
@@ -25,7 +27,16 @@ class ActiveContractsView extends GetView {
             ),
           ),
           commonSizedBox(10),
-          commonDivider(0.8)
+          commonDivider(0.8),
+          CustomButton(
+            text: 'test',
+            onPressed: () {
+              myDashController.getContracts();
+            },
+            textColor: AppColor.whiteColor,
+            buttonColor: AppColor.greenColor,
+            radius: 30,
+          )
         ],
       ),
     );
