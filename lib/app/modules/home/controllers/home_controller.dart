@@ -8,11 +8,16 @@ import 'package:getwork/app/modules/home/api/get_all_jobs_api.dart';
 import 'package:getwork/app/modules/home/model/all_job_list_model.dart';
 import 'package:getwork/app/modules/home/model/get_all_jobs_model.dart';
 import 'package:getwork/app/modules/job_details/views/job_details_view.dart';
+import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
+import 'package:getwork/app/modules/profile/model/profile_model.dart';
 
 class HomeController extends GetxController with GetTickerProviderStateMixin{
   final loginController = Get.put(LoginController());
+  
 
   RxBool isLoading = true.obs;
+  /// This list will assigned inside the profile controller
+   var savedJobs = <SavedJob?>[].obs;
   
 
 

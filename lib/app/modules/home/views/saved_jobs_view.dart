@@ -10,8 +10,8 @@ import 'package:getwork/app/modules/profile/controllers/profile_controller.dart'
 import 'package:getwork/app/utils/colors.dart';
 
 class SavedJobsView extends GetView {
-  final profileController = Get.put(ProfileController());
-   final homeContrller = Get.put(HomeController());
+
+  final homeContrller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,31 +38,32 @@ class SavedJobsView extends GetView {
                       separatorBuilder: (context, index) => Divider(
                         color: AppColor.dividerColor,
                       ),
-                      itemCount: profileController.savedJobs.length,
+                      itemCount:homeContrller.savedJobs.length,
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
-                             homeContrller.onJobClick(
-                                 homeContrller.allJobs?[index].id ?? '');
+                            homeContrller.onJobClick(
+                                homeContrller.allJobs?[index].id ?? '');
                           },
                           splashColor: AppColor.transparent,
                           child: JobDetailsTile(
+                          
                             title:
-                                profileController.savedJobs[index]?.title ?? '',
-                            budget: profileController.savedJobs[index]?.budget
+                                homeContrller.savedJobs[index]?.title ?? '',
+                            budget: homeContrller.savedJobs[index]?.budget
                                     .toString() ??
                                 '',
-                            description: profileController
+                            description: homeContrller
                                     .savedJobs[index]?.description ??
                                 '',
-                            level: profileController.savedJobs[index]?.level
+                            level: homeContrller.savedJobs[index]?.level
                                     ?.toUpperCase() ??
                                 '',
-                            deadline: profileController
+                            deadline: homeContrller
                                     .savedJobs[index]?.deadline
                                     .toString() ??
                                 '',
-                            proposals: profileController
+                            proposals: homeContrller
                                     .savedJobs[index]?.proposals?.length
                                     .toString() ??
                                 '',
