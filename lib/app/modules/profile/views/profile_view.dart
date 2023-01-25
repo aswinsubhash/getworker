@@ -274,28 +274,6 @@ class ProfileView extends GetView {
                       ),
                       commonSizedBox(10),
                       commonDivider(0.8),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            commonSizedBox(5),
-                            Text(
-                              'Work History',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            commonSizedBox(10),
-                            Text(
-                              'Your work history is visible here',
-                            ),
-                            commonSizedBox(10),
-                          ],
-                        ),
-                      ),
-                      commonDivider(0.8),
                       PortfolioWidget(),
                     ],
                   ),
