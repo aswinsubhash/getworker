@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:getwork/app/common/widgets/common_widgets.dart';
-import 'package:getwork/app/modules/home/controllers/home_controller.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 class JobDetailsTile extends StatelessWidget {

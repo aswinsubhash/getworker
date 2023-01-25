@@ -6,7 +6,6 @@ import 'package:getwork/app/modules/home/controllers/home_controller.dart';
 import 'package:getwork/app/modules/home/views/widgets/custom_search_bar.dart';
 import 'package:getwork/app/modules/home/views/widgets/job_tile_widget.dart';
 import 'package:getwork/app/modules/home/views/widgets/shimmer.dart';
-import 'package:getwork/app/modules/profile/controllers/profile_controller.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 class SavedJobsView extends GetView {

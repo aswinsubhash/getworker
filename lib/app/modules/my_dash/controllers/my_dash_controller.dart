@@ -13,6 +13,7 @@ class MyDashController extends GetxController with GetTickerProviderStateMixin {
   var credits = 0.obs;
   var totalEarned = 0.obs;
   var pendingWithdraw = 0.obs;
+  var isLoading = true.obs;
 
   List<Tab> myTabs = <Tab>[
     Tab(
@@ -29,7 +30,7 @@ class MyDashController extends GetxController with GetTickerProviderStateMixin {
   @override
   void onInit() {
     tabController = TabController(length: 3, vsync: this);
-    getBalance();
+    getMydashDetails();
 
     super.onInit();
   }
@@ -40,55 +41,45 @@ class MyDashController extends GetxController with GetTickerProviderStateMixin {
     super.onClose();
   }
 
-  Future<void> getContracts() async {
-    MyDashModel? response = await MyDashAPI().getContracts();
+  /// This function retrieves the details for the user's dashboard.
+  /// It calls the "getMyDashDetails" function from the "MyDashAPI" class and receives a response object of type "MyDashModel".
+  /// If the response is not null, it updates the values of active contracts, completed jobs, credits, total earned, and pending withdraw.
+  Future<void> getMydashDetails() async {
+    MyDashModel? response = await MyDashAPI().getMyDashDetails();
 
     if (response != null) {
+      isLoading(false);
       if (response.activeContracts != null) {
         activeContracts.value = response.activeContracts ?? [];
-        log(activeContracts[1]?.title ?? 'hghhggg');
       }
 
       if (response.completedJobs != null) {
         completedJobs.value = response.completedJobs ?? [];
-        log(completedJobs[1]?.title ?? '');
       }
 
+      if (response.connects != null) {
+        credits.value = response.connects ?? 0;
+      }
+      if (response.totalEarned != null) {
+        totalEarned.value = response.totalEarned ?? 0;
+      }
+
+      if (response.pendingWithdraw != null) {
+        pendingWithdraw.value = response.pendingWithdraw ?? 0;
+      }
       if (response.connects != null) {
         credits.value = response.connects ?? 0;
         log(credits.toString());
       }
       if (response.totalEarned != null) {
         totalEarned.value = response.totalEarned ?? 0;
-        log('This is total earned ${totalEarned.toString()}');
       }
 
       if (response.pendingWithdraw != null) {
         pendingWithdraw.value = response.pendingWithdraw ?? 0;
-        log(pendingWithdraw.toString());
       }
     } else {
-      ////////////////////////////////////////
-    }
-  }
-
-  Future<void> getBalance() async {
-    MyDashModel? response = await MyDashAPI().getContracts();
-    if (response != null) {
-      if (response.connects != null) {
-        credits.value = response.connects ?? 0;
-        log(credits.toString());
-      }
-      if (response.totalEarned != null) {
-        totalEarned.value = response.totalEarned ?? 0;
-        log('This is total earned ${totalEarned.toString()}');
-      }
-
-      if (response.pendingWithdraw != null) {
-        pendingWithdraw.value = response.pendingWithdraw ?? 0;
-        log(pendingWithdraw.toString());
-      }
-    } else {
+      isLoading(false);
       ////////////////////////////////////////
     }
   }

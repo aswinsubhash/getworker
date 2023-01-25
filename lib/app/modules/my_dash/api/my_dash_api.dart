@@ -6,7 +6,7 @@ import 'package:getwork/app/modules/my_dash/model/my_dash_model.dart';
 import 'package:http/http.dart' as http;
 
 class MyDashAPI {
-  Future<MyDashModel?> getContracts() async {
+  Future<MyDashModel?> getMyDashDetails() async {
     final storage = FlutterSecureStorage();
     final token = await storage.read(key: 'token');
     final userId = await storage.read(key: 'userId');
