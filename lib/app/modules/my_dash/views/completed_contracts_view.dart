@@ -13,48 +13,53 @@ class CompletedContractsView extends GetView {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.whiteColor,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          commonSizedBox(15),
-          Expanded(
-            child: Obx(
-              () => myDashController.isLoading.value
-                  ? ShimmerWidgetHome()
-                  : ListView.separated(
-                      separatorBuilder: (context, index) => Divider(
-                        color: AppColor.dividerColor,
+      body: RefreshIndicator(
+        onRefresh: myDashController.getMydashDetails,
+        color: AppColor.greenColor,
+         displacement: 30.0, 
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            commonSizedBox(15),
+            Expanded(
+              child: Obx(
+                () => myDashController.isLoading.value
+                    ? ShimmerWidgetHome()
+                    : ListView.separated(
+                        separatorBuilder: (context, index) => Divider(
+                          color: AppColor.dividerColor,
+                        ),
+                        itemCount: myDashController.completedJobs.length,
+                        itemBuilder: (context, index) {
+                          return JobDetailsTile(
+                            title:
+                                myDashController.completedJobs[index]?.title ??
+                                    '',
+                            budget: myDashController
+                                    .completedJobs[index]?.budget
+                                    .toString() ??
+                                '',
+                            description: myDashController
+                                    .completedJobs[index]?.description ??
+                                '',
+                            level: myDashController.completedJobs[index]?.level
+                                    ?.toUpperCase() ??
+                                '',
+                            deadline: myDashController
+                                    .completedJobs[index]?.deadline
+                                    .toString() ??
+                                '',
+                            proposals: myDashController
+                                    .completedJobs[index]?.proposals?.length
+                                    .toString() ??
+                                '',
+                          );
+                        },
                       ),
-                      itemCount: myDashController.completedJobs.length,
-                      itemBuilder: (context, index) {
-                        return JobDetailsTile(
-                          title:
-                              myDashController.completedJobs[index]?.title ??
-                                  '',
-                          budget: myDashController
-                                  .completedJobs[index]?.budget
-                                  .toString() ??
-                              '',
-                          description: myDashController
-                                  .completedJobs[index]?.description ??
-                              '',
-                          level: myDashController.completedJobs[index]?.level
-                                  ?.toUpperCase() ??
-                              '',
-                          deadline: myDashController
-                                  .completedJobs[index]?.deadline
-                                  .toString() ??
-                              '',
-                          proposals: myDashController
-                                  .completedJobs[index]?.proposals?.length
-                                  .toString() ??
-                              '',
-                        );
-                      },
-                    ),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -22,7 +22,6 @@ class ProfileView extends GetView {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    // profileController.onInit();
     return Scaffold(
       backgroundColor: AppColor.whiteColor,
       appBar: AppBar(
@@ -41,6 +40,8 @@ class ProfileView extends GetView {
               )
             : RefreshIndicator(
                 onRefresh: profileController.getProfie,
+                displacement: 30.0,
+                color: AppColor.greenColor,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,7 +88,7 @@ class ProfileView extends GetView {
                             children: [
                               Text(
                                 profileController.totalCredits.toString(),
-                                 style: TextStyle(
+                                style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),

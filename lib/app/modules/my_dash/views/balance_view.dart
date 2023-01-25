@@ -13,72 +13,77 @@ class BalanceView extends GetView {
     return Scaffold(
       backgroundColor: AppColor.whiteColor,
       body: Obx(
-        () => Column(
-          children: [
-            commonSizedBox(15),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text('Earnings available now: '),
-                      Text(
-                        '\$${myDashController.totalEarned}',
-                        style: TextStyle(
-                          color: AppColor.greenColor,
-                        ),
-                      )
-                    ],
-                  ),
-                  commonSizedBox(10),
-                  Row(
-                    children: [
-                      Text('Pending Withdraw: '),
-                      Text(
-                        '\$${myDashController.pendingWithdraw}',
-                        style: TextStyle(
-                          color: AppColor.greenColor,
-                        ),
-                      )
-                    ],
-                  ),
-                  commonSizedBox(10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text('Credits available now: '),
-                          Text(
-                            myDashController.credits.value.toString(),
-                            style: TextStyle(
-                              color: AppColor.greenColor,
-                            ),
-                          ),
-                        ],
-                      ),
-                      RichText(
-                        text: TextSpan(
-                          text: 'Buy Credits',
+        () => RefreshIndicator(
+          onRefresh: myDashController.getMydashDetails,
+          color: AppColor.greenColor,
+           displacement: 30.0, 
+          child: ListView(
+            children: [
+              commonSizedBox(15),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text('Earnings available now: '),
+                        Text(
+                          '\$${myDashController.totalEarned}',
                           style: TextStyle(
-                              color: AppColor.greenColor,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Poppins'),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              log('buyconnects working');
-                            },
+                            color: AppColor.greenColor,
+                          ),
+                        )
+                      ],
+                    ),
+                    commonSizedBox(10),
+                    Row(
+                      children: [
+                        Text('Pending Withdraw: '),
+                        Text(
+                          '\$${myDashController.pendingWithdraw}',
+                          style: TextStyle(
+                            color: AppColor.greenColor,
+                          ),
+                        )
+                      ],
+                    ),
+                    commonSizedBox(10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text('Credits available now: '),
+                            Text(
+                              myDashController.credits.value.toString(),
+                              style: TextStyle(
+                                color: AppColor.greenColor,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                  commonSizedBox(10)
-                ],
+                        RichText(
+                          text: TextSpan(
+                            text: 'Buy Credits',
+                            style: TextStyle(
+                                color: AppColor.greenColor,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins'),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                log('buyconnects working');
+                              },
+                          ),
+                        ),
+                      ],
+                    ),
+                    commonSizedBox(10)
+                  ],
+                ),
               ),
-            ),
-            commonDivider(0.8),
-          ],
+              commonDivider(0.8),
+            ],
+          ),
         ),
       ),
     );
