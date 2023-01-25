@@ -20,6 +20,7 @@ abstract class Routes {
   static const JOB_DETAILS = _Paths.JOB_DETAILS;
   static const SUBMIT_PROPOSAL = _Paths.SUBMIT_PROPOSAL;
   static const MY_DASH = _Paths.MY_DASH;
+  static const PURCHASE_CREDITS = _Paths.PURCHASE_CREDITS;
 }
 
 abstract class _Paths {
@@ -37,4 +38,5 @@ abstract class _Paths {
   static const JOB_DETAILS = '/job-details';
   static const SUBMIT_PROPOSAL = '/submit-proposal';
   static const MY_DASH = '/my-dash';
+  static const PURCHASE_CREDITS = '/purchase-credits';
 }

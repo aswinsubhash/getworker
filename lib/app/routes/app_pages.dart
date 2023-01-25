@@ -22,6 +22,8 @@ import 'package:getwork/app/modules/profile/bindings/profile_binding.dart';
 import 'package:getwork/app/modules/profile/views/profile_view.dart';
 import 'package:getwork/app/modules/proposals/bindings/proposals_binding.dart';
 import 'package:getwork/app/modules/proposals/views/proposals_view.dart';
+import 'package:getwork/app/modules/purchase_credits/bindings/purchase_credits_binding.dart';
+import 'package:getwork/app/modules/purchase_credits/views/purchase_credits_view.dart';
 import 'package:getwork/app/modules/splash/bindings/splash_binding.dart';
 import 'package:getwork/app/modules/splash/views/splash_view.dart';
 import 'package:getwork/app/modules/submit_proposal/bindings/submit_proposal_binding.dart';
@@ -101,6 +103,11 @@ class AppPages {
       name: _Paths.MY_DASH,
       page: () => MyDashView(),
       binding: MyDashBinding(),
+    ),
+    GetPage(
+      name: _Paths.PURCHASE_CREDITS,
+      page: () => PurchaseCreditsView(),
+      binding: PurchaseCreditsBinding(),
     ),
   ];
 }

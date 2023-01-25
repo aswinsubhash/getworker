@@ -16,7 +16,7 @@ class BalanceView extends GetView {
         () => RefreshIndicator(
           onRefresh: myDashController.getMydashDetails,
           color: AppColor.greenColor,
-           displacement: 30.0, 
+          displacement: 30.0,
           child: ListView(
             children: [
               commonSizedBox(15),
@@ -64,15 +64,13 @@ class BalanceView extends GetView {
                         ),
                         RichText(
                           text: TextSpan(
-                            text: 'Buy Credits',
+                            text: 'Purchase Credits',
                             style: TextStyle(
                                 color: AppColor.greenColor,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Poppins'),
                             recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                log('buyconnects working');
-                              },
+                              ..onTap = myDashController.onBuyCreditsClick,
                           ),
                         ),
                       ],

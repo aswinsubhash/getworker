@@ -15,30 +15,30 @@ class MyDashView extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColor.whiteColor,
-          title: Text(
-            AppString.mydashText,
-            style: AppStyle.appBarStyle,
-          ),
-          centerTitle: true,
-          elevation: 0.8,
-          bottom: TabBar(
-            controller: myDashController.tabController,
-            tabs: myDashController.myTabs,
-            labelColor: AppColor.greenColor,
-            unselectedLabelColor: AppColor.blackColor,
-           
-            indicatorColor: AppColor.greenColor,
-          ),
+      appBar: AppBar(
+        backgroundColor: AppColor.whiteColor,
+        title: Text(
+          AppString.mydashText,
+          style: AppStyle.appBarStyle,
         ),
-        body: TabBarView(
+        centerTitle: true,
+        elevation: 0.8,
+        bottom: TabBar(
           controller: myDashController.tabController,
-          children: [
-            ActiveContractsView(),
-            CompletedContractsView(),
-            BalanceView(),
-          ],
-        ));
+          tabs: myDashController.myTabs,
+          labelColor: AppColor.greenColor,
+          unselectedLabelColor: AppColor.blackColor,
+          indicatorColor: AppColor.greenColor,
+        ),
+      ),
+      body: TabBarView(
+        controller: myDashController.tabController,
+        children: [
+          ActiveContractsView(),
+          CompletedContractsView(),
+          BalanceView(),
+        ],
+      ),
+    );
   }
 }
