@@ -14,4 +14,5 @@ class AppColor {
   static const transparent = Colors.transparent;
   static const jobScreenContainer = Color.fromARGB(32, 60, 207, 77); 
   static const searchTagContainer = Color.fromARGB(43, 0, 253, 29); 
+  static const plansContainerColor = Color.fromRGBO(29, 67, 84, 1);
 }
