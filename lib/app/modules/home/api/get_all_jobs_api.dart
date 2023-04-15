@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/modules/home/model/get_all_jobs_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -25,11 +24,12 @@ class GetAllJobsAPI {
         headers: headers,
       );
 
+     
+
       if (response.statusCode == 200) {
         return JobsModel.fromJson(jsonDecode(response.body));
       } else {
-        CustomSnackBar.showErrorSnackBar(
-            message: 'Check your internet connection');
+        log(response.body);
       }
     } catch (e) {
       log(e.toString());

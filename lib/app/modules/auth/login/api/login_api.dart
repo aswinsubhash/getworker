@@ -70,7 +70,7 @@ class LoginAPI {
     // If there was an exception thrown while making the request
     catch (e) {
       // Log the exception message to the console
-      log(e.toString());
+    log(e.toString());
     }
     return null;
   }
@@ -120,7 +120,7 @@ class LoginAPI {
       }
     } catch (e) {
       // If there is an error while making the HTTP request, log it
-      log(e.toString());
+     log(e.toString());
     }
   }
 }

@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/modules/proposals/model/proposal_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -28,8 +27,7 @@ class ProposalsAPI {
       if (response.statusCode == 200) {
         return ProposalsModel.fromJson(jsonDecode(response.body));
       } else {
-        CustomSnackBar.showErrorSnackBar(
-            message: 'Check your internet connection');
+       log(response.body);
       }
     } catch (e) {
       log(e.toString());

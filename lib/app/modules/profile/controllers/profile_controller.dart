@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,9 +26,9 @@ class ProfileController extends GetxController {
   // - emailId: a string variable that stores the user's email address
   var emailId = ''.obs;
   // - totalEarned: an integer variable that stores the user's total earnings
-  var totalEarned = 0.obs;
+  var totalEarned = 0.0.obs;
   // - pendingWithdraw: an integer variable that stores the user's pending withdraw amount
-  var pendingWithdraw = 0.obs;
+  var pendingWithdraw = 0.0.obs;
   // - userTitle: a string variable that stores the user's title
   var userTitle = ''.obs;
   // - userInfo: a string variable that stores the user's info
@@ -76,6 +78,7 @@ class ProfileController extends GetxController {
 
       if (response.image != null) {
         profilePic.value = response.image ?? '';
+      //  log(profilePic.value);
       } else {
         profilePic.value =
             'https://cdn.vectorstock.com/i/preview-1x/30/40/business-men-icon-vector-24533040.jpg';

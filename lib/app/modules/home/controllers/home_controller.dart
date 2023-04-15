@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/modules/auth/login/controllers/login_controller.dart';
 import 'package:getwork/app/modules/auth/login/views/login_view.dart';
 import 'package:getwork/app/modules/home/api/get_all_jobs_api.dart';
@@ -66,8 +65,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin{
       }
     } else {
       isLoading(false);
-      CustomSnackBar.showErrorSnackBar(
-          message: 'Check your internet connection');
+     
     }
   }
 

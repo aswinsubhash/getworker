@@ -27,7 +27,7 @@ class ProfileModel {
 
   String? id;
   Owner? owner;
-  int? totalEarned;
+  double? totalEarned;
   List<Language?>? languages;
   List<Education?>? educations;
   List<Skill?>? skills;
@@ -42,7 +42,7 @@ class ProfileModel {
   int? reported;
   List<dynamic>? activeContracts;
   List<dynamic>? myProposals;
-  int? pendingWithdraw;
+  double? pendingWithdraw;
   List<SavedJob?>? savedJobs;
   List<dynamic>? notification;
   int? v;
@@ -52,7 +52,7 @@ class ProfileModel {
   factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
         id: json["_id"],
         owner: Owner.fromJson(json["owner"]),
-        totalEarned: json["totalEarned"],
+       totalEarned: json["totalEarned"],
         languages: json["languages"] == null
             ? []
             : List<Language?>.from(

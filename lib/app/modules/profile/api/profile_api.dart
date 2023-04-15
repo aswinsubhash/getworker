@@ -36,6 +36,7 @@ class ProfileAPI {
       }
     } catch (e) {
       log(e.toString());
+      log('ivade onddddd');
     }
     return null;
   }
@@ -71,7 +72,7 @@ class ProfileAPI {
         CustomSnackBar.showErrorSnackBar(message: 'Something went wrong');
       }
     } catch (e) {
-      log(e.toString());
+     // log(e.toString());
     }
     return null;
   }

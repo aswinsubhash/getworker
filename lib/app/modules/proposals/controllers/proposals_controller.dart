@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/modules/proposals/api/proposal_api.dart';
 import 'package:getwork/app/modules/proposals/model/proposal_model.dart';
 
@@ -59,8 +58,6 @@ class ProposalsController extends GetxController
       }
     } else {
       isLoading(false);
-      CustomSnackBar.showErrorSnackBar(
-          message: 'Check your internet connection');
     }
   }
 }

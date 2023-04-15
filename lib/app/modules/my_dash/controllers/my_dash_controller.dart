@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getwork/app/common/widgets/custom_snackbar.dart';
 import 'package:getwork/app/modules/my_dash/api/my_dash_api.dart';
 import 'package:getwork/app/modules/my_dash/model/my_dash_model.dart';
 import 'package:getwork/app/modules/purchase_credits/views/purchase_credits_view.dart';
@@ -13,8 +12,8 @@ class MyDashController extends GetxController with GetTickerProviderStateMixin {
   var activeContracts = <ActiveContract?>[].obs;
   var completedJobs = <CompletedJobs?>[].obs;
   var credits = 0.obs;
-  var totalEarned = 0.obs;
-  var pendingWithdraw = 0.obs;
+  var totalEarned = 0.0.obs;
+  var pendingWithdraw = 0.0.obs;
   var isLoading = true.obs;
 
   List<Tab> myTabs = <Tab>[
@@ -82,8 +81,7 @@ class MyDashController extends GetxController with GetTickerProviderStateMixin {
       }
     } else {
       isLoading(false);
-      CustomSnackBar.showErrorSnackBar(
-          message: 'Please check your internet connection');
+    
     }
   }
 

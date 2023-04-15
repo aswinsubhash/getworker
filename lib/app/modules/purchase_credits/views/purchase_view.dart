@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwork/app/common/widgets/common_widgets.dart';
+import 'package:getwork/app/modules/purchase_credits/controllers/purchase_credits_controller.dart';
 import 'package:getwork/app/modules/purchase_credits/views/widgets/plans_container_widget.dart';
 import 'package:getwork/app/utils/colors.dart';
 
 class PurchaseView extends GetView {
+  final purchaseCreditsController = Get.put(PurchaseCreditsController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +20,9 @@ class PurchaseView extends GetView {
               credits: '100',
               amount: '500.00',
               planName: 'Basic Plan',
-              onPressed: (){},
+              onPressed: (){
+              purchaseCreditsController.createOrder();
+              },
              ),
             commonSizedBox(20),
              PlansContainerWidget(

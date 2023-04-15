@@ -11,8 +11,8 @@ class MyDashModel {
   });
 
   int? connects;
-  int? totalEarned;
-  int? pendingWithdraw;
+  double? totalEarned;
+  double? pendingWithdraw;
   List<CompletedJobs>? completedJobs;
   String? kycApproved;
   List<ActiveContract>? activeContracts;
